@@ -1,0 +1,24 @@
+name: 'x_ads'
+version: '0.1.0'
+config-version: 2
+require-dbt-version: [">=1.3.0", "<2.0.0"]
+vars:
+  x_ads:
+    account_history: "{{ ref('stg_x_ads__account_history') }}"
+    account_hourly_report: "{{ ref('stg_x_ads__account_hourly_report') }}"
+    ad_group_history: "{{ ref('stg_x_ads__ad_group_history') }}"
+    ad_group_hourly_report: "{{ ref('stg_x_ads__ad_group_hourly_report') }}"
+    ad_history: "{{ ref('stg_x_ads__ad_history') }}"
+    ad_hourly_report: "{{ ref('stg_x_ads__ad_hourly_report') }}"
+    campaign_history: "{{ ref('stg_x_ads__campaign_history') }}"
+    campaign_hourly_report: "{{ ref('stg_x_ads__campaign_hourly_report') }}"
+    keyword_history: "{{ ref('stg_x_ads__keyword_history') }}"
+    keyword_hourly_report: "{{ ref('stg_x_ads__keyword_hourly_report') }}"
+    creative_history: "{{ ref('stg_x_ads__creative_history') }}"
+    creative_url_tag_history: "{{ ref('stg_x_ads__creative_url_tag_history') }}"
+    search_term_report: "{{ ref('stg_x_ads__search_term_report') }}"
+
+models:
+  x_ads:
+    +schema: x_ads
+    +materialized: table
