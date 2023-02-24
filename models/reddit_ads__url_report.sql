@@ -51,7 +51,7 @@ joined as (
         report.ad_group_id,
         ads.ad_name,
         report.ad_id,
-        report.currency_code,
+        report.currency,
         {{ dbt.split_part('ads.final_url', "'?'", 1) }} as base_url,
         {{ dbt_utils.get_url_host('ads.final_url') }} as url_host,
         '/' || {{ dbt_utils.get_url_path('ads.final_url') }} as url_path,

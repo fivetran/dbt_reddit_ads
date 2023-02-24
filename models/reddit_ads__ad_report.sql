@@ -51,7 +51,7 @@ joined as (
         report.ad_group_id,
         ads.ad_name,
         report.ad_id,
-        report.currency_code,
+        report.currency,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.spend) as spend

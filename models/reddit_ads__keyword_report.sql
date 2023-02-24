@@ -60,7 +60,7 @@ joined as (
         report.ad_id,
         keywords.keyword_name,
         report.keyword_id,
-        report.currency_code,
+        report.currency,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.spend) as spend
