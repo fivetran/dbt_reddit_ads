@@ -3,14 +3,14 @@
 with report as (
 
     select *
-    from {{ var('account_hourly_report') }}
+    from {{ var('account_daily_report') }}
 
 ), 
 
 accounts as (
 
     select *
-    from {{ var('account_history') }}
+    from {{ var('account') }}
     where is_most_recent_record = True
 )
 
@@ -20,7 +20,7 @@ accounts as (
         date_day,
         accounts.account_name,
         report.account_id,
-        report.currency_code,
+        report.currency,
         sum(clicks) as clicks,
         sum(impressions) as impressions,
         sum(spend) as spend
