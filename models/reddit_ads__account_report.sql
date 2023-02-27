@@ -1,4 +1,4 @@
-{{ config(enabled=var('ad_reporting__x_ads_enabled', True)) }}
+{{ config(enabled=var('ad_reporting__reddit_ads_enabled', True)) }}
 
 with report as (
 
@@ -17,18 +17,21 @@ accounts as (
 , joined as (
 
     select
-        date_day,
-        accounts.account_name,
+        report.date_day,
         report.account_id,
-        report.currency,
-        sum(clicks) as clicks,
-        sum(impressions) as impressions,
-        sum(spend) as spend
+        accounts.currency,
+        accounts.attribution_type,
+        accounts.click_attribution_window,
+        accounts.status,
+        accounts.time_zone_id,
+        sum(report.clicks) as clicks,
+        sum(report.impressions) as impressions,
+        sum(report.spend) as spend
 
     from report
     left join accounts
         on report.account_id = accounts.account_id
-    {{ dbt_utils.group_by(4)}}
+    {{ dbt_utils.group_by(7)}}
 )
 
 select *

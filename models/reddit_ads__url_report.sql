@@ -1,9 +1,9 @@
-{{ config(enabled=var('ad_reporting__x_ads_enabled', True)) }}
+{{ config(enabled=var('ad_reporting__reddit_ads_enabled', True)) }}
 
 with report as (
 
     select *
-    from {{ var('ad_hourly_report') }}
+    from {{ var('ad_daily_report') }}
 
 ), 
 
@@ -13,7 +13,7 @@ ads as (
     from {{ var('ad_history') }}
     where is_most_recent_record = True
 
-), 
+),
 
 ad_groups as (
 
@@ -26,7 +26,7 @@ ad_groups as (
 campaigns as (
 
     select *
-    from {{ var('campaign_history') }}
+    from {{ var('campaign') }}
     where is_most_recent_record = True
 
 ), 
@@ -34,7 +34,7 @@ campaigns as (
 accounts as (
 
     select *
-    from {{ var('account_history') }}
+    from {{ var('account') }}
     where is_most_recent_record = True
 
 ), 
@@ -43,32 +43,24 @@ joined as (
 
     select
         report.date_day,
-        accounts.account_name,
+        report.ad_id,
+        ads.ad_name,
         report.account_id,
         campaigns.campaign_name,
-        report.campaign_id,
+        ads.campaign_id,
         ad_groups.ad_group_name,
-        report.ad_group_id,
-        ads.ad_name,
-        report.ad_id,
-        report.currency,
-        {{ dbt.split_part('ads.final_url', "'?'", 1) }} as base_url,
-        {{ dbt_utils.get_url_host('ads.final_url') }} as url_host,
-        '/' || {{ dbt_utils.get_url_path('ads.final_url') }} as url_path,
-
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_source') }} , 'Bing') as utm_source,
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_medium') }}, 'cpc') as utm_medium,
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }}, campaigns.campaign_name) as utm_campaign,
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }}, ad_groups.ad_group_name) as utm_content,
-        {% else %}
-
+        ads.ad_group_id,
+        accounts.currency,
+        ads.post_id,
+        ads.post_url,
+        {{ dbt.split_part('ads.click_url', "'?'", 1) }} as base_url,
+        {{ dbt_utils.get_url_host('ads.click_url') }} as url_host,
+        '/' || {{ dbt_utils.get_url_path('ads.click_url') }} as url_path,
         {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_source') }} as utm_source,
         {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_medium') }} as utm_medium,
-        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }} as utm_campaign,
-        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }} as utm_content,
-        {% endif %}
-
         {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_term') }} as utm_term,
+        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }} as utm_content,
+        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }}, campaigns.campaign_name) as utm_campaign,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.spend) as spend
@@ -76,13 +68,13 @@ joined as (
     from report
     left join ads
         on report.ad_id = ads.ad_id
-    left join ad_groups
-        on report.ad_group_id = ad_groups.ad_group_id
-    left join campaigns
-        on report.campaign_id = campaigns.campaign_id
     left join accounts
         on report.account_id = accounts.account_id
-    {{ dbt_utils.group_by(18) }}
+    left join ad_groups
+        on ads.ad_group_id = ad_groups.ad_group_id
+    left join campaigns
+        on ads.campaign_id = campaigns.campaign_id
+    {{ dbt_utils.group_by(19) }}
 ), 
 
 filtered as (
@@ -91,7 +83,7 @@ filtered as (
     from joined
 
     {% if var('ad_reporting__url_report__using_null_filter', True) %}
-        where base_url is not null -- filter for only ads with valid URLs
+        where click_url is not null -- filter for only ads with valid URLs
     {% endif %}
 )
 
