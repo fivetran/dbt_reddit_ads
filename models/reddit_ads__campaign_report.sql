@@ -4,21 +4,18 @@ with report as (
 
     select *
     from {{ var('campaign_daily_report') }}
-
-), 
+),
 
 campaigns as (
 
     select *
     from {{ var('campaign') }}
-    where is_most_recent_record = True
 ),
 
 accounts as (
 
     select *
     from {{ var('account') }}
-    where is_most_recent_record = True
 ),
 
 joined as (

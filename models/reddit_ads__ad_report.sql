@@ -4,39 +4,30 @@ with report as (
 
     select *
     from {{ var('ad_daily_report') }}
-
-), 
+),
 
 ads as (
 
     select *
     from {{ var('ad') }}
-    where is_most_recent_record = True
-
 ), 
 
 ad_groups as (
 
     select *
     from {{ var('ad_group') }}
-    where is_most_recent_record = True
-
 ),
 
 campaigns as (
 
     select *
     from {{ var('campaign') }}
-    where is_most_recent_record = True
-
 ),
 
 accounts as (
 
     select *
     from {{ var('account') }}
-    where is_most_recent_record = True
-
 ),
 
 joined as (

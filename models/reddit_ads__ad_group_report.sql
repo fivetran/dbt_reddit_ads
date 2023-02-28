@@ -4,21 +4,24 @@ with report as (
 
     select *
     from {{ var('ad_group_daily_report') }}
-
-), 
+),
 
 ad_groups as (
 
     select *
     from {{ var('ad_group') }}
-    where is_most_recent_record = True
+),
+
+campaigns as (
+
+    select *
+    from {{ var('campaign') }}
 ),
 
 accounts as (
 
     select *
     from {{ var('account') }}
-    where is_most_recent_record = True
 ),
 
 joined as (
@@ -26,9 +29,11 @@ joined as (
     select
         report.date_day,
         report.account_id,
-        report.ad_group_id,
         ad_groups.ad_group_name,
-        account.currency,
+        report.ad_group_id,
+        campaigns.campaign_name,
+        ad_groups.campaign_id,
+        accounts.currency,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.spend) as spend
@@ -38,7 +43,9 @@ joined as (
         on report.ad_group_id = ad_groups.ad_group_id
     left join accounts
         on report.account_id = accounts.account_id
-    {{ dbt_utils.group_by(5)}}
+    left join campaigns
+        on ad_groups.campaign_id = campaigns.campaign_id
+    {{ dbt_utils.group_by(7)}}
 )
 
 select *

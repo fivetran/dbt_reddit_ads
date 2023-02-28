@@ -4,47 +4,38 @@ with report as (
 
     select *
     from {{ var('ad_daily_report') }}
-
-), 
+),
 
 ads as (
 
     select *
-    from {{ var('ad_history') }}
-    where is_most_recent_record = True
-
+    from {{ var('ad') }}
 ),
 
 ad_groups as (
 
     select *
-    from {{ var('ad_group_history') }}
-    where is_most_recent_record = True
-
+    from {{ var('ad_group') }}
 ), 
 
 campaigns as (
 
     select *
     from {{ var('campaign') }}
-    where is_most_recent_record = True
-
 ), 
 
 accounts as (
 
     select *
     from {{ var('account') }}
-    where is_most_recent_record = True
-
-), 
+),
 
 joined as (
 
     select
         report.date_day,
-        report.ad_id,
         ads.ad_name,
+        report.ad_id,
         report.account_id,
         campaigns.campaign_name,
         ads.campaign_id,
@@ -53,14 +44,15 @@ joined as (
         accounts.currency,
         ads.post_id,
         ads.post_url,
+        ads.click_url,
         {{ dbt.split_part('ads.click_url', "'?'", 1) }} as base_url,
         {{ dbt_utils.get_url_host('ads.click_url') }} as url_host,
         '/' || {{ dbt_utils.get_url_path('ads.click_url') }} as url_path,
-        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_source') }} as utm_source,
-        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_medium') }} as utm_medium,
-        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_term') }} as utm_term,
-        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }} as utm_content,
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }}, campaigns.campaign_name) as utm_campaign,
+        {{ dbt_utils.get_url_parameter('ads.click_url', 'utm_source') }} as utm_source,
+        {{ dbt_utils.get_url_parameter('ads.click_url', 'utm_medium') }} as utm_medium,
+        {{ dbt_utils.get_url_parameter('ads.click_url', 'utm_term') }} as utm_term,
+        {{ dbt_utils.get_url_parameter('ads.click_url', 'utm_content') }} as utm_content,
+        coalesce( {{ dbt_utils.get_url_parameter('ads.click_url', 'utm_campaign') }}, campaigns.campaign_name) as utm_campaign,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.spend) as spend
@@ -79,7 +71,7 @@ joined as (
 
 filtered as (
 
-    select * 
+    select *
     from joined
 
     {% if var('ad_reporting__url_report__using_null_filter', True) %}

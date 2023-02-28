@@ -4,15 +4,12 @@ with report as (
 
     select *
     from {{ var('post_daily_report') }}
-
-), 
+),
 
 accounts as (
 
     select *
     from {{ var('account') }}
-    where is_most_recent_record = True
-
 ),
 
 joined as (
