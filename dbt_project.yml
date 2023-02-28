@@ -12,7 +12,7 @@ vars:
     ad_daily_report: "{{ ref('stg_reddit_ads__ad_report') }}"
     campaign: "{{ ref('stg_reddit_ads__campaign') }}"
     campaign_daily_report: "{{ ref('stg_reddit_ads__campaign_report') }}"
-    post_report: "{{ ref('stg_reddit_ads__post_report') }}"
+    post_daily_report: "{{ ref('stg_reddit_ads__post_report') }}"
 
 models:
   reddit_ads:
