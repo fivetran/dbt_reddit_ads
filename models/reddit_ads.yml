@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: reddit_ads__account_report
+    # description:
+    # tests:
+    # columns:
+
+
+  - name: reddit_ads__ad_group_report
+    # description:
+    # tests:
+    # columns:
+
+
+  - name: reddit_ads__ad_report
+    # description:
+    # tests:
+    # columns:
+
+
+  - name: reddit_ads__campaign_report
+    # description:
+    # tests:
+    # columns:
+
+
+  - name: reddit_ads__post_report
+    # description:
+    # tests:
+    # columns:
+
+
+  - name: reddit_ads__url_report
+    # description:
+    # tests:
+    # columns:
+
