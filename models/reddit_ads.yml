@@ -2,37 +2,235 @@ version: 2
 
 models:
   - name: reddit_ads__account_report
-    # description:
-    # tests:
-    # columns:
+    description: >
+      Each record in this table represents the daily number of clicks, impressions, and spend of ads 
+      by account, account timezone, attribution type, and currency.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - attribution_type
+            - currency
+            - status
+            - time_zone_id
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: currency
+        description: '{{ doc("currency") }}'
+      - name: attribution_type
+        description: '{{ doc("attribution_type") }}'
+      - name: status
+        description: '{{ doc("status") }}'
+      - name: time_zone_id
+        description: '{{ doc("time_zone_id") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
 
 
   - name: reddit_ads__ad_group_report
-    # description:
-    # tests:
-    # columns:
+    description: >
+      Each record in this table represents the daily number of clicks, impressions, and spend per ad group, along with campaign and account information.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - ad_group_id
+            - campaign_id
+            - currency
+    columns:
+      - name: date_day
+        description:  '{{ doc("date_day") }}'
+      - name: account_id
+        description:  '{{ doc("account_id") }}'
+      - name: ad_group_name
+        description:  '{{ doc("ad_group_name") }}'
+      - name: ad_group_id
+        description:  '{{ doc("ad_group_id") }}'
+      - name: campaign_name
+        description:  '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description:  '{{ doc("campaign_id") }}'
+      - name: currency
+        description:  '{{ doc("currency") }}'
+      - name: clicks
+        description:  '{{ doc("clicks") }}'
+      - name: impressions
+        description:  '{{ doc("impressions") }}'
+      - name: spend
+        description:  '{{ doc("spend") }}'
 
 
   - name: reddit_ads__ad_report
-    # description:
-    # tests:
-    # columns:
+    description: >
+      Each record in this table represents the daily number of clicks, impressions, and spend per ad, along with account, campaign, ad group, and post information.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - ad_id
+            - post_id
+            - account_id
+            - ad_group_id
+            - campaign_id
+            - currency
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: ad_id
+        description: '{{ doc("ad_id") }}'
+      - name: ad_name
+        description: '{{ doc("ad_name") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+      - name: currency
+        description: '{{ doc("currency") }}'
+      - name: post_id
+        description: '{{ doc("post_id") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
 
 
   - name: reddit_ads__campaign_report
-    # description:
-    # tests:
-    # columns:
+    description: >
+      Each record in this table represents the daily number of clicks, impressions, and spend per campaign, along with account information.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - currency
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: currency
+        description: '{{ doc("currency") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
 
 
   - name: reddit_ads__post_report
-    # description:
-    # tests:
-    # columns:
+    description: >
+      Each record in this table represents the daily number of clicks, impressions, and spend per post.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - post_id
+            - currency
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: post_id
+        description: '{{ doc("post_id") }}'
+      - name: currency
+        description: '{{ doc("currency") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
 
 
   - name: reddit_ads__url_report
-    # description:
-    # tests:
-    # columns:
+    description: >
+      Each record in this table represents the daily number of clicks, impressions, and spend per url and utm parameters, along with post,ad, account, campaign, and ad group information.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - click_url
+            - ad_id
+            - account_id
+            - ad_group_id
+            - campaign_id
+            - post_id
+            - currency
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: ad_name
+        description: '{{ doc("ad_name") }}'
+      - name: ad_id
+        description: '{{ doc("ad_id") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+      - name: currency
+        description: '{{ doc("currency") }}'
+      - name: post_id
+        description: '{{ doc("post_id") }}'
+      - name: post_url
+        description: '{{ doc("post_url") }}'
+      - name: click_url
+        description: '{{ doc("click_url") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
+      - name: base_url
+        description: The base URL of the ad, extracted from the `click_url`.
+        tests:
+          - not_null:
+              config:
+                # Below is so we don't run this test if the user has allowed urls to have null entries
+                enabled: "{{ var('ad_reporting__url_report__using_null_filter', True) }}"
+      - name: url_host
+        description: The URL host of the ad, extracted from the `click_url`.
+      - name: url_path
+        description: The URL path of the ad, extracted from the `click_url`.
+      - name: utm_source
+        description: The site that sent traffic to your page. Microsoft Advertising sets this to Bing; extracted from the `click_url`.
+      - name: utm_medium
+        description: Which channel was used. Microsoft Advertising sets this to cp; extracted from the `click_url`.
+      - name: utm_campaign
+        description: Which campaign the keyword came from; extracted from the `click_url`.
+      - name: utm_content
+        description: Which ad group the keyword came from; extracted from the `click_url`.
+      - name: utm_term
+        description: Which keyword brought people to your website; extracted from the `click_url`.
 
