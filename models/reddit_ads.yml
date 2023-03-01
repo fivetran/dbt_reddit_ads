@@ -32,7 +32,7 @@ models:
       - name: impressions
         description: '{{ doc("impressions") }}'
       - name: spend
-        description: '{{ doc("spend") }}'
+        description: Spend converted out of microcurrency (so Spend/1,000,000)
 
 
   - name: reddit_ads__ad_group_report
@@ -66,7 +66,7 @@ models:
       - name: impressions
         description:  '{{ doc("impressions") }}'
       - name: spend
-        description:  '{{ doc("spend") }}'
+        description:  Spend converted out of microcurrency (so Spend/1,000,000)
 
 
   - name: reddit_ads__ad_report
@@ -108,7 +108,7 @@ models:
       - name: impressions
         description: '{{ doc("impressions") }}'
       - name: spend
-        description: '{{ doc("spend") }}'
+        description: Spend converted out of microcurrency (so Spend/1,000,000)
 
 
   - name: reddit_ads__campaign_report
@@ -137,7 +137,7 @@ models:
       - name: impressions
         description: '{{ doc("impressions") }}'
       - name: spend
-        description: '{{ doc("spend") }}'
+        description: Spend converted out of microcurrency (so Spend/1,000,000)
 
 
   - name: reddit_ads__post_report
@@ -164,7 +164,7 @@ models:
       - name: impressions
         description: '{{ doc("impressions") }}'
       - name: spend
-        description: '{{ doc("spend") }}'
+        description: Spend converted out of microcurrency (so Spend/1,000,000)
 
 
   - name: reddit_ads__url_report
@@ -211,7 +211,7 @@ models:
       - name: impressions
         description: '{{ doc("impressions") }}'
       - name: spend
-        description: '{{ doc("spend") }}'
+        description: Spend converted out of microcurrency (so Spend/1,000,000)
       - name: base_url
         description: The base URL of the ad, extracted from the `click_url`.
         tests:

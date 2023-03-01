@@ -35,7 +35,7 @@ Name of campaign.
 {% enddocs %}
 
 {% docs created_at %}
-ISO-8601 timestamp
+Time that the respective record (ad, ad group, campaign, post, etc) was created. ISO-8601 timestamp.
 {% enddocs %}
 
 {% docs currency %}
@@ -72,4 +72,11 @@ The destination url, or the website address, that a visitor goes to when they cl
 
 {% docs post_url %}
 The URL belonging to the post.
+{% enddocs %}
+
+{% docs attribution_type %}
+Attribution type: "CLICK_THROUGH_CONVERSION", "VIEW_THROUGH_CONVERSION", or "ALL_CONVERSION".
+CLICK_THROUGH_CONVERSION: A user clicked on your ad and then completed the conversion action on your site. 
+VIEW_THROUGH_CONVERSION: A user saw your ad and did not click it, but did complete the conversion action on your site.
+ALL_CONVERSION: Combination of both.
 {% enddocs %}
