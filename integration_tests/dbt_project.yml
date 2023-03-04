@@ -1,10 +1,10 @@
-name: 'x_ads_integration_tests'
+name: 'reddit_ads_integration_tests'
 version: '0.1.0'
 profile: 'integration_tests'
 config-version: 2
 
 vars: 
-  reddit_ads_schema: reddit_ads_source_integration_tests
+  reddit_ads_schema: reddit_ads_integration_tests
   reddit_ads_account_identifier: "reddit_ads_account_data"
   reddit_ads_account_report_identifier: "reddit_ads_account_report_data"
   reddit_ads_ad_identifier: "reddit_ads_ad_data"
@@ -18,3 +18,11 @@ vars:
 dispatch:
   - macro_namespace: dbt_utils
     search_order: ['spark_utils', 'dbt_utils']
+
+seeds:
+  reddit_ads_integration_tests:
+    +column_types:
+      id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+      campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+      ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+      ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
