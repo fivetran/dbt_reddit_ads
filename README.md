@@ -66,6 +66,25 @@ vars:
 ## (Optional) Step 4: Additional configurations
 <details><summary>Expand for configurations</summary>
 
+### Passing Through Additional Metrics
+By default, this package will select `clicks`, `impressions`, and `spend` from the source reporting tables to store into the staging models. If you would like to pass through additional metrics to the staging models, add the following configurations to your `dbt_project.yml` file. These variables allow the pass-through fields to be aliased (`alias`) if desired, but not required. Use the following format for declaring the respective pass-through variables:
+
+> **Note** Ensure you exercised due diligence when adding metrics to these models. The metrics added by default (clicks, impressions, and cost) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example, metric averages, which may be inaccurately represented at the grain for reports created in this package. You want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package. Note that the aggregation we use for our reporting is `sum`.
+
+```yml
+vars:
+    reddit_ads__account_passthrough_metrics: 
+      - name: "custom_field_1"
+        alias: "custom_field"
+    reddit_ads__ad_group_passthrough_metrics:
+      - name: "unique_string_field"
+    reddit_ads__ad_passthrough_metrics: 
+      - name: "new_custom_field"
+        alias: "custom_field"
+      - name: "a_second_field"
+    reddit_ads__campaign_passthrough_metrics:
+      - name: "this_field"
+```
 ### Change the build schema
 By default, this package builds the Reddit Ads staging models within a schema titled (`<target_schema>` + `_reddit_ads_source`) and your Reddit Ads modeling models within a schema titled (`<target_schema>` + `_reddit_ads`) in your destination. If this is not where you would like your Reddit Ads data to be written to, add the following configuration to your root `dbt_project.yml` file:
 

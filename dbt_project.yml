@@ -13,6 +13,10 @@ vars:
     campaign: "{{ ref('stg_reddit_ads__campaign') }}"
     campaign_daily_report: "{{ ref('stg_reddit_ads__campaign_report') }}"
     post_daily_report: "{{ ref('stg_reddit_ads__post_report') }}"
+  reddit_ads__account_passthrough_metrics: []
+  reddit_ads__ad_group_passthrough_metrics: []
+  reddit_ads__ad_passthrough_metrics: []
+  reddit_ads__campaign_passthrough_metrics: []
 
 models:
   reddit_ads:

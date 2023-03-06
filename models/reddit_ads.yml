@@ -139,34 +139,6 @@ models:
       - name: spend
         description: Spend converted out of microcurrency (so Spend/1,000,000)
 
-
-  - name: reddit_ads__post_report
-    description: >
-      Each record in this table represents the daily number of clicks, impressions, and spend per post.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - date_day
-            - account_id
-            - post_id
-            - currency
-    columns:
-      - name: date_day
-        description: '{{ doc("date_day") }}'
-      - name: account_id
-        description: '{{ doc("account_id") }}'
-      - name: post_id
-        description: '{{ doc("post_id") }}'
-      - name: currency
-        description: '{{ doc("currency") }}'
-      - name: clicks
-        description: '{{ doc("clicks") }}'
-      - name: impressions
-        description: '{{ doc("impressions") }}'
-      - name: spend
-        description: Spend converted out of microcurrency (so Spend/1,000,000)
-
-
   - name: reddit_ads__url_report
     description: >
       Each record in this table represents the daily number of clicks, impressions, and spend per url and utm parameters, along with post,ad, account, campaign, and ad group information.
