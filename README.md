@@ -16,7 +16,7 @@
 - Enables you to better understand the performance of your ads across varying grains:
   - Providing an account, campaign, ad group, keyword, ad, utm and search level reports.
 - Materializes output models designed to work simultaneously with our [multi-platform Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting).
-- Generates a comprehensive data dictionary of your source and modeled Reddit Ads data through the [dbt docs site](https://fivetran.github.io/dbt_reddit_ads/).
+- Generates a comprehensive data dictionary of your source and modeled Reddit Ads data through the [dbt docs site](https://fivetran.github.io/dbt_reddit_ads/#!/overview).
 
 The following table provides a detailed list of all models materialized within this package by default. 
 > TIP: See more details about these models in the package's [dbt docs site](https://fivetran.github.io/dbt_reddit_ads/#!/overview?g_v=1&g_e=seeds).
