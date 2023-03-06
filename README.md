@@ -27,7 +27,6 @@ The following table provides a detailed list of all models materialized within t
 | [reddit_ads__campaign_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_report)            | Each record in this table represents the daily performance at the campaign level. |
 | [reddit_ads__ad_group_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__ad_group_report)            | Each record in this table represents the daily performance at the ad group level. |
 | [reddit_ads__ad_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__ad_report)            | Each record in this table represents the daily performance at the ad level. |
-| [reddit_ads__post_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__post_report)            | Each record in this table represents the daily performance at the post level. |
 | [reddit_ads__url_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__url_report)            | Each record in this table represents the daily performance of URLs at the ad level. |
 
 # 🎯 How do I use the dbt package?
