@@ -17,8 +17,12 @@ models:
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'
+        tests:
+          - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
+        tests:
+          - not_null
       - name: currency
         description: '{{ doc("currency") }}'
       - name: attribution_type
@@ -49,12 +53,16 @@ models:
     columns:
       - name: date_day
         description:  '{{ doc("date_day") }}'
+        tests:
+          - not_null
       - name: account_id
         description:  '{{ doc("account_id") }}'
       - name: ad_group_name
         description:  '{{ doc("ad_group_name") }}'
       - name: ad_group_id
         description:  '{{ doc("ad_group_id") }}'
+        tests:
+          - not_null
       - name: campaign_name
         description:  '{{ doc("campaign_name") }}'
       - name: campaign_id
@@ -85,8 +93,12 @@ models:
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'
+        tests:
+          - not_null
       - name: ad_id
         description: '{{ doc("ad_id") }}'
+        tests:
+          - not_null
       - name: ad_name
         description: '{{ doc("ad_name") }}'
       - name: account_id
@@ -124,12 +136,16 @@ models:
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'
+        tests:
+          - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
       - name: campaign_name
         description: '{{ doc("campaign_name") }}'
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
+        tests:
+          - not_null
       - name: currency
         description: '{{ doc("currency") }}'
       - name: clicks
@@ -156,10 +172,14 @@ models:
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'
+        tests:
+          - not_null
       - name: ad_name
         description: '{{ doc("ad_name") }}'
       - name: ad_id
         description: '{{ doc("ad_id") }}'
+        tests:
+          - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
       - name: campaign_name

@@ -31,6 +31,7 @@ joined as (
         sum(report.spend) as spend
 
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__campaign_passthrough_metrics', transform = 'sum') }}
+
     from report
     left join accounts
         on report.account_id = accounts.account_id
