@@ -57,6 +57,8 @@ joined as (
         sum(report.impressions) as impressions,
         sum(report.spend) as spend
 
+        
+
     from report
     left join ads
         on report.ad_id = ads.ad_id
