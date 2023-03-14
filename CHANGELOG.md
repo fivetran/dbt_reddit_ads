@@ -1,4 +1,4 @@
-# dbt_reddits_ads v0.1.0
+# dbt_reddit_ads v0.1.0
 
 ## Initial Release
 - This is the initial release of this package. 
