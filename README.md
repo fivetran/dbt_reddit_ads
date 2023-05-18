@@ -12,11 +12,11 @@
 
 # Reddit Ads Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_reddit_ads/))
 # 📣 What does this dbt package do?
-- Produces modeled tables that leverage Reddit Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/reddit-ads) in the format described by [this ERD](https://fivetran.com/docs/applications/reddit-ads#schemainformation) and builds off the output of our [Reddit Ads source package](https://github.com/fivetran/dbt_reddit_ads_source).
+- Produces modeled tables that leverage Reddit Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/reddit-ads) in the format described by [this ERD](https://fivetran.com/docs/applications/reddit-ads#schemainformation) and builds off the output of our [Reddit Ads source package](https://github.com/fivetran/dbt_reddit_ads_source)
 - Enables you to better understand the performance of your ads across varying grains:
-  - Providing an account, campaign, ad group, ad, and URL level reports.
-- Materializes output models designed to work simultaneously with our [multi-platform Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting).
-- Generates a comprehensive data dictionary of your source and modeled Reddit Ads data through the [dbt docs site](https://fivetran.github.io/dbt_reddit_ads/#!/overview).
+  - Providing an account, campaign, ad group, ad, and URL level reports
+- Materializes output models designed to work simultaneously with our [multi-platform Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting)
+- Generates a comprehensive data dictionary of your source and modeled Reddit Ads data through the [dbt docs site](https://fivetran.github.io/dbt_reddit_ads/#!/overview)
 
 The following table provides a detailed list of all models materialized within this package by default. 
 > TIP: See more details about these models in the package's [dbt docs site](https://fivetran.github.io/dbt_reddit_ads/#!/overview?g_v=1&g_e=seeds).
@@ -34,11 +34,11 @@ The following table provides a detailed list of all models materialized within t
 ## Step 1: Prerequisites
 To use this dbt package, you must have the following:
 
-- At least one Fivetran Reddit Ads connector syncing data into your destination.
-- A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, or **Databricks** destination.
+- At least one Fivetran Reddit Ads connector syncing data into your destination
+- A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, or **Databricks** destination
 
 ### Databricks Dispatch Configuration
-If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` packages respectively.
+If you are using a Databricks destination with this package, you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils`, then the `dbt-labs/dbt_utils` packages, respectively.
 ```yml
 dispatch:
   - macro_namespace: dbt_utils
@@ -68,7 +68,7 @@ vars:
 ### Passing Through Additional Metrics
 By default, this package will select `clicks`, `impressions`, and `spend` from the source reporting tables to store into the staging models. If you would like to pass through additional metrics to the staging models, add the following configurations to your `dbt_project.yml` file. These variables allow the pass-through fields to be aliased (`alias`) if desired, but not required. Use the following format for declaring the respective pass-through variables:
 
-> **Note** Ensure you exercised due diligence when adding metrics to these models. The metrics added by default (clicks, impressions, and cost) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example, metric averages, which may be inaccurately represented at the grain for reports created in this package. You want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package. Note that the aggregation we use for our reporting is `sum`.
+> **NOTE** Ensure you exercised due diligence when adding metrics to these models. The metrics added by default (clicks, impressions, and cost) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example, metric averages, which may be inaccurately represented at the grain for reports created in this package. You want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package. Note that the aggregation we use for our reporting is `sum`.
 
 ```yml
 vars:
