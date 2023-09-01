@@ -1,3 +1,7 @@
 packages:
 - package: fivetran/reddit_ads_source
   version: [">=0.1.0", "<0.2.0"]
+
+- git: https://github.com/fivetran/dbt_reddit_ads_source.git
+  revision: MagicBot/add-union-schema
+  warn-unpinned: false

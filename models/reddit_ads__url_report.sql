@@ -1,3 +1,5 @@
+ADD source_relation WHERE NEEDED + CHECK JOINS AND WINDOW FUNCTIONS! (Delete this line when done.)
+
 {{ config(enabled=var('ad_reporting__reddit_ads_enabled', True)) }}
 
 with report as (
@@ -33,6 +35,7 @@ accounts as (
 joined as (
 
     select
+        report.source_relation,
         report.date_day,
         ads.ad_name,
         report.ad_id,
@@ -62,13 +65,17 @@ joined as (
     from report
     left join ads
         on report.ad_id = ads.ad_id
+        and report.source_relation = ads.source_relation
     left join accounts
         on report.account_id = accounts.account_id
+        and report.source_relation = accounts.source_relation
     left join ad_groups
         on ads.ad_group_id = ad_groups.ad_group_id
+        and ads.source_relation = ad_groups.source_relation
     left join campaigns
         on ads.campaign_id = campaigns.campaign_id
-    {{ dbt_utils.group_by(19) }}
+        and ads.source_relation = campaigns.source_relation
+    {{ dbt_utils.group_by(20) }}
 ), 
 
 filtered as (
