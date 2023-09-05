@@ -8,6 +8,8 @@
 - To distinguish which source each field comes from, added `source_relation` column in each staging and downstream model and applied the `fivetran_utils.source_relation` macro.
 - Updated tests to account for the new `source_relation` column.
     - The `source_relation` column is included in all joins and window function partition clauses in the transform package. 
+- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
+- Updated the pull request [templates](/.github).
 
 # dbt_reddit_ads v0.1.0
 
