@@ -21,8 +21,8 @@ accounts as (
 joined as (
 
     select
-        .source_relation,
-        date_day,
+        report.source_relation,
+        report.date_day,
         report.account_id,
         campaigns.campaign_name,
         report.campaign_id,
