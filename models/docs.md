@@ -80,3 +80,7 @@ CLICK_THROUGH_CONVERSION: A user clicked on your ad and then completed the conve
 VIEW_THROUGH_CONVERSION: A user saw your ad and did not click it, but did complete the conversion action on your site.
 ALL_CONVERSION: Combination of both.
 {% enddocs %}
+
+{% docs source_relation %}
+The source of the record if the unioning functionality is being used. If not this field will be empty.
+{% enddocs %}

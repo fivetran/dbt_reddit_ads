@@ -1,3 +1,16 @@
+# dbt_reddit_ads v0.2.0
+[PR #5](https://github.com/fivetran/dbt_reddit_ads/pull/5) includes the following updates:
+## Feature update 🎉
+- Unioning capability! This adds the ability to union source data from multiple reddit_ads connectors. Refer to the [Union Multiple Connectors README section](https://github.com/fivetran/dbt_reddit_ads/blob/main/README.md#union-multiple-connectors) for more details.
+
+## Under the hood 🚘
+- In the source package, updated tmp models to union source data using the `fivetran_utils.union_data` macro. 
+- To distinguish which source each field comes from, added `source_relation` column in each staging and downstream model and applied the `fivetran_utils.source_relation` macro.
+  - The `source_relation` column is included in all joins in the transform package. 
+- Updated tests to account for the new `source_relation` column.
+- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
+- Updated the pull request [templates](/.github).
+
 # dbt_reddit_ads v0.1.0
 
 ## Initial Release

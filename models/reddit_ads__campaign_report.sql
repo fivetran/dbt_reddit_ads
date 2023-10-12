@@ -21,7 +21,8 @@ accounts as (
 joined as (
 
     select
-        date_day,
+        report.source_relation,
+        report.date_day,
         report.account_id,
         campaigns.campaign_name,
         report.campaign_id,
@@ -35,9 +36,11 @@ joined as (
     from report
     left join accounts
         on report.account_id = accounts.account_id
+        and report.source_relation = accounts.source_relation
     left join campaigns
         on report.campaign_id = campaigns.campaign_id
-    {{ dbt_utils.group_by(5)}}
+        and report.source_relation = campaigns.source_relation
+    {{ dbt_utils.group_by(6) }}
 )
 
 select *
