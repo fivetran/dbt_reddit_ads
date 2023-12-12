@@ -1,6 +1,6 @@
 {% macro reddit_ads_extract_url_parameter(field, url_parameter) -%}
 
-{{ adapter.dispatch('reddit_ads_extract_url_parameter', 'reddit_ads') (field, url_parameter) }}
+{{ return(adapter.dispatch('reddit_ads_extract_url_parameter', 'reddit_ads') (field, url_parameter)) }}
 
 {% endmacro %}
 
