@@ -1,0 +1,250 @@
+version: 2
+
+models:
+  - name: stg_reddit_ads__account
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - account_id
+    description: Each record in this table represents information about an account.
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+        tests:
+          - not_null
+      - name: attribution_type
+        description: '{{ doc("attribution_type") }}'
+      - name: click_attribution_window
+        description: '{{ doc("click_attribution_window") }}'
+      - name: created_at
+        description: '{{ doc("created_at") }}'
+      - name: currency
+        description: '{{ doc("currency") }}'
+      - name: status
+        description: '{{ doc("status") }}'
+      - name: time_zone_id
+        description: '{{ doc("time_zone_id") }}'
+      - name: view_attribution_window
+        description: '{{ doc("view_attribution_window") }}'
+
+  - name: stg_reddit_ads__account_report
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - account_id
+            - date_day
+    description: Each record represents a summary of events for each given date and account.
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+        tests:
+          - not_null
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: date_day
+        description: '{{ doc("date") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: region
+        description: '{{ doc("region") }}'
+      - name: spend
+        description: Spend converted out of microcurrency (so Spend/1,000,000)
+
+  - name: stg_reddit_ads__ad
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - ad_id
+    description: Each record represents information about each ad.
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: ad_id
+        description: '{{ doc("ad_id") }}'
+        tests:
+          - not_null
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: click_url
+        description: '{{ doc("click_url") }}'
+      - name: configured_status
+        description: '{{ doc("configured_status") }}'
+      - name: effective_status
+        description: '{{ doc("effective_status") }}'
+      - name: is_processing
+        description: '{{ doc("is_processing") }}'
+      - name: ad_name
+        description: '{{ doc("ad_name") }}'
+      - name: post_id
+        description: '{{ doc("post_id") }}'
+      - name: post_url
+        description: '{{ doc("post_url") }}'
+      - name: rejection_reason
+        description: '{{ doc("rejection_reason") }}'
+
+  - name: stg_reddit_ads__ad_report
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - ad_id
+            - date_day
+    description: Each record represents a summary of events for each given date and ad.
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: ad_id
+        description: '{{ doc("ad_id") }}'
+        tests:
+          - not_null
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: date_day
+        description: '{{ doc("date") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: region
+        description: '{{ doc("region") }}'
+      - name: spend
+        description: Spend converted out of microcurrency (so Spend/1,000,000)
+
+  - name: stg_reddit_ads__ad_group
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - ad_group_id
+    description: Each record represents information about each ad group.
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+        tests:
+          - not_null
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: bid_strategy
+        description: '{{ doc("bid_strategy") }}'
+      - name: bid_value
+        description: '{{ doc("bid_value") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: configured_status
+        description: '{{ doc("configured_status") }}'
+      - name: effective_status
+        description: '{{ doc("effective_status") }}'
+      - name: end_time_at
+        description: '{{ doc("end_time") }}'
+      - name: expand_targeting
+        description: '{{ doc("expand_targeting") }}'
+      - name: goal_type
+        description: '{{ doc("goal_type") }}'
+      - name: goal_value
+        description: '{{ doc("goal_value") }}'
+      - name: is_processing
+        description: '{{ doc("is_processing") }}'
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: optimization_strategy_type
+        description: '{{ doc("optimization_strategy_type") }}'
+      - name: start_time_at
+        description: '{{ doc("start_time") }}'
+
+  - name: stg_reddit_ads__ad_group_report
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - ad_group_id
+            - date_day
+    description: Each record represents a summary of events for each given date and ad group.
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+        tests:
+          - not_null
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: date_day
+        description: '{{ doc("date") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: region
+        description: '{{ doc("region") }}'
+      - name: spend
+        description: Spend converted out of microcurrency (so Spend/1,000,000)
+
+  - name: stg_reddit_ads__campaign
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - campaign_id
+    description: Each record represents information about each campaign.
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+        tests:
+          - not_null
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: configured_status
+        description: '{{ doc("configured_status") }}'
+      - name: effective_status
+        description: '{{ doc("effective_status") }}'
+      - name: funding_instrument_id
+        description: '{{ doc("funding_instrument_id") }}'
+      - name: is_processing
+        description: '{{ doc("is_processing") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: objective
+        description: '{{ doc("objective") }}'
+
+  - name: stg_reddit_ads__campaign_report
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - campaign_id
+            - date_day
+    description: Each record represents a summary of events for each given date and campaign.
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+        tests:
+          - not_null
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: date_day
+        description: '{{ doc("date") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: region
+        description: '{{ doc("region") }}'
+      - name: spend
+        description: Spend converted out of microcurrency (so Spend/1,000,000)

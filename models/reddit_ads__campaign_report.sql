@@ -3,19 +3,19 @@
 with report as (
 
     select *
-    from {{ var('campaign_daily_report') }}
+    from {{ ref('stg_reddit_ads__campaign_daily_report') }}
 ),
 
 campaigns as (
 
     select *
-    from {{ var('campaign') }}
+    from {{ ref('stg_reddit_ads__campaign') }}
 ),
 
 accounts as (
 
     select *
-    from {{ var('account') }}
+    from {{ ref('stg_reddit_ads__account') }}
 ),
 
 joined as (

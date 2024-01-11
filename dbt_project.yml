@@ -4,15 +4,15 @@ config-version: 2
 require-dbt-version: [">=1.3.0", "<2.0.0"]
 vars:
   reddit_ads:
-    account: "{{ ref('stg_reddit_ads__account') }}"
-    account_daily_report: "{{ ref('stg_reddit_ads__account_report') }}"
-    ad_group: "{{ ref('stg_reddit_ads__ad_group') }}"
-    ad_group_daily_report: "{{ ref('stg_reddit_ads__ad_group_report') }}"
-    ad: "{{ ref('stg_reddit_ads__ad') }}"
-    ad_daily_report: "{{ ref('stg_reddit_ads__ad_report') }}"
-    campaign: "{{ ref('stg_reddit_ads__campaign') }}"
-    campaign_daily_report: "{{ ref('stg_reddit_ads__campaign_report') }}"
-    post_daily_report: "{{ ref('stg_reddit_ads__post_report') }}"
+    account: "{{ source('reddit_ads', 'account') }}"
+    account_daily_report: "{{ source('reddit_ads', 'account_daily_report') }}"
+    ad_group: "{{ source('reddit_ads', 'ad_group') }}"
+    ad_group_daily_report: "{{ source('reddit_ads', 'ad_group_daily_report') }}"
+    ad: "{{ source('reddit_ads', 'ad') }}"
+    ad_daily_report: "{{ source('reddit_ads', 'ad_daily_report') }}"
+    campaign: "{{ source('reddit_ads', 'campaign') }}"
+    campaign_daily_report: "{{ source('reddit_ads', 'campaign_daily_report') }}"
+    post_daily_report: "{{ source('reddit_ads', 'post_daily_report') }}"
   reddit_ads__account_passthrough_metrics: []
   reddit_ads__ad_group_passthrough_metrics: []
   reddit_ads__ad_passthrough_metrics: []
@@ -22,3 +22,6 @@ models:
   reddit_ads:
     +schema: reddit_ads
     +materialized: table
+    staging:
+      +materialized: view
+      +schema: stg_reddit_ads

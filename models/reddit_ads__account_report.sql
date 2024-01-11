@@ -3,13 +3,13 @@
 with report as (
 
     select *
-    from {{ var('account_daily_report') }}
+    from {{ ref('stg_reddit_ads__account_daily_report') }}
 ), 
 
 accounts as (
 
     select *
-    from {{ var('account') }}
+    from {{ ref('stg_reddit_ads__account') }}
 )
 
 , joined as (
