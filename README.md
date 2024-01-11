@@ -12,6 +12,8 @@
 
 # Reddit Ads Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_reddit_ads/))
 # 📣 What does this dbt package do?
+- Materializes [Reddit Ads staging tables](https://fivetran.github.io/dbt_reddit_ads_source/#!/overview/reddit_ads_source/models/?g_v=1&g_e=seeds) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/reddit-ads#schemainformation). These staging tables clean, test, and prepare your reddit_ads data from [Fivetran's connector](https://fivetran.com/docs/applications/reddit-ads) for analysis by doing the following
+- Generates a comprehensive data dictionary of your Reddit Ads data through the [dbt docs site](https://fivetran.github.io/dbt_reddit_ads_source/).
 - Produces modeled tables that leverage Reddit Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/reddit-ads) in the format described by [this ERD](https://fivetran.com/docs/applications/reddit-ads#schemainformation) and builds off the output of our [Reddit Ads source package](https://github.com/fivetran/dbt_reddit_ads_source)
 - Enables you to better understand the performance of your ads across varying grains:
   - Providing an account, campaign, ad group, ad, and URL level reports
@@ -99,10 +101,10 @@ By default, this package builds the Reddit Ads staging models within a schema ti
 
 ```yml
 models:
-    reddit_ads_source:
-      +schema: my_new_schema_name # leave blank for just the target_schema
     reddit_ads:
       +schema: my_new_schema_name # leave blank for just the target_schema
+      staging:
+        +schema: my_new_schema_name # leave blank for just the target_schema
 ```
     
 ### Change the source table references
@@ -128,9 +130,6 @@ This dbt package is dependent on the following dbt packages. Please be aware tha
     
 ```yml
 packages:
-    - package: fivetran/reddit_ads_source
-      version: [">=0.2.0", "<0.3.0"]
-
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
 

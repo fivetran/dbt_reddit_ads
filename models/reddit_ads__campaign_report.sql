@@ -3,7 +3,7 @@
 with report as (
 
     select *
-    from {{ ref('stg_reddit_ads__campaign_daily_report') }}
+    from {{ ref('stg_reddit_ads__campaign_report') }}
 ),
 
 campaigns as (

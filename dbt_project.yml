@@ -1,18 +1,18 @@
 name: 'reddit_ads'
-version: '0.2.1'
+version: '0.3.0'
 config-version: 2
 require-dbt-version: [">=1.3.0", "<2.0.0"]
 vars:
   reddit_ads:
     account: "{{ source('reddit_ads', 'account') }}"
-    account_daily_report: "{{ source('reddit_ads', 'account_daily_report') }}"
+    account_report: "{{ source('reddit_ads', 'account_report') }}"
     ad_group: "{{ source('reddit_ads', 'ad_group') }}"
-    ad_group_daily_report: "{{ source('reddit_ads', 'ad_group_daily_report') }}"
+    ad_group_report: "{{ source('reddit_ads', 'ad_group_report') }}"
     ad: "{{ source('reddit_ads', 'ad') }}"
-    ad_daily_report: "{{ source('reddit_ads', 'ad_daily_report') }}"
+    ad_report: "{{ source('reddit_ads', 'ad_report') }}"
     campaign: "{{ source('reddit_ads', 'campaign') }}"
-    campaign_daily_report: "{{ source('reddit_ads', 'campaign_daily_report') }}"
-    post_daily_report: "{{ source('reddit_ads', 'post_daily_report') }}"
+    campaign_report: "{{ source('reddit_ads', 'campaign_report') }}"
+    post_report: "{{ source('reddit_ads', 'post_report') }}"
   reddit_ads__account_passthrough_metrics: []
   reddit_ads__ad_group_passthrough_metrics: []
   reddit_ads__ad_passthrough_metrics: []
