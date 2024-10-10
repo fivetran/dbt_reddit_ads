@@ -10,9 +10,13 @@ vars:
     ad_group_daily_report: "{{ ref('stg_reddit_ads__ad_group_report') }}"
     ad: "{{ ref('stg_reddit_ads__ad') }}"
     ad_daily_report: "{{ ref('stg_reddit_ads__ad_report') }}"
-    campaign: "{{ ref('stg_reddit_ads__campaign') }}"
+    campaign: "{{ ref('stg_reddit_ads__campaign') }}" 
     campaign_daily_report: "{{ ref('stg_reddit_ads__campaign_report') }}"
-    post_daily_report: "{{ ref('stg_reddit_ads__post_report') }}"
+    account_conversions_report: "{{ ref('stg_reddit_ads__account_conversions_report') }}"
+    ad_group_conversions_report: "{{ ref('stg_reddit_ads__ad_group_conversions_report') }}"
+    ad_conversions_report: "{{ ref('stg_reddit_ads__ad_conversions_report') }}"
+    campaign_conversions_report: "{{ ref('stg_reddit_ads__campaign_conversions_report') }}"
+
   reddit_ads__account_passthrough_metrics: []
   reddit_ads__ad_group_passthrough_metrics: []
   reddit_ads__ad_passthrough_metrics: []

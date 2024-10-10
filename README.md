@@ -50,13 +50,13 @@ dispatch:
     search_order: ['spark_utils', 'dbt_utils']
 ```
 
-### Step 2: Install the package
+### Step 2: Install the package (skip if also using the `ad_reporting` combo package)
 Include the following reddit_ads package version in your `packages.yml` file:
 > TIP: Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 ```yaml
 packages:
   - package: fivetran/reddit_ads
-    version: [">=0.2.0", "<0.3.0"]
+    version: [">=0.3.0", "<0.4.0"]
 ```
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `reddit_ads` schema. If this is not where your Reddit Ads data is (for example, if your Reddit Ads schema is named `reddit_ads_fivetran`), add the following configuration to your root `dbt_project.yml` file:
