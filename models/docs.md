@@ -84,3 +84,19 @@ ALL_CONVERSION: Combination of both.
 {% docs source_relation %}
 The source of the record if the unioning functionality is being used. If not this field will be empty.
 {% enddocs %}
+
+{% docs total_items %}
+The total number of items involved in a conversion event. This is typically used in e-commerce reports to track the quantity of products sold during a conversion.
+{% enddocs %}
+
+{% docs total_value %}
+The total monetary value associated with a conversion event.
+{% enddocs %}
+
+{% docs view_through_conversion_attribution_window_month %}
+The total view-through conversions attributed, for the given month-long window.
+{% enddocs %}
+
+{% docs click_through_conversion_attribution_window_month %}
+The total click-through conversions attributed, for the given month-long window.
+{% enddocs %}

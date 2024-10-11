@@ -51,6 +51,8 @@ joined as (
 
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__ad_group_passthrough_metrics', transform = 'sum') }}
 
+        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__ad_group_conversions_passthrough_metrics', transform = 'sum', coalesce_with=0) }}
+
     from report
     left join ad_groups
         on report.ad_group_id = ad_groups.ad_group_id

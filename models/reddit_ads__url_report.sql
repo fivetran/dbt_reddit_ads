@@ -70,6 +70,8 @@ joined as (
 
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__ad_passthrough_metrics', transform = 'sum') }}
 
+        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__ad_conversions_passthrough_metrics', transform = 'sum', coalesce_with=0) }}
+
     from report
     left join ads
         on report.ad_id = ads.ad_id
@@ -84,7 +86,7 @@ joined as (
         on ads.campaign_id = campaigns.campaign_id
         and ads.source_relation = campaigns.source_relation
     left join conversions_report
-        on report.account_id = conversions_report.account_id
+        on report.ad_id = conversions_report.ad_id
         and report.source_relation = conversions_report.source_relation
         and report.date_day = conversions_report.date_day
     

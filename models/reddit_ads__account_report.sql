@@ -38,6 +38,8 @@ joined as (
 
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__account_passthrough_metrics', transform = 'sum') }}
 
+        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__account_conversions_passthrough_metrics', transform = 'sum', coalesce_with=0) }}
+
     from report
     left join accounts
         on report.account_id = accounts.account_id
