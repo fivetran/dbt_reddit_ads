@@ -70,7 +70,7 @@ joined as (
 
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__ad_passthrough_metrics', transform = 'sum') }}
 
-        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__ad_conversions_passthrough_metrics', transform = 'sum', coalesce_with=0) }}
+        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__ad_conversions_passthrough_metrics', transform = 'sum') }}
 
     from report
     left join ads
