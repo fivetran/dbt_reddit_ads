@@ -1,4 +1,17 @@
 # dbt_reddit_ads v0.3.0
+[PR #13](https://github.com/fivetran/dbt_reddit_ads/pull/13) includes the following updates:
+
+## Features: Conversion Metrics
+- Introduces the following conversion fields to the Reddit Ads `<>_report` models (source fields in parenthesis):
+  - `conversions` (click_through_conversion_attribution_window_month)
+  - `view_through_conversions` (view_through_conversion_attribution_window_month)
+  - `total_items` (total_items)
+  - `total_value` (total_value)
+- Introduces the variable `<>_conversions_passthrough_metrics` to allow additional fields from the source `_conversion_report` tables.
+- We use the maximum attribution window when considering conversions and therefore retrieve conversions metrics from the `click_through_conversion_attribution_window_month` (conversions) and `view_through_conversion_attribution_window_month` (view_through_conversions) fields in the respective source tables. You may bring in additional windows and fields through via the `<>_conversions_passthrough_metrics` variable. For information on how to configure these variables, refer to the [README](https://github.com/fivetran/dbt_reddit_ads/blob/main/README.md#passing-through-additional-metrics).
+
+## Under the hood
+- Added the respective seed data for the new models in addition to updating relevant documentation. 
 
 # dbt_reddit_ads v0.2.1
 
