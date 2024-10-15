@@ -42,8 +42,6 @@ models:
         description: Spend converted out of microcurrency (so Spend/1,000,000)
       - name: conversions
         description: '{{ doc("click_through_conversion_attribution_window_month") }}'
-      - name: total_items
-        description: '{{ doc("total_items") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
@@ -91,8 +89,6 @@ models:
         description:  Spend converted out of microcurrency (so Spend/1,000,000)
       - name: conversions
         description: '{{ doc("click_through_conversion_attribution_window_month") }}'
-      - name: total_items
-        description: '{{ doc("total_items") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
@@ -148,8 +144,6 @@ models:
         description: Spend converted out of microcurrency (so Spend/1,000,000)
       - name: conversions
         description: '{{ doc("click_through_conversion_attribution_window_month") }}'
-      - name: total_items
-        description: '{{ doc("total_items") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
@@ -192,8 +186,6 @@ models:
         description: Spend converted out of microcurrency (so Spend/1,000,000)
       - name: conversions
         description: '{{ doc("click_through_conversion_attribution_window_month") }}'
-      - name: total_items
-        description: '{{ doc("total_items") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
@@ -274,8 +266,6 @@ models:
         description: Which keyword brought people to your website; extracted from the `click_url`.
       - name: conversions
         description: '{{ doc("click_through_conversion_attribution_window_month") }}'
-      - name: total_items
-        description: '{{ doc("total_items") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions

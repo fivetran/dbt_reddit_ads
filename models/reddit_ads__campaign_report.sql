@@ -38,7 +38,6 @@ joined as (
         sum(report.spend) as spend,
         sum(conversions_report.conversions) as conversions,
         sum(conversions_report.view_through_conversions) as view_through_conversions,
-        sum(conversions_report.total_items) as total_items,
         sum(conversions_report.total_value) as total_value
 
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__campaign_passthrough_metrics', transform = 'sum') }}
