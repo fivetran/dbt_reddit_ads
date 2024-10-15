@@ -21,13 +21,13 @@ account_report as (
     from {{ ref('reddit_ads__account_report') }}
 ),
 
-ad_report as (
+ad_group_report as (
 
     select 
         sum(conversions) as total_conversions,
         sum(view_through_conversions) as total_view_through_conversions,
         sum(total_value) as total_value
-    from {{ ref('reddit_ads__ad_report') }}
+    from {{ ref('reddit_ads__ad_group_report') }}
 ),
 
 campaign_report as (
