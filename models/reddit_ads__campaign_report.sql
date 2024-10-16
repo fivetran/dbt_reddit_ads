@@ -18,6 +18,12 @@ accounts as (
     from {{ var('account') }}
 ),
 
+conversions_report as (
+
+    select *
+    from {{ var('campaign_conversions_report') }}
+),
+
 joined as (
 
     select
@@ -29,9 +35,14 @@ joined as (
         accounts.currency,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
-        sum(report.spend) as spend
+        sum(report.spend) as spend,
+        sum(conversions_report.conversions) as conversions,
+        sum(conversions_report.view_through_conversions) as view_through_conversions,
+        sum(conversions_report.total_value) as total_value
 
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__campaign_passthrough_metrics', transform = 'sum') }}
+
+        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__campaign_conversions_passthrough_metrics', transform = 'sum') }}
 
     from report
     left join accounts
@@ -40,6 +51,10 @@ joined as (
     left join campaigns
         on report.campaign_id = campaigns.campaign_id
         and report.source_relation = campaigns.source_relation
+    left join conversions_report
+        on report.campaign_id = conversions_report.campaign_id
+        and report.source_relation = conversions_report.source_relation
+        and report.date_day = conversions_report.date_day
     {{ dbt_utils.group_by(6) }}
 )
 

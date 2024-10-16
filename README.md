@@ -50,13 +50,13 @@ dispatch:
     search_order: ['spark_utils', 'dbt_utils']
 ```
 
-### Step 2: Install the package
+### Step 2: Install the package (skip if also using the `ad_reporting` combo package)
 Include the following reddit_ads package version in your `packages.yml` file:
 > TIP: Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 ```yaml
 packages:
   - package: fivetran/reddit_ads
-    version: [">=0.2.0", "<0.3.0"]
+    version: [">=0.3.0", "<0.4.0"]
 ```
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `reddit_ads` schema. If this is not where your Reddit Ads data is (for example, if your Reddit Ads schema is named `reddit_ads_fivetran`), add the following configuration to your root `dbt_project.yml` file:
@@ -81,9 +81,11 @@ vars:
 To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
 #### Passing Through Additional Metrics
-By default, this package will select `clicks`, `impressions`, and `spend` from the source reporting tables to store into the staging models. If you would like to pass through additional metrics to the staging models, add the following configurations to your `dbt_project.yml` file. These variables allow the pass-through fields to be aliased (`alias`) if desired, but not required. Use the following format for declaring the respective pass-through variables:
+By default, this package will select `clicks`, `impressions`, `spend`, `conversions` (click_through_conversion_attribution_window_month), `view_through_conversions` (view_through_conversion_attribution_window_month), and `total_value` from the source reporting tables to store into the staging models. Note that we choose the maximum attribution window for counting conversions. 
 
-> **NOTE** Ensure you exercised due diligence when adding metrics to these models. The metrics added by default (clicks, impressions, and cost) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example, metric averages, which may be inaccurately represented at the grain for reports created in this package. You want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package. Note that the aggregation we use for our reporting is `sum`.
+If you would like to pass through additional metrics to the staging models, for example, different attribution windows for conversions such as `view_through_conversion_attribution_window_week`, add the following configurations to your `dbt_project.yml` file. These variables allow the pass-through fields to be aliased (`alias`) if desired, but not required. Use the following format for declaring the respective pass-through variables:
+
+> **NOTE** Ensure you exercised due diligence when adding metrics to these models. The metrics added by default (clicks, impressions, cost, conversions, view-through conversions, and total value) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example, metric averages, which may be inaccurately represented at the grain for reports created in this package. You want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package. Note that the aggregation we use for our reporting is `sum`.
 
 ```yml
 vars:
@@ -134,7 +136,7 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 ```yml
 packages:
     - package: fivetran/reddit_ads_source
-      version: [">=0.2.0", "<0.3.0"]
+      version: [">=0.3.0", "<0.4.0"]
 
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
