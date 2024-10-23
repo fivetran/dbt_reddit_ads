@@ -21,7 +21,10 @@ vars:
     - name: 'view_through_conversion_attribution_window_week'
 
   # For validation testing
-  reddit_ads__conversion_event_types: []
+  reddit_ads__conversion_event_types:
+    - 'lead'
+    - 'purchase'
+    - 'custom'
 
 dispatch:
   - macro_namespace: dbt_utils

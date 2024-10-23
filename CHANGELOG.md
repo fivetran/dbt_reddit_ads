@@ -14,6 +14,7 @@
 - Coalesced each pre-existing metric (ie `clicks`, `impressions`, and `spend`) with `0` to avoid the complications of `null` in downstream aggregations.
 - Added the respective seed data for the new models in addition to updating relevant documentation.
 - Added documentation explaining potential discrepancies across reporting grains.
+- Added new Buildkite run step to test different configurations of the `reddit_ads__conversion_event_types` variable.
 
 ## Contributors
 - [Seer Interactive](https://www.seerinteractive.com/?utm_campaign=Fivetran%20%7C%20Models&utm_source=Fivetran&utm_medium=Fivetran%20Documentation)

@@ -12,13 +12,13 @@ with ad_source as (
         sum(coalesce(view_through_conversion_attribution_window_month, 0)) as view_through_conversions
     from {{ source('reddit_ads', 'ad_conversions_report') }}
 
-    {# {% if var('reddit_ads__conversion_event_types') %}
+    {% if var('reddit_ads__conversion_event_types') %}
     where 
         {% for event_type in var('reddit_ads__conversion_event_types') %}
-            event_name = '{{ event_type|lower }}'
+            lower(event_name) = '{{ event_type|lower }}'
             {% if not loop.last %} or {% endif %} 
         {% endfor %}
-    {% endif %} #}
+    {% endif %}
 
 ),
 
@@ -59,6 +59,14 @@ ad_group_source as (
         sum(coalesce(click_through_conversion_attribution_window_month, 0)) as total_conversions,
         sum(coalesce(view_through_conversion_attribution_window_month, 0)) as view_through_conversions
     from {{ source('reddit_ads', 'ad_group_conversions_report') }}
+
+    {% if var('reddit_ads__conversion_event_types') %}
+    where 
+        {% for event_type in var('reddit_ads__conversion_event_types') %}
+            lower(event_name) = '{{ event_type|lower }}'
+            {% if not loop.last %} or {% endif %} 
+        {% endfor %}
+    {% endif %}
 ),
 
 ad_group_model as (
@@ -98,6 +106,14 @@ campaign_source as (
         sum(coalesce(click_through_conversion_attribution_window_month, 0)) as total_conversions,
         sum(coalesce(view_through_conversion_attribution_window_month, 0)) as view_through_conversions
     from {{ source('reddit_ads', 'campaign_conversions_report') }}
+
+    {% if var('reddit_ads__conversion_event_types') %}
+    where 
+        {% for event_type in var('reddit_ads__conversion_event_types') %}
+            lower(event_name) = '{{ event_type|lower }}'
+            {% if not loop.last %} or {% endif %} 
+        {% endfor %}
+    {% endif %}
 ),
 
 campaign_model as (
@@ -137,6 +153,14 @@ account_source as (
         sum(coalesce(click_through_conversion_attribution_window_month, 0)) as total_conversions,
         sum(coalesce(view_through_conversion_attribution_window_month, 0)) as view_through_conversions
     from {{ source('reddit_ads', 'account_conversions_report') }}
+
+    {% if var('reddit_ads__conversion_event_types') %}
+    where 
+        {% for event_type in var('reddit_ads__conversion_event_types') %}
+            lower(event_name) = '{{ event_type|lower }}'
+            {% if not loop.last %} or {% endif %} 
+        {% endfor %}
+    {% endif %}
 ),
 
 account_model as (
