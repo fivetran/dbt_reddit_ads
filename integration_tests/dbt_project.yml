@@ -42,3 +42,10 @@ seeds:
       ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
       ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
       date: date
+      clicks: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+      impressions: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+      spend: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+      conversions: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+      view_through_conversions: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+      total_value: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+      total_items: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
