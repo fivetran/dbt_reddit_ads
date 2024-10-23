@@ -46,6 +46,8 @@ models:
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
         description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+      - name: total_items
+        description: '{{ doc("total_items") }}'
 
 
   - name: reddit_ads__ad_group_report
@@ -93,6 +95,8 @@ models:
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
         description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+      - name: total_items
+        description: '{{ doc("total_items") }}'
 
 
   - name: reddit_ads__ad_report
@@ -148,6 +152,8 @@ models:
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
         description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+      - name: total_items
+        description: '{{ doc("total_items") }}'
 
 
   - name: reddit_ads__campaign_report
@@ -190,6 +196,8 @@ models:
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
         description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+      - name: total_items
+        description: '{{ doc("total_items") }}'
 
   - name: reddit_ads__url_report
     description: >
@@ -270,4 +278,5 @@ models:
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
         description: '{{ doc("view_through_conversion_attribution_window_month") }}'
-
+      - name: total_items
+        description: '{{ doc("total_items") }}'
