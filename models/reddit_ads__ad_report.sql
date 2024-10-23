@@ -30,10 +30,37 @@ accounts as (
     from {{ var('account') }}
 ),
 
+{# This includes data at the event type level that we'll need to roll up and pivot out #}
 conversions_report as (
 
     select *
     from {{ var('ad_conversions_report') }}
+),
+
+rollup_conversions_report as (
+
+    select 
+        source_relation,
+        date_day,
+        ad_id,
+        sum(conversions) as conversions,
+        sum(view_through_conversions) as view_through_conversions,
+        sum(total_value) as total_value,
+        sum(total_items) as total_items
+
+        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__ad_conversions_passthrough_metrics', transform = 'sum') }}
+
+    from conversions_report
+
+    {% if var('reddit_ads__conversion_event_types') %}
+    where 
+        {% for event_type in var('reddit_ads__conversion_event_types') %}
+            event_name = '{{ event_type|lower }}'
+            {% if not loop.last %} or {% endif %} 
+        {% endfor %}
+    {% endif %}
+
+    group by 1,2,3
 ),
 
 joined as (
@@ -53,9 +80,10 @@ joined as (
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.spend) as spend,
-        sum(conversions_report.conversions) as conversions,
-        sum(conversions_report.view_through_conversions) as view_through_conversions,
-        sum(conversions_report.total_value) as total_value
+        sum(rollup_conversions_report.conversions) as conversions,
+        sum(rollup_conversions_report.view_through_conversions) as view_through_conversions,
+        sum(rollup_conversions_report.total_value) as total_value,
+        sum(rollup_conversions_report.total_items) as total_items
 
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__ad_passthrough_metrics', transform = 'sum') }}
 
@@ -74,10 +102,10 @@ joined as (
     left join campaigns
         on ads.campaign_id = campaigns.campaign_id
         and ads.source_relation = campaigns.source_relation
-    left join conversions_report
-        on report.ad_id = conversions_report.ad_id
-        and report.source_relation = conversions_report.source_relation
-        and report.date_day = conversions_report.date_day
+    left join rollup_conversions_report
+        on report.ad_id = rollup_conversions_report.ad_id
+        and report.source_relation = rollup_conversions_report.source_relation
+        and report.date_day = rollup_conversions_report.date_day
     {{ dbt_utils.group_by(11) }}
 
 )

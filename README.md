@@ -80,6 +80,10 @@ vars:
 
 To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
+#### Configure Conversion Event Types
+TODO
+
+
 #### Passing Through Additional Metrics
 By default, this package will select `clicks`, `impressions`, `spend`, `conversions` (click_through_conversion_attribution_window_month), `view_through_conversions` (view_through_conversion_attribution_window_month), and `total_value` from the source reporting tables to store into the staging models. Note that we choose the maximum attribution window for counting conversions. 
 

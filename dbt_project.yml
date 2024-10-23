@@ -26,6 +26,11 @@ vars:
   reddit_ads__ad_conversions_passthrough_metrics: []
   reddit_ads__campaign_conversions_passthrough_metrics: []
 
+  reddit_ads__conversion_event_types:
+    - 'lead'
+    - 'purchase'
+    - 'custom'
+
 models:
   reddit_ads:
     +schema: reddit_ads
