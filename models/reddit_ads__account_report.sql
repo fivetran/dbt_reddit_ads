@@ -19,22 +19,6 @@ conversions_report as (
     from {{ var('account_conversions_report') }}
 ),
 
-{# report as (
-
-    select
-        source_relation,
-        date_day,
-        account_id,
-        sum(clicks) as clicks,
-        sum(impressions) as impressions,
-        sum(spend) as spend
-
-        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__account_passthrough_metrics', transform = 'sum') }}
-
-    from report
-    group by 1,2,3
-), #}
-
 rollup_conversions_report as (
 
     select 

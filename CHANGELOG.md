@@ -2,16 +2,21 @@
 [PR #13](https://github.com/fivetran/dbt_reddit_ads/pull/13) includes the following updates:
 
 ## Features: Conversion Metrics
-- Introduces the following conversion fields to the Reddit Ads `<>_report` models (source fields in parenthesis):
-  - `conversions` (click_through_conversion_attribution_window_month)
-  - `view_through_conversions` (view_through_conversion_attribution_window_month)
-  - `total_value` (total_value)
-- Introduces the variable `<>_conversions_passthrough_metrics` to allow additional fields from the source `_conversion_report` tables.
-- We use the maximum attribution window when considering conversions and therefore retrieve conversions metrics from the `click_through_conversion_attribution_window_month` (conversions) and `view_through_conversion_attribution_window_month` (view_through_conversions) fields in the respective source tables. You may bring in additional windows and fields through via the `<>_conversions_passthrough_metrics` variable. For information on how to configure these variables, refer to the [README](https://github.com/fivetran/dbt_reddit_ads/blob/main/README.md#passing-through-additional-metrics).
+- Introduces the following conversion fields to the Reddit Ads `reddit_ads__<entity>_report` models:
+  - `conversions` (aliased from `click_through_conversion_attribution_window_month`): Total attributed click-through conversions for the given month-long window.
+  - `view_through_conversions` (aliased from `view_through_conversion_attribution_window_month`): Total attributed view-through conversions for the given month-long window.
+  - `total_value`: Total monetary value associated with a conversion event.
+  - `total_items`: Total number of items involved in a conversion event.
+- Introduces the variable `<entity>_conversions_passthrough_metrics` to allow additional fields from the source `_conversion_report` tables. We use the maximum attribution window when considering conversions and therefore retrieve conversions metrics from the `click_through_conversion_attribution_window_month` (conversions) and `view_through_conversion_attribution_window_month` (view_through_conversions) fields in the respective source tables. You may bring in additional windows and fields through via the `<entity>_conversions_passthrough_metrics` variable. For information on how to configure these variables, refer to the [README](https://github.com/fivetran/dbt_reddit_ads/blob/main/README.md#passing-through-additional-metrics).
+- Introduces the `reddit_ads__conversion_event_types` variable to note which kinds of events should be considered conversions (and therefore be surfaced in conversion metrics). By default, this package considers `purchase`, `lead`, and `custom` events to be conversions. See [README](ttps://github.com/fivetran/dbt_reddit_ads/blob/main/README.md#configure-conversion-event-types) for details on how to adjust this.
 
 ## Under the hood
+- Coalesced each pre-existing metric (ie `clicks`, `impressions`, and `spend`) with `0` to avoid the complications of `null` in downstream aggregations.
 - Added the respective seed data for the new models in addition to updating relevant documentation.
 - Added documentation explaining potential discrepancies across reporting grains.
+
+## Contributors
+- [Seer Interactive](https://www.seerinteractive.com/?utm_campaign=Fivetran%20%7C%20Models&utm_source=Fivetran&utm_medium=Fivetran%20Documentation)
 
 # dbt_reddit_ads v0.2.1
 
