@@ -100,9 +100,11 @@ vars:
       - 'page_visit'
       - 'add_to_cart'
       - 'view_content'
-      - 'custom_event_<>'
-      - 'custom' # aggregation of custom_event_1 + ... + custom_event_20
+      - 'custom_event_<1-20>' # individual custom events
+      - 'custom' # AGGREGATION of all individual custom events = custom_event_1 + ... + custom_event_20
 ```
+
+> Note: Please ensure due diligence when selecting conversion events, as some may overlap and introduce double-counted metrics if used together. For example, the `custom` event encapsulates all individual `custom_event_<1-20>` events.
 
 #### Passing Through Additional Metrics
 By default, this package will select `clicks`, `impressions`, `spend`, `conversions` (click_through_conversion_attribution_window_month), `view_through_conversions` (view_through_conversion_attribution_window_month), `total_items`, and `total_value` from the source reporting tables to store into the staging models. Note that we choose the maximum attribution window for counting conversions.

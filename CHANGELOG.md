@@ -11,10 +11,10 @@
 - Introduces the `reddit_ads__conversion_event_types` variable to note which kinds of events should be considered conversions (and therefore be surfaced in conversion metrics). By default, this package considers `purchase`, `lead`, and `custom` events to be conversions. See [README](ttps://github.com/fivetran/dbt_reddit_ads/blob/main/README.md#configure-conversion-event-types) for details on how to adjust this.
 
 ## Under the hood
-- Coalesced each pre-existing metric (ie `clicks`, `impressions`, and `spend`) with `0` to avoid the complications of `null` in downstream aggregations.
-- Added the respective seed data for the new models in addition to updating relevant documentation.
-- Added documentation explaining potential discrepancies across reporting grains.
-- Added new Buildkite run step to test different configurations of the `reddit_ads__conversion_event_types` variable.
+- Coalesces each pre-existing metric (ie `clicks`, `impressions`, and `spend`) with `0` to avoid the complications of `null` in downstream aggregations.
+- Adds the respective seed data for the new models in addition to updating relevant documentation.
+- Adds documentation explaining potential discrepancies across reporting grains.
+- Adds new Buildkite run step to test different configurations of the `reddit_ads__conversion_event_types` variable.
 
 ## Contributors
 - [Seer Interactive](https://www.seerinteractive.com/?utm_campaign=Fivetran%20%7C%20Models&utm_source=Fivetran&utm_medium=Fivetran%20Documentation)
