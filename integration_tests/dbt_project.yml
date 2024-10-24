@@ -47,5 +47,5 @@ seeds:
       spend: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
       conversions: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
       view_through_conversions: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-      total_value: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+      total_value: float
       total_items: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
