@@ -1,0 +1,4 @@
+## Why don't metrics add up across different grains (Ex. ad level vs campaign level)?
+When aggregating metrics like clicks and spend across different grains, discrepancies can arise due to differences in how data is captured, grouped, or attributed at each grain. For example, certain actions or costs might be attributed differently at the ad, campaign, or ad group level, leading to inconsistencies when rolled up. Additionally, for example, at the keyword grain, where a keyword can belong to multiple ad groups, aggregations can lead to over counting. Conversely, some ads may only be represented at the ad group level, rather than individual ad levels, leading to under counting at the ad grain.
+
+This is a reason why we have broken out the ad reporting packages into separate hierarchical end models (Ad, Ad Group, Campaign, and more). Because if we only used ad-level reports, we could be missing data.
