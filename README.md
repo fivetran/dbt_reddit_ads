@@ -86,7 +86,7 @@ vars:
 To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
 #### Configure Conversion Event Types
-By default, this package considers `purchase`, `lead`, and `custom` events to be conversions. This means that the package will only report values for conversion metrics (`conversions`, `total_items`, `total_value`, and `view_through_conversions`) for these 3 event types.
+By default, this package considers `purchase`, `lead`, and `custom` events from the `*_conversions_report` source tables to be conversions. This means that the package will only report values for conversion metrics (`conversions`, `total_items`, `total_value`, and `view_through_conversions`) for these 3 event types.
 
 If you would like to adjust this so that the package reports conversions related to other types of [events](https://business.reddithelp.com/s/article/supported-conversion-events), or a subset of the default ones chosen, configure the `reddit_ads__conversion_event_types` variable:
 

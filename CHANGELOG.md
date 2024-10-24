@@ -1,5 +1,5 @@
 # dbt_reddit_ads v0.3.0
-[PR #13](https://github.com/fivetran/dbt_reddit_ads/pull/13) includes the following updates:
+[PR #13](https://github.com/fivetran/dbt_reddit_ads/pull/13) includes the following **BREAKING CHANGE** updates:
 
 ## Features: Conversion Metrics
 - Introduces the following conversion fields to the Reddit Ads `reddit_ads__<entity>_report` models:
@@ -10,8 +10,17 @@
 - Introduces the `<entity>_conversions_passthrough_metrics` variables to allow additional fields from the source `_conversion_report` tables. We use the maximum attribution window when considering conversions and therefore retrieve conversions metrics from the `click_through_conversion_attribution_window_month` (conversions) and `view_through_conversion_attribution_window_month` (view_through_conversions) fields from the respective source tables. For information on how to configure these variables to bring in additional windows and fields, refer to the [README](https://github.com/fivetran/dbt_reddit_ads/tree/main?tab=readme-ov-file#passing-through-additional-metrics).
 - Introduces the `reddit_ads__conversion_event_types` variable to note which kinds of events should be considered conversions (and therefore be surfaced in conversion metrics). By default, this package considers `purchase`, `lead`, and `custom` events to be conversions. See [README](https://github.com/fivetran/dbt_reddit_ads/tree/main?tab=readme-ov-file#configure-conversion-event-types) for details on how to adjust this.
 
-## Under the hood
-- Coalesces each pre-existing metric (ie `clicks`, `impressions`, and `spend`) with `0` to avoid the complications of `null` in aggregations.
+## Upstream Source Package Updates
+To support the addition of conversion metrics here, [v0.3.0](https://github.com/fivetran/dbt_reddit_ads_source/releases/tag/v0.2.0) of `reddit_ads_source` included the following update:
+- Introduces 4 new staging models to bring in conversion metrics (click-through conversions, view-through conversions, total value, and total items) across different dimensions:
+  - `stg_reddit_ads__account_conversions_report`
+  - `stg_reddit_ads__ad_group_conversions_report`
+  - `stg_reddit_ads__ad_conversions_report`
+  - `stg_reddit_ads__campaign_conversions_report`
+> Note: If you would like to include conversion metrics, please ensure you have the `account_conversions_report`, `ad_group_conversions_report`, `ad_conversions_report`, and `campaign_conversions_report` source tables syncing in your Reddit Ads connector(s). Otherwise, the package will run successfully but produce `null` conversion metric values.
+
+## Under the Hood
+- Coalesces each pre-existing metrics (ie `clicks`, `impressions`, and `spend`) with `0` to avoid the complications of `null` in aggregations.
 - Adds the respective seed data for the new models in addition to updating relevant documentation.
 - Adds documentation explaining potential discrepancies across reporting grains.
 - Adds new Buildkite run step to test different configurations of the `reddit_ads__conversion_event_types` variable.
