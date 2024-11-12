@@ -1,3 +1,13 @@
+# dbt_reddit_ads v0.3.1
+[PR #15](https://github.com/fivetran/dbt_reddit_ads/pull/15) includes the following updates:
+
+## Bug Fix
+- Ensures the addition of conversion metrics in [v0.3.0](https://github.com/fivetran/dbt_reddit_ads/blob/main/CHANGELOG.md#dbt_reddit_ads-v030) is truly backwards compatible and will avoid duplicate column errors regardless of any pre-existing configurations.
+  - Specifically, if you were previously utilizing [passthrough column](https://github.com/fivetran/dbt_reddit_ads?tab=readme-ov-file#passing-through-additional-metrics) variables to include fields called `conversions`, `view_through_conversions`, `total_value`, or `total_items`, the package's version of these fields will take precedence. Your fields will be included as well, but suffixed with a `_c`.
+
+## Under the Hood
+- Creates the `reddit_ads_persist_pass_through_columns` macro to support the above behavior. 
+
 # dbt_reddit_ads v0.3.0
 [PR #13](https://github.com/fivetran/dbt_reddit_ads/pull/13) includes the following **BREAKING CHANGE** updates:
 

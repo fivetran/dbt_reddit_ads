@@ -126,6 +126,14 @@ vars:
       - name: "new_custom_field"
         alias: "custom_field"
       - name: "a_second_field"
+    reddit_ads__account_conversions_passthrough_metrics:
+      - name: "view_through_conversion_attribution_window_week"
+    reddit_ads__ad_group_conversions_passthrough_metrics:
+      - name: "view_through_conversion_attribution_window_week"
+    reddit_ads__ad_conversions_passthrough_metrics:
+      - name: "view_through_conversion_attribution_window_week"
+    reddit_ads__campaign_conversions_passthrough_metrics:
+      - name: "view_through_conversion_attribution_window_week"
 ```
 #### Change the build schema
 By default, this package builds the Reddit Ads staging models (12 views, 12 tables) within a schema titled (`<target_schema>` + `_reddit_ads_source`) and your Reddit Ads modeling models (5 tables) within a schema titled (`<target_schema>` + `_reddit_ads`) in your destination. If this is not where you would like your Reddit Ads data to be written to, add the following configuration to your root `dbt_project.yml` file:

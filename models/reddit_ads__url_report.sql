@@ -95,7 +95,7 @@ joined as (
         sum(rollup_conversions_report.total_value) as total_value,
         sum(rollup_conversions_report.total_items) as total_items
 
-        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__ad_passthrough_metrics', transform = 'sum') }}
+        {{ reddit_ads_persist_pass_through_columns(pass_through_variable='reddit_ads__ad_passthrough_metrics', identifier = 'report', transform = 'sum', alias_fields=['conversions', 'view_through_conversions', 'total_value', 'total_items']) }}
 
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__ad_conversions_passthrough_metrics', transform = 'sum') }}
 
