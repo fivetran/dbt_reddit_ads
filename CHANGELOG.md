@@ -10,7 +10,7 @@
 - Updates consistency validation tests (maintainers only) to include conversion metric comparisons.
 
 ## Documentation
-- Documented `_c` bug fix solution in the [DECISIONLOG](https://github.com/fivetran/dbt_reddit_ads/blob/main/DECISIONLOG.md).
+- Documented `_c` bug fix solution in the [DECISIONLOG](https://github.com/fivetran/dbt_reddit_ads/blob/main/DECISIONLOG.md). 
 
 # dbt_reddit_ads v0.3.0
 [PR #13](https://github.com/fivetran/dbt_reddit_ads/pull/13) includes the following **BREAKING CHANGE** updates:

@@ -131,7 +131,6 @@ vars:
         alias: view_through_conversion_week
     reddit_ads__ad_group_conversions_passthrough_metrics:
       - name: "view_through_conversion_attribution_window_week"
-        alias: view_through_conversion_week
     reddit_ads__ad_conversions_passthrough_metrics:
       - name: "view_through_conversion_attribution_window_week"
         alias: view_through_conversion_week
