@@ -1,5 +1,5 @@
 name: 'reddit_ads_integration_tests'
-version: '0.3.0'
+version: '0.3.1'
 profile: 'integration_tests'
 config-version: 2
 
@@ -20,6 +20,25 @@ vars:
   
   reddit_ads__ad_conversions_passthrough_metrics: 
     - name: 'view_through_conversion_attribution_window_week'
+  reddit_ads__account_passthrough_metrics: 
+    - name: conversions
+    - name: app_install_metrics_install
+      alias: installs
+    - name: view_through_conversions
+  reddit_ads__campaign_passthrough_metrics: 
+    - name: conversions
+    - name: app_install_metrics_install
+      alias: installs
+    - name: total_value
+  reddit_ads__ad_group_passthrough_metrics:
+    - name: conversions
+    - name: app_install_metrics_install
+      alias: installs
+    - name: total_items
+  reddit_ads__ad_passthrough_metrics:
+    - name: conversions
+    - name: app_install_metrics_install
+      alias: installs
 
   # For validation testing
   reddit_ads__conversion_event_types:
