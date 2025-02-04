@@ -1,3 +1,9 @@
+# dbt_reddit_ads version.version
+
+## Documentation
+- Added Quickstart model counts to README. ([#17](https://github.com/fivetran/dbt_reddit_ads/pull/17))
+- Corrected references to connectors and connections in the README. ([#17](https://github.com/fivetran/dbt_reddit_ads/pull/17))
+
 # dbt_reddit_ads v0.3.1
 [PR #15](https://github.com/fivetran/dbt_reddit_ads/pull/15) includes the following updates:
 
