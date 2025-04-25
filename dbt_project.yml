@@ -1,28 +1,33 @@
 name: 'reddit_ads'
-version: '0.3.1'
+version: '0.4.0'
 config-version: 2
 require-dbt-version: [">=1.3.0", "<2.0.0"]
 vars:
   reddit_ads:
     account: "{{ ref('stg_reddit_ads__account') }}"
+    account_conversions_report: "{{ ref('stg_reddit_ads__account_conversions_report') }}"
     account_daily_report: "{{ ref('stg_reddit_ads__account_report') }}"
-    ad_group: "{{ ref('stg_reddit_ads__ad_group') }}"
-    ad_group_daily_report: "{{ ref('stg_reddit_ads__ad_group_report') }}"
     ad: "{{ ref('stg_reddit_ads__ad') }}"
+    ad_conversions_report: "{{ ref('stg_reddit_ads__ad_conversions_report') }}"
     ad_daily_report: "{{ ref('stg_reddit_ads__ad_report') }}"
+    ad_group: "{{ ref('stg_reddit_ads__ad_group') }}"
+    ad_group_conversions_report: "{{ ref('stg_reddit_ads__ad_group_conversions_report') }}"
+    ad_group_daily_report: "{{ ref('stg_reddit_ads__ad_group_report') }}"
     campaign: "{{ ref('stg_reddit_ads__campaign') }}" 
+    campaign_conversions_report: "{{ ref('stg_reddit_ads__campaign_conversions_report') }}"
     campaign_daily_report: "{{ ref('stg_reddit_ads__campaign_report') }}"
+    campaign_country_conversions_report: "{{ ref('stg_reddit_ads__campaign_country_conversions_report') }}"
     campaign_country_daily_report: "{{ ref('stg_reddit_ads__campaign_country_report') }}"
-    campaign_country_conversions_daily_report: "{{ ref('stg_reddit_ads__campaign_country_conversions_report') }}"
-    post_daily_report: "{{ ref('stg_reddit_ads__post_report') }}"
-  reddit_ads__account_passthrough_metrics: []
-  reddit_ads__ad_group_passthrough_metrics: []
-  reddit_ads__ad_passthrough_metrics: []
-  reddit_ads__campaign_passthrough_metrics: []
-  reddit_ads__account_conversions_passthrough_metrics: []
-  reddit_ads__ad_group_conversions_passthrough_metrics: []
-  reddit_ads__ad_conversions_passthrough_metrics: []
-  reddit_ads__campaign_conversions_passthrough_metrics: []
+    reddit_ads__account_passthrough_metrics: []
+    reddit_ads__account_conversions_passthrough_metrics: []
+    reddit_ads__ad_group_passthrough_metrics: []
+    reddit_ads__ad_group_conversions_passthrough_metrics: []
+    reddit_ads__ad_passthrough_metrics: []
+    reddit_ads__ad_conversions_passthrough_metrics: []
+    reddit_ads__campaign_passthrough_metrics: []
+    reddit_ads__campaign_conversions_passthrough_metrics: []
+    reddit_ads__campaign_country_passthrough_metrics: []
+    reddit_ads__campaign_country_conversions_passthrough_metrics: []
 
   reddit_ads__conversion_event_types:
     - 'lead'

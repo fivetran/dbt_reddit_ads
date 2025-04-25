@@ -1,4 +1,9 @@
-# dbt_reddit_ads version.version
+# dbt_reddit_ads v0.4.0
+[PR #18](https://github.com/fivetran/dbt_reddit_ads/pull/18) includes the following updates:
+
+## Features
+- Added:
+  - `reddit_ads__campaign_country_report`
 
 ## Documentation
 - Added Quickstart model counts to README. ([#17](https://github.com/fivetran/dbt_reddit_ads/pull/17))

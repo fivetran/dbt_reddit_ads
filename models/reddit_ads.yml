@@ -280,3 +280,64 @@ models:
         description: '{{ doc("view_through_conversion_attribution_window_month") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
+
+  - name: reddit_ads__campaign_country_report
+    description: >
+      Each record in this table represents the daily number of clicks, impressions, and spend per campaign and country, along with account information.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - date_day
+            - account_id
+            - campaign_id
+            - country
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: country
+        description: '{{ doc("country") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: Spend converted out of microcurrency (so Spend/1,000,000)
+      - name: conversions
+        description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+      - name: total_value
+        description: '{{ doc("total_value") }}'
+      - name: view_through_conversions
+        description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+      - name: total_items
+        description: '{{ doc("total_items") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: currency
+        description: '{{ doc("currency") }}'
+      - name: effective_status
+        description: >
+          The current effective status of the ad, reflecting both configured status and 
+          any internal processing states that may affect delivery.
+      - name: configured_status
+        description: >
+          The user-defined status of the ad (e.g., ACTIVE, PAUSED), indicating whether 
+          it is intended to be running.
+      - name: is_processing
+        description: >
+          A boolean flag indicating whether the ad is still being processed and not yet 
+          ready for delivery.
+      - name: objective
+        description: >
+          The advertising goal or objective selected for the campaign, such as 
+          CONVERSIONS, TRAFFIC, or BRAND_AWARENESS.
+      - name: funding_instrument_id
+        description: >
+          The ID of the funding instrument (e.g., credit card or line of credit) used 
+          to pay for the ad campaign.
