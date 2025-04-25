@@ -4,7 +4,7 @@ profile: 'integration_tests'
 config-version: 2
 
 vars: 
-  reddit_ads_schema: zz_reddit #reddit_ads_integration_tests_4
+  reddit_ads_schema: reddit_ads_integration_tests_4
   reddit_ads_account_identifier: "reddit_ads_account_data"
   reddit_ads_account_report_identifier: "reddit_ads_account_report_data"
   reddit_ads_account_conversions_report_identifier: "reddit_ads_account_conversions"
@@ -20,6 +20,7 @@ vars:
   reddit_ads_campaign_country_report_identifier: "reddit_ads_campaign_country_report_data"
   reddit_ads_campaign_country_conversions_report_identifier: "reddit_ads_campaign_country_conversions_report_data"
   
+  ## Disable when generating docs
   reddit_ads__ad_conversions_passthrough_metrics: 
     - name: 'view_through_conversion_attribution_window_week'
   reddit_ads__account_passthrough_metrics: 
