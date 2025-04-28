@@ -1,11 +1,28 @@
 # dbt_reddit_ads v0.4.0
 [PR #18](https://github.com/fivetran/dbt_reddit_ads/pull/18) includes the following updates:
 
+## Schema Changes
+### Models
+5 new models • 0 possible breaking changes
+
+| Model/Column                                                 | Change type | Old name | New name | Notes                                           |
+|--------------------------------------------------------------|-------------|----------|----------|-------------------------------------------------|
+| [`reddit_ads__campaign_country_report`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_country_report) | New Model   |          |          | Each record in this table represents the daily performance at the campaign and country level. |
+| `stg_reddit_ads__campaign_country_report`            | New Model   |          |          | Uses `CAMPAIGN_COUNTRY_REPORT` source table |
+| `stg_reddit_ads__campaign_country_conversions_report`                      | New Model   |          |          | Uses `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` source table       |
+| `stg_reddit_ads__campaign_country_report_tmp`        | New Model   |          |          | Uses `CAMPAIGN_COUNTRY_REPORT` source table |
+| `stg_reddit_ads__campaign_country_conversions_report_tmp`                  | New Model   |          |          | Uses `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` source table       |
+
 ## Features
-- Added:
-  - `reddit_ads__campaign_country_report`
+- Added the following vars to enable/disabled the new `CAMPAIGN_COUNTRY_REPORT` or `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` sources. See the [README](https://github.com/fivetran/dbt_reddit_ads/blob/main/README.md#Step-4-Enable-disable-models-and-sources) for more details.
+  - `reddit_ads_campaign_country_report_enabled` - defaults is `true`
+  - `reddit_ads_campaign_country_conversions_report_enabled` - default is `true`, requires `CAMPAIGN_COUNTRY_REPORT`
+
+## Under the Hood
+- Added seed data for testing new sources
 
 ## Documentation
+- Updated dbt documentation to reflect new tables and column additions.
 - Added Quickstart model counts to README. ([#17](https://github.com/fivetran/dbt_reddit_ads/pull/17))
 - Corrected references to connectors and connections in the README. ([#17](https://github.com/fivetran/dbt_reddit_ads/pull/17))
 
