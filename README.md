@@ -34,7 +34,7 @@ The following table provides a detailed list of all tables materialized within t
 | [reddit_ads__url_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__url_report)            | Each record in this table represents the daily performance of URLs at the ad level. |
 
 ### Materialized Models
-Each Quickstart transformation job run materializes 29 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
+Each Quickstart transformation job run materializes 34 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
 
 ## How do I use the dbt package?
@@ -59,7 +59,7 @@ If you are not using the downstream [Ad Reporting](https://github.com/fivetran/d
 ```yaml
 packages:
   - package: fivetran/reddit_ads
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.4.0", "<0.5.0"]
 ```
 
 Do NOT include the `reddit_ads_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
@@ -150,7 +150,7 @@ vars:
       - name: "view_through_conversion_attribution_window_week"
 ```
 #### Change the build schema
-By default, this package builds the Reddit Ads staging models (12 views, 12 tables) within a schema titled (`<target_schema>` + `_reddit_ads_source`) and your Reddit Ads modeling models (5 tables) within a schema titled (`<target_schema>` + `_reddit_ads`) in your destination. If this is not where you would like your Reddit Ads data to be written to, add the following configuration to your root `dbt_project.yml` file:
+By default, this package builds the Reddit Ads staging models within a schema titled (`<target_schema>` + `_reddit_ads_source`) and your Reddit Ads modeling models within a schema titled (`<target_schema>` + `_reddit_ads`) in your destination. If this is not where you would like your Reddit Ads data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 models:
@@ -186,7 +186,7 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 ```yml
 packages:
     - package: fivetran/reddit_ads_source
-      version: [">=0.3.0", "<0.4.0"]
+      version: [">=0.4.0", "<0.5.0"]
 
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
