@@ -20,6 +20,12 @@
   - `reddit_ads_campaign_country_conversions_report_enabled`
     - Default is `true`. 
     - Will disable country_conversion fields in `reddit_ads__campaign_country_report`.
+- Added the vars to allow bringing additional metrics to `reddit_ads__campaign_country_report`. Refer to the [README](https://github.com/fivetran/dbt_pinterest_ads/blob/main/README.md#passing-through-additional-metrics) for more details.
+  - `reddit_ads__campaign_country_passthrough_metrics`
+    - Passes additional metrics to `reddit_ads__campaign_country_report`
+  - `reddit_ads__campaign_country_conversions_passthrough_metrics`
+    - Passes additional metrics to `stg_reddit_ads__campaign_country_conversions_report`
+
 
 ## Under the Hood
 - Added seed data for testing new sources
