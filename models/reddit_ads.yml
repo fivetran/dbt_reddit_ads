@@ -301,6 +301,8 @@ models:
         description: '{{ doc("account_id") }}'
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
+      - name: campaign_name
+        description:  '{{ doc("campaign_name") }}'
       - name: country
         description: '{{ doc("country") }}'
       - name: clicks
