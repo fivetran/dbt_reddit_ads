@@ -2,21 +2,24 @@
 [PR #18](https://github.com/fivetran/dbt_reddit_ads/pull/18) includes the following updates:
 
 ## Schema Changes
-### Models
 5 new models • 0 possible breaking changes
 
-| Model/Column                                                 | Change type | Old name | New name | Notes                                           |
+| Data Model                                                | Change type | Old name | New name | Notes                                           |
 |--------------------------------------------------------------|-------------|----------|----------|-------------------------------------------------|
-| [`reddit_ads__campaign_country_report`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_country_report) | New Model   |          |          | Each record in this table represents the daily performance at the campaign and country level. |
-| `stg_reddit_ads__campaign_country_report`            | New Model   |          |          | Uses `CAMPAIGN_COUNTRY_REPORT` source table |
-| `stg_reddit_ads__campaign_country_conversions_report`                      | New Model   |          |          | Uses `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` source table       |
-| `stg_reddit_ads__campaign_country_report_tmp`        | New Model   |          |          | Uses `CAMPAIGN_COUNTRY_REPORT` source table |
-| `stg_reddit_ads__campaign_country_conversions_report_tmp`                  | New Model   |          |          | Uses `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` source table       |
+| [`reddit_ads__campaign_country_report`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_country_report) | New Transformation Model   | | | This new table represents the daily performance at the campaign and country level. |
+| [`stg_reddit_ads__campaign_country_report`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__campaign_country_report) | New Staging Model   | | | Uses `CAMPAIGN_COUNTRY_REPORT` source table |
+| [`stg_reddit_ads__campaign_country_conversions_report`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__campaign_country_conversions_report) | New Staging Model   | | | Uses `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` source table       |
+| [`stg_reddit_ads__campaign_country_report_tmp`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__campaign_country_report_tmp) | New Temp Model   | | | Uses `CAMPAIGN_COUNTRY_REPORT` source table |
+| [`stg_reddit_ads__campaign_country_conversions_report_tmp`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__campaign_country_conversions_report_tmp) | New Temp Model   | | | Uses `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` source table       |
 
 ## Features
-- Added the following vars to enable/disable the new `CAMPAIGN_COUNTRY_REPORT` or `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` sources. See the [README](https://github.com/fivetran/dbt_reddit_ads/blob/main/README.md#Step-4-Enable-disable-models-and-sources) for more details.
-  - `reddit_ads_campaign_country_report_enabled` - default is `true`
-  - `reddit_ads_campaign_country_conversions_report_enabled` - default is `true`, requires `CAMPAIGN_COUNTRY_REPORT`
+- Added the following vars to enable/disabled the new `CAMPAIGN_COUNTRY_REPORT` or `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` sources. See the [README](https://github.com/fivetran/dbt_reddit_ads/blob/main/README.md#Step-4-Enable-disable-models-and-sources) for more details.
+  - `reddit_ads_campaign_country_report_enabled`
+    - Default is `true`. 
+    - Will disable `reddit_ads__campaign_country_report` if false.
+  - `reddit_ads_campaign_country_conversions_report_enabled`
+    - Default is `true`. 
+    - Will disable country_conversion fields in `reddit_ads__campaign_country_report`.
 
 ## Under the Hood
 - Added seed data for testing new sources

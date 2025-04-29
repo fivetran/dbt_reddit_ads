@@ -1,4 +1,6 @@
-<p align="center">
+# Reddit Ads Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_reddit_ads/))
+
+<p align="left">
     <a alt="License"
         href="https://github.com/fivetran/dbt_reddit_ads/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
@@ -10,7 +12,6 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# Reddit Ads Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_reddit_ads/))
 ## What does this dbt package do?
 - Produces modeled tables that leverage Reddit Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/reddit-ads) in the format described by [this ERD](https://fivetran.com/docs/applications/reddit-ads#schemainformation) and builds off the output of our [Reddit Ads source package](https://github.com/fivetran/dbt_reddit_ads_source)
 - Enables you to better understand the performance of your ads across varying grains:
@@ -34,7 +35,7 @@ The following table provides a detailed list of all tables materialized within t
 | [reddit_ads__url_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__url_report)            | Each record in this table represents the daily performance of URLs at the ad level. |
 
 ### Materialized Models
-Each Quickstart transformation job run materializes 34 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
+Each Quickstart transformation job run materializes 39 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
 
 ## How do I use the dbt package?
@@ -148,6 +149,10 @@ vars:
         alias: view_through_conversion_week
     reddit_ads__campaign_conversions_passthrough_metrics:
       - name: "view_through_conversion_attribution_window_week"
+    reddit_ads__campaign_country_passthrough_metrics:
+      - name: "another_field"
+    reddit_ads__campaign_country_conversions_passthrough_metrics:
+      - name: "another_field"
 ```
 #### Change the build schema
 By default, this package builds the Reddit Ads staging models within a schema titled (`<target_schema>` + `_reddit_ads_source`) and your Reddit Ads modeling models within a schema titled (`<target_schema>` + `_reddit_ads`) in your destination. If this is not where you would like your Reddit Ads data to be written to, add the following configuration to your root `dbt_project.yml` file:
