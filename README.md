@@ -79,8 +79,8 @@ Your Reddit Ads connection may not sync every table that this package expects. I
 
 ```yml
 vars:
-    reddit_ads_campaign_country_report_enabled: false # Default is true
-    reddit_ads_campaign_country_conversions_report_enabled: false # Default is true, requires CAMPAIGN_COUNTRY_REPORT to be enabled
+    reddit_ads__using_campaign_country_report: false # Default is true
+    reddit_ads__using_campaign_country_conversions_report: false # Default is true, requires CAMPAIGN_COUNTRY_REPORT to be enabled
 ```
 
 ### (Optional) Step 5: Additional configurations

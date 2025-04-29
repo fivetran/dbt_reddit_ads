@@ -1,6 +1,6 @@
 {{ config(enabled=fivetran_utils.enabled_vars([
     'ad_reporting__reddit_ads_enabled',
-    'reddit_ads_campaign_country_report_enabled'])
+    'reddit_ads__using_campaign_country_report'])
 ) }}
 
 with report as (
@@ -30,7 +30,7 @@ rollup_report as (
     {{ dbt_utils.group_by(5) }}
 ),
 
-{% set country_conversions_report_enabled = var('reddit_ads_campaign_country_conversions_report_enabled', True) %}
+{% set country_conversions_report_enabled = var('reddit_ads__using_campaign_country_conversions_report', True) %}
 {% if country_conversions_report_enabled %}
 conversions_report as (
 

@@ -4,9 +4,9 @@ schema_key: reddit_ads_schema
 dbt_versions: ">=1.3.0 <2.0.0"
 
 table_variables:
-  reddit_ads_campaign_country_report_enabled:
+  reddit_ads__using_campaign_country_report:
     - campaign_country_report
-  reddit_ads_campaign_country_conversions_report_enabled:
+  reddit_ads__using_campaign_country_conversions_report:
     - campaign_country_conversions_report
 
 destination_configurations:
