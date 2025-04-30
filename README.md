@@ -1,4 +1,6 @@
-<p align="center">
+# Reddit Ads Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_reddit_ads/))
+
+<p align="left">
     <a alt="License"
         href="https://github.com/fivetran/dbt_reddit_ads/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
@@ -10,7 +12,6 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# Reddit Ads Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_reddit_ads/))
 ## What does this dbt package do?
 - Produces modeled tables that leverage Reddit Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/reddit-ads) in the format described by [this ERD](https://fivetran.com/docs/applications/reddit-ads#schemainformation) and builds off the output of our [Reddit Ads source package](https://github.com/fivetran/dbt_reddit_ads_source)
 - Enables you to better understand the performance of your ads across varying grains:
@@ -28,6 +29,7 @@ The following table provides a detailed list of all tables materialized within t
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | [reddit_ads__account_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__account_report)             | Each record in this table represents the daily performance at the account level. |
 | [reddit_ads__campaign_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_report)            | Each record in this table represents the daily performance at the campaign level. |
+| [reddit_ads__campaign_country_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_country_report)            | Each record in this table represents the daily performance at the campaign and country level. |
 | [reddit_ads__ad_group_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__ad_group_report)            | Each record in this table represents the daily performance at the ad group level. |
 | [reddit_ads__ad_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__ad_report)            | Each record in this table represents the daily performance at the ad level. |
 | [reddit_ads__url_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__url_report)            | Each record in this table represents the daily performance of URLs at the ad level. |
@@ -58,7 +60,7 @@ If you are not using the downstream [Ad Reporting](https://github.com/fivetran/d
 ```yaml
 packages:
   - package: fivetran/reddit_ads
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.4.0", "<0.5.0"]
 ```
 
 Do NOT include the `reddit_ads_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
@@ -72,7 +74,16 @@ vars:
     reddit_ads_schema: your_schema_name 
 ```
 
-### (Optional) Step 4: Additional configurations
+### Step 4: Enable/disable models and sources
+Your Reddit Ads connection may not sync every table that this package expects. If you do not have the `CAMPAIGN_COUNTRY_REPORT` or `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` tables synced, add the following variable to your root `dbt_project.yml` file:
+
+```yml
+vars:
+    reddit_ads__using_campaign_country_report: false # Default is true
+    reddit_ads__using_campaign_country_conversions_report: false # Default is true, requires CAMPAIGN_COUNTRY_REPORT to be enabled
+```
+
+### (Optional) Step 5: Additional configurations
 <details open><summary>Expand/Collapse details</summary>
 
 #### Union multiple connections
@@ -138,9 +149,13 @@ vars:
         alias: view_through_conversion_week
     reddit_ads__campaign_conversions_passthrough_metrics:
       - name: "view_through_conversion_attribution_window_week"
+    reddit_ads__campaign_country_passthrough_metrics:
+      - name: "another_field"
+    reddit_ads__campaign_country_conversions_passthrough_metrics:
+      - name: "another_field"
 ```
 #### Change the build schema
-By default, this package builds the Reddit Ads staging models (12 views, 12 tables) within a schema titled (`<target_schema>` + `_reddit_ads_source`) and your Reddit Ads modeling models (5 tables) within a schema titled (`<target_schema>` + `_reddit_ads`) in your destination. If this is not where you would like your Reddit Ads data to be written to, add the following configuration to your root `dbt_project.yml` file:
+By default, this package builds the Reddit Ads staging models within a schema titled (`<target_schema>` + `_reddit_ads_source`) and your Reddit Ads modeling models within a schema titled (`<target_schema>` + `_reddit_ads`) in your destination. If this is not where you would like your Reddit Ads data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 models:
@@ -162,7 +177,7 @@ vars:
 
 </details>
 
-### (Optional) Step 5: Orchestrate your models with Fivetran Transformations for dbt Core™
+### (Optional) Step 6: Orchestrate your models with Fivetran Transformations for dbt Core™
 <details><summary>Expand for more details</summary>
 
 Fivetran offers the ability for you to orchestrate your dbt project through [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt). Learn how to set up your project for orchestration through Fivetran in our [Transformations for dbt Core setup guides](https://fivetran.com/docs/transformations/dbt#setupguide).
@@ -176,7 +191,7 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 ```yml
 packages:
     - package: fivetran/reddit_ads_source
-      version: [">=0.3.0", "<0.4.0"]
+      version: [">=0.4.0", "<0.5.0"]
 
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
