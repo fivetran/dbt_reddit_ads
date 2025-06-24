@@ -1,3 +1,29 @@
+# dbt_reddit_ads v0.5.0
+
+[PR #19](https://github.com/fivetran/dbt_reddit_ads/pull/19) includes the following updates:
+
+## Breaking Change for dbt Core < 1.9.6
+> *Note: This is not relevant to Fivetran Quickstart users.*
+
+Migrated `freshness` from a top-level source property to a source `config` in alignment with [recent updates](https://github.com/dbt-labs/dbt-core/issues/11506) from dbt Core ([Source PR #13](https://github.com/fivetran/dbt_reddit_ads_source/pull/13)). This will resolve the following deprecation warning that users running dbt >= 1.9.6 may have received:
+
+```
+[WARNING]: Deprecated functionality
+Found `freshness` as a top-level property of `reddit_ads` in file
+`models/src_reddit_ads.yml`. The `freshness` top-level property should be moved
+into the `config` of `reddit_ads`.
+```
+
+**IMPORTANT:** Users running dbt Core < 1.9.6 will not be able to utilize freshness tests in this release or any subsequent releases, as older versions of dbt will not recognize freshness as a source `config` and therefore not run the tests.
+
+If you are using dbt Core < 1.9.6 and want to continue running Reddit Ads freshness tests, please elect **one** of the following options:
+  1. (Recommended) Upgrade to dbt Core >= 1.9.6
+  2. Do not upgrade your installed version of the `reddit_ads` package. Pin your dependency on v0.4.0 in your `packages.yml` file.
+  3. Utilize a dbt [override](https://docs.getdbt.com/reference/resource-properties/overrides) to overwrite the package's `reddit_ads` source and apply freshness via the [old](https://github.com/fivetran/dbt_reddit_ads_source/blob/v0.4.1/models/src_reddit_ads.yml#L11-L13) top-level property route. This will require you to copy and paste the entirety of the `src_reddit_ads.yml` [file](https://github.com/fivetran/dbt_reddit_ads_source/blob/v0.4.1/models/src_reddit_ads.yml#L4-L505) and add an `overrides: reddit_ads_source` property.
+
+## Under the Hood
+- Updated the package maintainer PR template.
+
 # dbt_reddit_ads v0.4.0
 [PR #18](https://github.com/fivetran/dbt_reddit_ads/pull/18) includes the following updates:
 
