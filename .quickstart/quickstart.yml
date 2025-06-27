@@ -4,8 +4,6 @@ schema_key: reddit_ads_schema
 dbt_versions: ">=1.3.0 <2.0.0"
 
 table_variables:
-  reddit_ads__using_account:
-    - account
   reddit_ads__using_business_account:
     - business_account
   reddit_ads__using_campaign_country_report:
