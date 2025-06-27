@@ -75,10 +75,11 @@ vars:
 ```
 
 ### Step 4: Enable/disable models and sources
-Your Reddit Ads connection may not sync every table that this package expects. If you do not have the `CAMPAIGN_COUNTRY_REPORT` or `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` tables synced, add the following variable to your root `dbt_project.yml` file:
+Your Reddit Ads connection may not sync every table that this package expects. If you do not have the `BUSINESS_ACCOUNT`, `CAMPAIGN_COUNTRY_REPORT` or `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` tables synced, add the corresponding following variable to your root `dbt_project.yml` file. Note that if `BUSINESS_ACCOUNT` is not available, setting the variable to false will fall back to using the `ACCOUNT` table instead.
 
 ```yml
 vars:
+    reddit_ads__using_business_account: false # Default is true. Will switch to ACCOUNT if set to false.
     reddit_ads__using_campaign_country_report: false # Default is true
     reddit_ads__using_campaign_country_conversions_report: false # Default is true, requires CAMPAIGN_COUNTRY_REPORT to be enabled
 ```
