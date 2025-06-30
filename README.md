@@ -79,7 +79,7 @@ Your Reddit Ads connection may not sync every table that this package expects. I
 
 ```yml
 vars:
-    reddit_ads__using_business_account: false # Default is true. Will switch to ACCOUNT if set to false.
+    reddit_ads__using_business_account: false # Default is true. Will use ACCOUNT if set to false.
     reddit_ads__using_campaign_country_report: false # Default is true
     reddit_ads__using_campaign_country_conversions_report: false # Default is true, requires CAMPAIGN_COUNTRY_REPORT to be enabled
 ```
