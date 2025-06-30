@@ -10,6 +10,7 @@
 
 ## Under the Hood
 - Added `reddit_ads__using_business_account` to `quickstart.yml`.
+- Added seed `reddit_ads_business_account_data`.
 - Updated the seed column types in `integration_tests/dbt_project.yml`.
 
 # dbt_reddit_ads v0.5.0
