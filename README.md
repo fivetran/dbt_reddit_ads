@@ -60,7 +60,7 @@ If you are not using the downstream [Ad Reporting](https://github.com/fivetran/d
 ```yaml
 packages:
   - package: fivetran/reddit_ads
-    version: [">=0.5.0", "<0.6.0"]
+    version: [">=0.6.0", "<0.7.0"]
 ```
 
 Do NOT include the `reddit_ads_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
@@ -75,10 +75,11 @@ vars:
 ```
 
 ### Step 4: Enable/disable models and sources
-Your Reddit Ads connection may not sync every table that this package expects. If you do not have the `CAMPAIGN_COUNTRY_REPORT` or `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` tables synced, add the following variable to your root `dbt_project.yml` file:
+Your Reddit Ads connection may not sync every table that this package expects. If you do not have the `BUSINESS_ACCOUNT`, `CAMPAIGN_COUNTRY_REPORT` or `CAMPAIGN_COUNTRY_CONVERSIONS_REPORT` tables synced, add the corresponding following variable to your root `dbt_project.yml` file. Note that if `BUSINESS_ACCOUNT` is not available, setting the variable to false will fall back to using the `ACCOUNT` table instead.
 
 ```yml
 vars:
+    reddit_ads__using_business_account: false # Default is true. Will use ACCOUNT if set to false.
     reddit_ads__using_campaign_country_report: false # Default is true
     reddit_ads__using_campaign_country_conversions_report: false # Default is true, requires CAMPAIGN_COUNTRY_REPORT to be enabled
 ```
@@ -191,7 +192,7 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 ```yml
 packages:
     - package: fivetran/reddit_ads_source
-      version: [">=0.5.0", "<0.6.0"]
+      version: [">=0.6.0", "<0.7.0"]
 
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]

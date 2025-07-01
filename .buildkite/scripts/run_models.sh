@@ -19,7 +19,7 @@ dbt deps
 dbt seed --target "$db" --full-refresh
 dbt run --target "$db" --full-refresh
 dbt test --target "$db"
-dbt run --target "$db" --vars '{reddit_ads__conversion_event_types: [], reddit_ads__using_campaign_country_report: false}' --full-refresh
+dbt run --target "$db" --vars '{reddit_ads__conversion_event_types: [], reddit_ads__using_campaign_country_report: false, reddit_ads__using_business_account: false}' --full-refresh
 dbt test --target "$db"
 dbt run --target "$db" --vars '{reddit_ads__using_campaign_country_conversions_report: false}' --full-refresh
 dbt test --target "$db"
