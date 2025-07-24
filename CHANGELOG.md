@@ -1,3 +1,27 @@
+# dbt_reddit_ads v0.7.0
+[PR #22](https://github.com/fivetran/dbt_reddit_ads/pull/22) includes the following updates:
+
+## Schema & Data Updates
+**11 total changes • 11 possible breaking changes**
+
+| Data Model | Change Type | Old Name | New Name | Notes |
+| --- | --- | --- | --- | --- |
+| `reddit_ads__account_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__ad_group_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__ad_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__campaign_country_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__campaign_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__url_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__account_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__ad_group_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__ad_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__campaign_country_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__campaign_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+
+## Breaking Change
+- Updated the datatype of the `spend` fields from `BIGINT` to `NUMERIC` to avoid rounding when converting to dollars and ensure full decimal precision is preserved.
+  - The type cast is applied in the staging layer and propagates through to the transform layer.
+
 # dbt_reddit_ads v0.6.0
 [PR #20](https://github.com/fivetran/dbt_reddit_ads/pull/20) includes the following updates:
 
