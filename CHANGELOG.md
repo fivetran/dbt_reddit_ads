@@ -1,20 +1,37 @@
+# dbt_reddit_ads v0.7.0
+[PR #22](https://github.com/fivetran/dbt_reddit_ads/pull/22) includes the following updates:
+
+## Schema & Data Updates
+**11 total changes • 11 possible breaking changes**
+
+| Data Model | Change Type | Old Name | New Name | Notes |
+| --- | --- | --- | --- | --- |
+| `reddit_ads__account_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__ad_group_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__ad_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__campaign_country_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__campaign_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__url_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__account_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__ad_group_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__ad_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__campaign_country_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `stg_reddit_ads__campaign_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+
+## Breaking Change
+- Updated the datatype of the `spend` fields from `BIGINT` to `NUMERIC` to avoid rounding when converting to dollars and ensure full decimal precision is preserved.
+  - The type cast is applied in the staging layer and propagates through to the transform layer.
+
 [PR #21](https://github.com/fivetran/dbt_reddit_ads/pull/21) includes the following updates:
 
 ### Under the Hood - July 2025 Updates
 
 - Updated conditions in `.github/workflows/auto-release.yml`.
 - Added `.github/workflows/generate-docs.yml`.
-- Added `+docs: show: False` to `integration_tests/dbt_project.yml`.
 - Migrated `flags` (e.g., `send_anonymous_usage_stats`, `use_colors`) from `sample.profiles.yml` to `integration_tests/dbt_project.yml`.
 - Updated `maintainer_pull_request_template.md` with improved checklist.
-- Refreshed README tag block:
-  - Standardized Quickstart-compatible badge set
-  - Left-aligned and positioned below the H1 title.
+- Refreshed README tag block.
 - Updated Python image version to `3.10.13` in `pipeline.yml`.
-- Added `CI_DATABRICKS_DBT_CATALOG` to:
-  - `.buildkite/hooks/pre-command` (as an export)
-  - `pipeline.yml` (under the `environment` block, after `CI_DATABRICKS_DBT_TOKEN`)
-- Added `certifi==2025.1.31` to `requirements.txt` (if missing).
 - Updated `.gitignore` to exclude additional DBT, Python, and system artifacts.
 
 # dbt_reddit_ads v0.6.0

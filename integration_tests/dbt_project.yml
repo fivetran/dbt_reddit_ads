@@ -1,5 +1,5 @@
 name: 'reddit_ads_integration_tests'
-version: '0.6.0'
+version: '0.7.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -22,34 +22,34 @@ vars:
   reddit_ads_campaign_country_conversions_report_identifier: "reddit_ads_campaign_country_conversions_report_data"
   
   # Comment out when generating docs!
-  reddit_ads__ad_conversions_passthrough_metrics: 
-    - name: 'view_through_conversion_attribution_window_week'
-  reddit_ads__account_passthrough_metrics: 
-    - name: conversions
-    - name: app_install_metrics_install
-      alias: installs
-    - name: view_through_conversions
-  reddit_ads__campaign_passthrough_metrics: 
-    - name: conversions
-    - name: app_install_metrics_install
-      alias: installs
-    - name: total_value
-  reddit_ads__ad_group_passthrough_metrics:
-    - name: conversions
-    - name: app_install_metrics_install
-      alias: installs
-    - name: total_items
-  reddit_ads__ad_passthrough_metrics:
-    - name: conversions
-    - name: app_install_metrics_install
-      alias: installs
-  reddit_ads__campaign_country_passthrough_metrics:
-    - name: conversions2
-      transform_sql: "cast(conversions2 as bigint)"
-  reddit_ads__campaign_country_conversions_passthrough_metrics:
-    - name: app_install_metrics_install
-      alias: installs2
-      transform_sql: "cast(installs2 as bigint)"
+  reddit_ads__ad_conversions_passthrough_metrics: # @docs-ignore
+    - name: 'view_through_conversion_attribution_window_week' # @docs-ignore
+  reddit_ads__account_passthrough_metrics:  # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: app_install_metrics_install # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: view_through_conversions # @docs-ignore
+  reddit_ads__campaign_passthrough_metrics:  # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: app_install_metrics_install # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: total_value # @docs-ignore
+  reddit_ads__ad_group_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: app_install_metrics_install # @docs-ignore
+      alias: installs # @docs-ignore
+    - name: total_items # @docs-ignore
+  reddit_ads__ad_passthrough_metrics: # @docs-ignore
+    - name: conversions # @docs-ignore
+    - name: app_install_metrics_install # @docs-ignore
+      alias: installs # @docs-ignore
+  reddit_ads__campaign_country_passthrough_metrics: # @docs-ignore
+    - name: conversions2 # @docs-ignore
+      transform_sql: "cast(conversions2 as bigint)" # @docs-ignore
+  reddit_ads__campaign_country_conversions_passthrough_metrics: # @docs-ignore
+    - name: app_install_metrics_install # @docs-ignore
+      alias: installs2 # @docs-ignore
+      transform_sql: "cast(installs2 as bigint)" # @docs-ignore
 
   # For validation testing
   reddit_ads__conversion_event_types:
