@@ -4,28 +4,11 @@
 ## Schema & Data Updates
 **11 total changes • 11 possible breaking changes**
 
-| Data Model | Change Type | Old Name | New Name | Notes |
+| Data Models | Change Type | Old | New | Notes |
 | --- | --- | --- | --- | --- |
-| `reddit_ads__account_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
-| `reddit_ads__ad_group_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
-| `reddit_ads__ad_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
-| `reddit_ads__campaign_country_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
-| `reddit_ads__campaign_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
-| `reddit_ads__url_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
-| `stg_reddit_ads__account_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
-| `stg_reddit_ads__ad_group_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
-| `stg_reddit_ads__ad_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
-| `stg_reddit_ads__campaign_country_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
-| `stg_reddit_ads__campaign_report` | Datatype | `spend (BIGINT)` | `spend (NUMERIC)` |  |
+| `reddit_ads__account_report` <br> `reddit_ads__ad_group_report` <br> `reddit_ads__ad_report` <br> `reddit_ads__campaign_country_report` <br> `reddit_ads__campaign_report` <br> `reddit_ads__url_report` <br> `stg_reddit_ads__account_report` <br> `stg_reddit_ads__ad_group_report` <br> `stg_reddit_ads__ad_report` <br> `stg_reddit_ads__campaign_country_report` <br> `stg_reddit_ads__campaign_report` | Column datatype | `spend` (`BIGINT`) | `spend` (`NUMERIC`) | Updated the datatype of the `spend` field from `BIGINT` to `NUMERIC` to preserve decimal precision and prevent rounding when converting to dollars. The type cast is applied in the staging layer and propagates through to the transform layer. |
 
-## Breaking Change
-- Updated the datatype of the `spend` fields from `BIGINT` to `NUMERIC` to avoid rounding when converting to dollars and ensure full decimal precision is preserved.
-  - The type cast is applied in the staging layer and propagates through to the transform layer.
-
-[PR #21](https://github.com/fivetran/dbt_reddit_ads/pull/21) includes the following updates:
-
-### Under the Hood - July 2025 Updates
-
+## Under the Hood
 - Updated conditions in `.github/workflows/auto-release.yml`.
 - Added `.github/workflows/generate-docs.yml`.
 - Migrated `flags` (e.g., `send_anonymous_usage_stats`, `use_colors`) from `sample.profiles.yml` to `integration_tests/dbt_project.yml`.
