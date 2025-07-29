@@ -1,3 +1,7 @@
+# dbt_reddit_ads v0.7.1-a1
+[PR #23](https://github.com/fivetran/dbt_reddit_ads/pull/23) includes the following updates:
+- Includes all the changes of v0.7.0 but set up as a pre-release. 
+
 # dbt_reddit_ads v0.7.0
 [PR #22](https://github.com/fivetran/dbt_reddit_ads/pull/22) includes the following updates:
 
