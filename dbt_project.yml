@@ -1,7 +1,8 @@
 name: 'reddit_ads'
-version: '0.7.0'
+version: '0.8.0'
 config-version: 2
-require-dbt-version: [">=1.3.0", "<2.0.0"]
+profile: 'default'
+require-dbt-version: [">=1.10.6"]
 vars:
   reddit_ads:
     account: "{{ ref('stg_reddit_ads__account') }}"
@@ -38,3 +39,7 @@ models:
   reddit_ads:
     +schema: reddit_ads
     +materialized: table
+
+flags:
+  require_generic_test_arguments_property: true
+
