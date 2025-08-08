@@ -3,18 +3,18 @@ version: 2
 models:
   - name: reddit_ads__account_report
     description: >
-      Each record in this table represents the daily number of clicks, impressions, and spend of ads 
-      by account, account timezone, attribution type, and currency.
+      Each record in this table represents the daily number of clicks, impressions, and spend of ads  by account, account timezone, attribution type, and currency.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - account_id
-            - attribution_type
-            - currency
-            - status
-            - time_zone_id
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - attribution_type
+              - currency
+              - status
+              - time_zone_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -55,40 +55,41 @@ models:
       Each record in this table represents the daily number of clicks, impressions, and spend per ad group, along with campaign and account information.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - account_id
-            - ad_group_id
-            - campaign_id
-            - currency
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - ad_group_id
+              - campaign_id
+              - currency
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
       - name: date_day
-        description:  '{{ doc("date_day") }}'
+        description: '{{ doc("date_day") }}'
         tests:
           - not_null
       - name: account_id
-        description:  '{{ doc("account_id") }}'
+        description: '{{ doc("account_id") }}'
       - name: ad_group_name
-        description:  '{{ doc("ad_group_name") }}'
+        description: '{{ doc("ad_group_name") }}'
       - name: ad_group_id
-        description:  '{{ doc("ad_group_id") }}'
+        description: '{{ doc("ad_group_id") }}'
         tests:
           - not_null
       - name: campaign_name
-        description:  '{{ doc("campaign_name") }}'
+        description: '{{ doc("campaign_name") }}'
       - name: campaign_id
-        description:  '{{ doc("campaign_id") }}'
+        description: '{{ doc("campaign_id") }}'
       - name: currency
-        description:  '{{ doc("currency") }}'
+        description: '{{ doc("currency") }}'
       - name: clicks
-        description:  '{{ doc("clicks") }}'
+        description: '{{ doc("clicks") }}'
       - name: impressions
-        description:  '{{ doc("impressions") }}'
+        description: '{{ doc("impressions") }}'
       - name: spend
-        description:  Spend converted out of microcurrency (so Spend/1,000,000)
+        description: Spend converted out of microcurrency (so Spend/1,000,000)
       - name: conversions
         description: '{{ doc("click_through_conversion_attribution_window_month") }}'
       - name: total_value
@@ -104,15 +105,16 @@ models:
       Each record in this table represents the daily number of clicks, impressions, and spend per ad, along with account, campaign, ad group, and post information.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - ad_id
-            - post_id
-            - account_id
-            - ad_group_id
-            - campaign_id
-            - currency
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - ad_id
+              - post_id
+              - account_id
+              - ad_group_id
+              - campaign_id
+              - currency
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -161,12 +163,13 @@ models:
       Each record in this table represents the daily number of clicks, impressions, and spend per campaign, along with account information.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - account_id
-            - campaign_id
-            - currency
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_id
+              - currency
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -204,16 +207,17 @@ models:
       Each record in this table represents the daily number of clicks, impressions, and spend per url and utm parameters, along with post,ad, account, campaign, and ad group information.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - click_url
-            - ad_id
-            - account_id
-            - ad_group_id
-            - campaign_id
-            - post_id
-            - currency
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - click_url
+              - ad_id
+              - account_id
+              - ad_group_id
+              - campaign_id
+              - post_id
+              - currency
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -286,12 +290,13 @@ models:
       Each record in this table represents the daily number of clicks, impressions, and spend per campaign and country, along with account information.
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - account_id
-            - campaign_id
-            - country
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_id
+              - country
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -302,7 +307,7 @@ models:
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
       - name: campaign_name
-        description:  '{{ doc("campaign_name") }}'
+        description: '{{ doc("campaign_name") }}'
       - name: country
         description: '{{ doc("country") }}'
       - name: clicks
@@ -325,21 +330,16 @@ models:
         description: '{{ doc("currency") }}'
       - name: effective_status
         description: >
-          The current effective status of the ad, reflecting both configured status and 
-          any internal processing states that may affect delivery.
+          The current effective status of the ad, reflecting both configured status and  any internal processing states that may affect delivery.
       - name: configured_status
         description: >
-          The user-defined status of the ad (e.g., ACTIVE, PAUSED), indicating whether 
-          it is intended to be running.
+          The user-defined status of the ad (e.g., ACTIVE, PAUSED), indicating whether  it is intended to be running.
       - name: is_processing
         description: >
-          A boolean flag indicating whether the ad is still being processed and not yet 
-          ready for delivery.
+          A boolean flag indicating whether the ad is still being processed and not yet  ready for delivery.
       - name: objective
         description: >
-          The advertising goal or objective selected for the campaign, such as 
-          CONVERSIONS, TRAFFIC, or BRAND_AWARENESS.
+          The advertising goal or objective selected for the campaign, such as  CONVERSIONS, TRAFFIC, or BRAND_AWARENESS.
       - name: funding_instrument_id
-        description: >
-          The ID of the funding instrument (e.g., credit card or line of credit) used 
-          to pay for the ad campaign.
+        description: >-
+          The ID of the funding instrument (e.g., credit card or line of credit) used  to pay for the ad campaign.
