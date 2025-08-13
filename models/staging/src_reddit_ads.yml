@@ -1,0 +1,529 @@
+version: 2
+
+sources:
+  - name: reddit_ads # This source will only be used if you are using a single reddit_ads source connector. If multiple sources are being unioned, their tables will be directly referenced via adapter.get_relation.
+    schema: "{{ var('reddit_ads_schema', 'reddit_ads') }}"
+    database: "{% if target.type != 'spark'%}{{ var('reddit_ads_database', target.database) }}{% endif %}"
+    
+    loader: Fivetran
+
+    config:
+      loaded_at_field: _fivetran_synced
+      enabled: "{{ var('ad_reporting__reddit_ads_enabled', true) }}"
+      freshness: 
+        warn_after: {count: 48, period: hour}
+        error_after: {count: 168, period: hour}
+
+    tables:
+      - name: account
+        identifier: "{{ var('reddit_ads_account_identifier', 'account') }}"
+        description: Each record represents information about an account.
+        config:
+          enabled: "{{ (not var('reddit_ads__using_business_account', True) and var('ad_reporting__reddit_ads_enabled', True)) }}"
+        columns:
+          - name: id
+            description: '{{ doc("account_id") }}'
+          - name: attribution_type
+            description: '{{ doc("attribution_type") }}'
+          - name: click_attribution_window
+            description: '{{ doc("click_attribution_window") }}'
+          - name: created_at
+            description: '{{ doc("created_at") }}'
+          - name: currency
+            description: '{{ doc("currency") }}'
+          - name: status
+            description: '{{ doc("status") }}'
+          - name: time_zone_id
+            description: '{{ doc("time_zone_id") }}'
+          - name: view_attribution_window
+            description: '{{ doc("view_attribution_window") }}'
+
+      - name: business_account
+        identifier: "{{ var('reddit_ads_business_account_identifier', 'business_account') }}"
+        description: Each record represents information about an account.
+        config:
+          enabled: "{{ (var('reddit_ads__using_business_account', True) and var('ad_reporting__reddit_ads_enabled', True)) }}"
+        columns:
+          - name: id
+            description: '{{ doc("account_id") }}'
+          - name: attribution_type
+            description: '{{ doc("attribution_type") }}'
+          - name: click_attribution_window
+            description: '{{ doc("click_attribution_window") }}'
+          - name: created_at
+            description: '{{ doc("created_at") }}'
+          - name: currency
+            description: '{{ doc("currency") }}'
+          - name: status
+            description: '{{ doc("status") }}'
+          - name: time_zone_id
+            description: '{{ doc("time_zone_id") }}'
+          - name: view_attribution_window
+            description: '{{ doc("view_attribution_window") }}'
+
+      - name: account_report
+        identifier: "{{ var('reddit_ads_account_report_identifier', 'account_report') }}"
+        description: Each record represents a summary of events for each given date and account.
+        columns:
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: clicks
+            description: '{{ doc("clicks") }}'
+          - name: comment_downvotes
+            description: '{{ doc("comment_downvotes") }}'
+          - name: comment_upvotes
+            description: '{{ doc("comment_upvotes") }}'
+          - name: comments_page_views
+            description: '{{ doc("comments_page_views") }}'
+          - name: conversion_roas
+            description: '{{ doc("conversion_roas") }}'
+          - name: cpc
+            description: '{{ doc("cpc") }}'
+          - name: ctr
+            description: '{{ doc("ctr") }}'
+          - name: date
+            description: '{{ doc("date") }}'
+          - name: ecpm
+            description: '{{ doc("ecpm") }}'
+          - name: impressions
+            description: '{{ doc("impressions") }}'
+          - name: region
+            description: '{{ doc("region") }}'
+          - name: spend
+            description: '{{ doc("spend") }}'
+          - name: video_started
+            description: '{{ doc("video_started") }}'
+          - name: video_watched_25_percent
+            description: '{{ doc("video_watched_25_percent") }}'
+          - name: video_watched_3_seconds
+            description: '{{ doc("video_watched_3_seconds") }}'
+          - name: video_watched_50_percent
+            description: '{{ doc("video_watched_50_percent") }}'
+          - name: video_watched_5_seconds
+            description: '{{ doc("video_watched_5_seconds") }}'
+          - name: video_watched_75_percent
+            description: '{{ doc("video_watched_75_percent") }}'
+          - name: viewer_comments
+            description: '{{ doc("viewer_comments") }}'
+
+      - name: ad
+        identifier: "{{ var('reddit_ads_ad_identifier', 'ad') }}"
+        description: Each record represents information about each ad.
+        columns:
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: ad_group_id
+            description: '{{ doc("ad_group_id") }}'
+          - name: campaign_id
+            description: '{{ doc("campaign_id") }}'
+          - name: click_url
+            description: '{{ doc("click_url") }}'
+          - name: configured_status
+            description: '{{ doc("configured_status") }}'
+          - name: effective_status
+            description: '{{ doc("effective_status") }}'
+          - name: id
+            description: '{{ doc("ad_id") }}'
+          - name: is_processing
+            description: '{{ doc("is_processing") }}'
+          - name: name
+            description: '{{ doc("ad_name") }}'
+          - name: post_id
+            description: '{{ doc("post_id") }}'
+          - name: post_url
+            description: '{{ doc("post_url") }}'
+          - name: rejection_reason
+            description: '{{ doc("rejection_reason") }}'
+
+      - name: ad_report
+        identifier: "{{ var('reddit_ads_ad_report_identifier', 'ad_report') }}"
+        description: Each record represents a summary of events for each given date and ad.
+        columns:
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: ad_id
+            description: '{{ doc("ad_id") }}'
+          - name: clicks
+            description: '{{ doc("clicks") }}'
+          - name: comment_downvotes
+            description: '{{ doc("comment_downvotes") }}'
+          - name: comment_upvotes
+            description: '{{ doc("comment_upvotes") }}'
+          - name: comments_page_views
+            description: '{{ doc("comments_page_views") }}'
+          - name: conversion_roas
+            description: '{{ doc("conversion_roas") }}'
+          - name: cpc
+            description: '{{ doc("cpc") }}'
+          - name: ctr
+            description: '{{ doc("ctr") }}'
+          - name: date
+            description: '{{ doc("date") }}'
+          - name: ecpm
+            description: '{{ doc("ecpm") }}'
+          - name: impressions
+            description: '{{ doc("impressions") }}'
+          - name: region
+            description: '{{ doc("region") }}'
+          - name: spend
+            description: '{{ doc("spend") }}'
+          - name: video_started
+            description: '{{ doc("video_started") }}'
+          - name: video_watched_25_percent
+            description: '{{ doc("video_watched_25_percent") }}'
+          - name: video_watched_3_seconds
+            description: '{{ doc("video_watched_3_seconds") }}'
+          - name: video_watched_50_percent
+            description: '{{ doc("video_watched_50_percent") }}'
+          - name: video_watched_5_seconds
+            description: '{{ doc("video_watched_5_seconds") }}'
+          - name: video_watched_75_percent
+            description: '{{ doc("video_watched_75_percent") }}'
+          - name: viewer_comments
+            description: '{{ doc("viewer_comments") }}'
+
+      - name: ad_group
+        identifier: "{{ var('reddit_ads_ad_group_identifier', 'ad_group') }}"
+        description: Each record represents information about each ad group.
+        columns:
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: bid_strategy
+            description: '{{ doc("bid_strategy") }}'
+          - name: bid_value
+            description: '{{ doc("bid_value") }}'
+          - name: campaign_id
+            description: '{{ doc("campaign_id") }}'
+          - name: configured_status
+            description: '{{ doc("configured_status") }}'
+          - name: effective_status
+            description: '{{ doc("effective_status") }}'
+          - name: end_time
+            description: '{{ doc("end_time") }}'
+          - name: expand_targeting
+            description: '{{ doc("expand_targeting") }}'
+          - name: goal_type
+            description: '{{ doc("goal_type") }}'
+          - name: goal_value
+            description: '{{ doc("goal_value") }}'
+          - name: id
+            description: '{{ doc("ad_group_id") }}'
+          - name: is_processing
+            description: '{{ doc("is_processing") }}'
+          - name: name
+            description: '{{ doc("ad_group_name") }}'
+          - name: optimization_strategy_type
+            description: '{{ doc("optimization_strategy_type") }}'
+          - name: start_time
+            description: '{{ doc("start_time") }}'
+
+      - name: ad_group_report
+        identifier: "{{ var('reddit_ads_ad_group_report_identifier', 'ad_group_report') }}"
+        description: Each record represents a summary of events for each given date and ad group.
+        columns:
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: ad_group_id
+            description: '{{ doc("ad_group_id") }}'
+          - name: clicks
+            description: '{{ doc("clicks") }}'
+          - name: comment_downvotes
+            description: '{{ doc("comment_downvotes") }}'
+          - name: comment_upvotes
+            description: '{{ doc("comment_upvotes") }}'
+          - name: comments_page_views
+            description: '{{ doc("comments_page_views") }}'
+          - name: conversion_roas
+            description: '{{ doc("conversion_roas") }}'
+          - name: cpc
+            description: '{{ doc("cpc") }}'
+          - name: ctr
+            description: '{{ doc("ctr") }}'
+          - name: date
+            description: '{{ doc("date") }}'
+          - name: ecpm
+            description: '{{ doc("ecpm") }}'
+          - name: impressions
+            description: '{{ doc("impressions") }}'
+          - name: region
+            description: '{{ doc("region") }}'
+          - name: spend
+            description: '{{ doc("spend") }}'
+          - name: video_started
+            description: '{{ doc("video_started") }}'
+          - name: video_watched_25_percent
+            description: '{{ doc("video_watched_25_percent") }}'
+          - name: video_watched_3_seconds
+            description: '{{ doc("video_watched_3_seconds") }}'
+          - name: video_watched_50_percent
+            description: '{{ doc("video_watched_50_percent") }}'
+          - name: video_watched_5_seconds
+            description: '{{ doc("video_watched_5_seconds") }}'
+          - name: video_watched_75_percent
+            description: '{{ doc("video_watched_75_percent") }}'
+          - name: viewer_comments
+            description: '{{ doc("viewer_comments") }}'
+
+      - name: campaign
+        identifier: "{{ var('reddit_ads_campaign_identifier', 'campaign') }}"
+        description: Each record represents information about each campaign.
+        columns:
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: configured_status
+            description: '{{ doc("configured_status") }}'
+          - name: effective_status
+            description: '{{ doc("effective_status") }}'
+          - name: funding_instrument_id
+            description: '{{ doc("funding_instrument_id") }}'
+          - name: id
+            description: '{{ doc("campaign_id") }}'
+          - name: is_processing
+            description: '{{ doc("is_processing") }}'
+          - name: name
+            description: '{{ doc("campaign_name") }}'
+          - name: objective
+            description: '{{ doc("objective") }}'
+
+      - name: campaign_report
+        identifier: "{{ var('reddit_ads_campaign_report_identifier', 'campaign_report') }}"
+        description: Each record represents a summary of events for each given date and campaign.
+        columns:
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: campaign_id
+            description: '{{ doc("campaign_id") }}'
+          - name: clicks
+            description: '{{ doc("clicks") }}'
+          - name: comment_downvotes
+            description: '{{ doc("comment_downvotes") }}'
+          - name: comment_upvotes
+            description: '{{ doc("comment_upvotes") }}'
+          - name: comments_page_views
+            description: '{{ doc("comments_page_views") }}'
+          - name: conversion_roas
+            description: '{{ doc("conversion_roas") }}'
+          - name: cpc
+            description: '{{ doc("cpc") }}'
+          - name: ctr
+            description: '{{ doc("ctr") }}'
+          - name: date
+            description: '{{ doc("date") }}'
+          - name: ecpm
+            description: '{{ doc("ecpm") }}'
+          - name: impressions
+            description: '{{ doc("impressions") }}'
+          - name: region
+            description: '{{ doc("region") }}'
+          - name: spend
+            description: '{{ doc("spend") }}'
+          - name: video_started
+            description: '{{ doc("video_started") }}'
+          - name: video_watched_25_percent
+            description: '{{ doc("video_watched_25_percent") }}'
+          - name: video_watched_3_seconds
+            description: '{{ doc("video_watched_3_seconds") }}'
+          - name: video_watched_50_percent
+            description: '{{ doc("video_watched_50_percent") }}'
+          - name: video_watched_5_seconds
+            description: '{{ doc("video_watched_5_seconds") }}'
+          - name: video_watched_75_percent
+            description: '{{ doc("video_watched_75_percent") }}'
+          - name: viewer_comments
+            description: '{{ doc("viewer_comments") }}'
+
+      - name: account_conversions_report
+        identifier: '{{ var("reddit_ads_account_conversions_report_identifier", "account_conversions_report") }}'
+        description: '{{ doc("account_conversions_report") }}'
+        columns:
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: date
+            description: '{{ doc("date") }}'
+          - name: event_name
+            description: '{{ doc("event_name") }}'
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: avg_value
+            description: '{{ doc("avg_value") }}'
+          - name: click_through_conversion_attribution_window_month
+            description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+          - name: total_items
+            description: '{{ doc("total_items") }}'
+          - name: total_value
+            description: '{{ doc("total_value") }}'
+          - name: view_through_conversion_attribution_window_month
+            description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+          - name: click_through_conversion_attribution_window_day
+            description: '{{ doc("click_through_conversion_attribution_window_day") }}'
+          - name: click_through_conversion_attribution_window_week
+            description: '{{ doc("click_through_conversion_attribution_window_week") }}'
+          - name: view_through_conversion_attribution_window_day
+            description: '{{ doc("view_through_conversion_attribution_window_day") }}'
+          - name: view_through_conversion_attribution_window_week
+            description: '{{ doc("view_through_conversion_attribution_window_week") }}'
+            
+      - name: ad_group_conversions_report
+        identifier: '{{ var("reddit_ads_ad_group_conversions_report_identifier", "ad_group_conversions_report") }}'
+        description: '{{ doc("ad_group_conversions_report") }}'
+        columns:
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: ad_group_id
+            description: '{{ doc("ad_group_id") }}'
+          - name: date
+            description: '{{ doc("date") }}'
+          - name: event_name
+            description: '{{ doc("event_name") }}'
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: avg_value
+            description: '{{ doc("avg_value") }}'
+          - name: click_through_conversion_attribution_window_month
+            description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+          - name: total_items
+            description: '{{ doc("total_items") }}'
+          - name: total_value
+            description: '{{ doc("total_value") }}'
+          - name: view_through_conversion_attribution_window_month
+            description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+          - name: click_through_conversion_attribution_window_day
+            description: '{{ doc("click_through_conversion_attribution_window_day") }}'
+          - name: click_through_conversion_attribution_window_week
+            description: '{{ doc("click_through_conversion_attribution_window_week") }}'
+          - name: view_through_conversion_attribution_window_day
+            description: '{{ doc("view_through_conversion_attribution_window_day") }}'
+          - name: view_through_conversion_attribution_window_week
+            description: '{{ doc("view_through_conversion_attribution_window_week") }}'
+
+      - name: ad_conversions_report
+        identifier: '{{ var("reddit_ads_ad_conversions_report_identifier", "ad_conversions_report") }}'
+        description: '{{ doc("ad_conversions_report") }}'
+        columns:
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: ad_id
+            description: '{{ doc("ad_id") }}'
+          - name: date
+            description: '{{ doc("date") }}'
+          - name: event_name
+            description: '{{ doc("event_name") }}'
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: avg_value
+            description: '{{ doc("avg_value") }}'
+          - name: click_through_conversion_attribution_window_month
+            description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+          - name: total_items
+            description: '{{ doc("total_items") }}'
+          - name: total_value
+            description: '{{ doc("total_value") }}'
+          - name: view_through_conversion_attribution_window_month
+            description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+          - name: click_through_conversion_attribution_window_day
+            description: '{{ doc("click_through_conversion_attribution_window_day") }}'
+          - name: click_through_conversion_attribution_window_week
+            description: '{{ doc("click_through_conversion_attribution_window_week") }}'
+          - name: view_through_conversion_attribution_window_day
+            description: '{{ doc("view_through_conversion_attribution_window_day") }}'
+          - name: view_through_conversion_attribution_window_week
+            description: '{{ doc("view_through_conversion_attribution_window_week") }}'
+
+      - name: campaign_conversions_report
+        identifier: '{{ var("reddit_ads_campaign_conversions_report_identifier", "campaign_conversions_report") }}'
+        description: '{{ doc("campaign_conversions_report") }}'
+        columns:
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: campaign_id
+            description: '{{ doc("campaign_id") }}'
+          - name: date
+            description: '{{ doc("date") }}'
+          - name: event_name
+            description: '{{ doc("event_name") }}'
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: avg_value
+            description: '{{ doc("avg_value") }}'
+          - name: click_through_conversion_attribution_window_month
+            description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+          - name: total_items
+            description: '{{ doc("total_items") }}'
+          - name: total_value
+            description: '{{ doc("total_value") }}'
+          - name: view_through_conversion_attribution_window_month
+            description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+          - name: click_through_conversion_attribution_window_day
+            description: '{{ doc("click_through_conversion_attribution_window_day") }}'
+          - name: click_through_conversion_attribution_window_week
+            description: '{{ doc("click_through_conversion_attribution_window_week") }}'
+          - name: view_through_conversion_attribution_window_day
+            description: '{{ doc("view_through_conversion_attribution_window_day") }}'
+          - name: view_through_conversion_attribution_window_week
+            description: '{{ doc("view_through_conversion_attribution_window_week") }}'
+
+      - name: campaign_country_report
+        identifier: '{{ var("reddit_ads_campaign_country_report_identifier", "campaign_country_report") }}'
+        description: '{{ doc("campaign_country_report") }}'
+        config:
+          enabled: "{{ var('ad_reporting__reddit_ads_enabled', True) and var('reddit_ads__using_campaign_country_report', True) }}"
+        columns:
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: campaign_id
+            description: '{{ doc("campaign_id") }}'
+          - name: country
+            description: '{{ doc("country") }}'
+          - name: date
+            description: '{{ doc("date") }}'
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: clicks
+            description: '{{ doc("clicks") }}'
+          - name: impressions
+            description: '{{ doc("impressions") }}'
+          - name: region
+            description: '{{ doc("region") }}'
+          - name: spend
+            description: '{{ doc("spend") }}'
+
+      - name: campaign_country_conversions_report
+        identifier: '{{ var("reddit_ads_campaign_country_conversions_report_identifier", "campaign_country_conversions_report") }}'
+        description: '{{ doc("campaign_country_conversions_report") }}'
+        config:
+          enabled: "{{ var('ad_reporting__reddit_ads_enabled', True) and var('reddit_ads__using_campaign_country_report', True) and var('reddit_ads__using_campaign_country_conversions_report', True) }}"
+        columns:
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: campaign_id
+            description: '{{ doc("campaign_id") }}'
+          - name: country
+            description: '{{ doc("country") }}'
+          - name: date
+            description: '{{ doc("date") }}'
+          - name: event_name
+            description: '{{ doc("event_name") }}'
+          - name: _fivetran_synced
+            description: '{{ doc("_fivetran_synced") }}'
+          - name: click_through_conversion_attribution_window_month
+            description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+          - name: total_items
+            description: '{{ doc("total_items") }}'
+          - name: total_value
+            description: '{{ doc("total_value") }}'
+          - name: view_through_conversion_attribution_window_month
+            description: '{{ doc("view_through_conversion_attribution_window_month") }}'

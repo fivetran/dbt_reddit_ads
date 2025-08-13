@@ -3,20 +3,20 @@
 with report as (
 
     select *
-    from {{ var('account_daily_report') }}
+    from {{ ref('stg_reddit_ads__account_report') }}
 ), 
 
 accounts as (
 
     select *
-    from {{ var('account') }}
+    from {{ ref('stg_reddit_ads__account') }}
 ),
 
 {# This includes data at the event type level that we'll need to roll up and pivot out #}
 conversions_report as (
 
     select *
-    from {{ var('account_conversions_report') }}
+    from {{ ref('stg_reddit_ads__account_conversions_report') }}
 ),
 
 rollup_conversions_report as (

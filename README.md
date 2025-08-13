@@ -16,7 +16,7 @@
 </p>
 
 ## What does this dbt package do?
-- Produces modeled tables that leverage Reddit Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/reddit-ads) in the format described by [this ERD](https://fivetran.com/docs/applications/reddit-ads#schemainformation) and builds off the output of our [Reddit Ads source package](https://github.com/fivetran/dbt_reddit_ads_source)
+- Produces modeled tables that leverage Reddit Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/reddit-ads) in the format described by [this ERD](https://fivetran.com/docs/applications/reddit-ads#schemainformation).
 - Enables you to better understand the performance of your ads across varying grains:
   - Providing an account, campaign, ad group, ad, and URL level reports
 - Materializes output models designed to work simultaneously with our [multi-platform Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting)
@@ -62,10 +62,10 @@ If you are not using the downstream [Ad Reporting](https://github.com/fivetran/d
 ```yaml
 packages:
   - package: fivetran/reddit_ads
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=1.0.0", "<1.1.0"]
 ```
 
-Do NOT include the `reddit_ads_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
+> All required sources and staging models are now bundled into this transformation package. Do not include `fivetran/reddit_ads_source` in your `packages.yml` since this package has been deprecated.
 
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `reddit_ads` schema. If this is not where your Reddit Ads data is (for example, if your Reddit Ads schema is named `reddit_ads_fivetran`), add the following configuration to your root `dbt_project.yml` file:
@@ -162,10 +162,10 @@ By default, this package builds the Reddit Ads staging models within a schema ti
 
 ```yml
 models:
-    reddit_ads_source:
-      +schema: my_new_schema_name # leave blank for just the target_schema
     reddit_ads:
-      +schema: my_new_schema_name # leave blank for just the target_schema
+      +schema: my_new_schema_name # Leave +schema: blank to use the default target_schema.
+      staging:
+        +schema: my_new_schema_name # Leave +schema: blank to use the default target_schema.
 ```
 
 #### Change the source table references
@@ -193,9 +193,6 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 
 ```yml
 packages:
-    - package: fivetran/reddit_ads_source
-      version: [">=0.7.0", "<0.8.0"]
-
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
 
