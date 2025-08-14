@@ -19,6 +19,10 @@
   - Removed all `accepted_values` tests.
   - Moved `loaded_at_field: _fivetran_synced` under the `config:` block in `src_reddit_ads.yml`.
 
+# dbt_reddit_ads v0.7.1-a1
+[PR #23](https://github.com/fivetran/dbt_reddit_ads/pull/23) includes the following updates:
+- Includes all the changes of v0.7.0 but set up as a pre-release. 
+
 # dbt_reddit_ads v0.7.0
 [PR #22](https://github.com/fivetran/dbt_reddit_ads/pull/22) includes the following updates:
 
