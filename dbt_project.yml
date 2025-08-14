@@ -2,6 +2,7 @@ name: 'reddit_ads'
 version: '1.0.0'
 config-version: 2
 require-dbt-version: [">=1.3.0", "<2.0.0"]
+
 vars:
   reddit_ads:
     account: "{{ source('reddit_ads', 'account') }}"
@@ -40,4 +41,6 @@ models:
     +materialized: table
     staging:
       +schema: reddit_ads_source
-      +materialized: view
+      +materialized: table
+      tmp:
+        +materialized: view

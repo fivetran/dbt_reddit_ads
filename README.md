@@ -1,4 +1,4 @@
-# Reddit Ads Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_reddit_ads/))
+# Reddit Ads dbt Package ([Docs](https://fivetran.github.io/dbt_reddit_ads/))
 
 <p align="left">
     <a alt="License"
@@ -171,7 +171,7 @@ models:
 #### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available when running the package on multiple unioned connections.
 
-> IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_reddit_ads_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
+> IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_reddit_ads/blob/main/dbt_project.yml) variable declarations to see the expected names.
 
 ```yml
 vars:
