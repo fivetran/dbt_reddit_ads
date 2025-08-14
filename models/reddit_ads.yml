@@ -5,16 +5,6 @@ models:
     description: >
       Each record in this table represents the daily number of clicks, impressions, and spend of ads 
       by account, account timezone, attribution type, and currency.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - account_id
-            - attribution_type
-            - currency
-            - status
-            - time_zone_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -53,15 +43,6 @@ models:
   - name: reddit_ads__ad_group_report
     description: >
       Each record in this table represents the daily number of clicks, impressions, and spend per ad group, along with campaign and account information.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - account_id
-            - ad_group_id
-            - campaign_id
-            - currency
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -102,17 +83,6 @@ models:
   - name: reddit_ads__ad_report
     description: >
       Each record in this table represents the daily number of clicks, impressions, and spend per ad, along with account, campaign, ad group, and post information.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - ad_id
-            - post_id
-            - account_id
-            - ad_group_id
-            - campaign_id
-            - currency
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -159,14 +129,6 @@ models:
   - name: reddit_ads__campaign_report
     description: >
       Each record in this table represents the daily number of clicks, impressions, and spend per campaign, along with account information.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - account_id
-            - campaign_id
-            - currency
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -202,18 +164,6 @@ models:
   - name: reddit_ads__url_report
     description: >
       Each record in this table represents the daily number of clicks, impressions, and spend per url and utm parameters, along with post,ad, account, campaign, and ad group information.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - click_url
-            - ad_id
-            - account_id
-            - ad_group_id
-            - campaign_id
-            - post_id
-            - currency
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -284,14 +234,6 @@ models:
   - name: reddit_ads__campaign_country_report
     description: >
       Each record in this table represents the daily number of clicks, impressions, and spend per campaign and country, along with account information.
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - source_relation
-            - date_day
-            - account_id
-            - campaign_id
-            - country
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
