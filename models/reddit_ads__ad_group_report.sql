@@ -3,32 +3,32 @@
 with report as (
 
     select *
-    from {{ var('ad_group_daily_report') }}
+    from {{ ref('stg_reddit_ads__ad_group_report') }}
 ),
 
 ad_groups as (
 
     select *
-    from {{ var('ad_group') }}
+    from {{ ref('stg_reddit_ads__ad_group') }}
 ),
 
 campaigns as (
 
     select *
-    from {{ var('campaign') }}
+    from {{ ref('stg_reddit_ads__campaign') }}
 ),
 
 accounts as (
 
     select *
-    from {{ var('account') }}
+    from {{ ref('stg_reddit_ads__account') }}
 ),
 
 {# This includes data at the event type level that we'll need to roll up and pivot out #}
 conversions_report as (
 
     select *
-    from {{ var('ad_group_conversions_report') }}
+    from {{ ref('stg_reddit_ads__ad_group_conversions_report') }}
 ),
 
 rollup_conversions_report as (

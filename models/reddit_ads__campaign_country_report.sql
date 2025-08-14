@@ -6,7 +6,7 @@
 with report as (
 
     select *
-    from {{ var('campaign_country_daily_report') }}
+    from {{ ref('stg_reddit_ads__campaign_country_report') }}
 ),
 
 rollup_report as (
@@ -35,7 +35,7 @@ rollup_report as (
 conversions_report as (
 
     select *
-    from {{ var('campaign_country_conversions_report') }}
+    from {{ ref('stg_reddit_ads__campaign_country_conversions_report') }}
 ),
 
 rollup_conversions_report as (
@@ -72,13 +72,13 @@ rollup_conversions_report as (
 campaigns as (
 
     select *
-    from {{ var('campaign') }}
+    from {{ ref('stg_reddit_ads__campaign') }}
 ),
 
 accounts as (
 
     select *
-    from {{ var('account') }}
+    from {{ ref('stg_reddit_ads__account') }}
 ),
 
 joined as (
