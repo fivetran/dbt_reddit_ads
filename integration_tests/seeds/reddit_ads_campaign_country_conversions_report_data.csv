@@ -1,4 +1,4 @@
-_fivetran_synced,account_id,campaign_id,click_through_conversion_attribution_window_month,country,date,event_name,total_items,total_value,view_through_conversion_attribution_window_month
+_fivetran_synced,account_id,campaign_id,clicks,country,date,event_name,total_items,total_value,views
 2024-04-01 12:00:00,1234,1576385495765735715,1,country1,2024-04-01,lead,4,63,1
 2024-04-02 12:00:00,1234,1456360336221951846,2,country2,2024-04-02,lead,3,60,1
 2024-04-03 12:00:00,1234,1542438351052756282,6,country3,2024-04-03,lead,5,92,2
