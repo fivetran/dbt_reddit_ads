@@ -338,7 +338,7 @@ sources:
             description: '{{ doc("avg_value") }}'
           - name: clicks
             description: '{{ doc("clicks") }}'
-          - name: clicks
+          - name: click_through_conversion_attribution_window_month
             description: >
               [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `clicks` column.
               The total click-through conversions attributed, for the given month-long window.
@@ -348,7 +348,7 @@ sources:
             description: '{{ doc("total_value") }}'
           - name: views
             description: '{{ doc("views") }}'
-          - name: views
+          - name: view_through_conversion_attribution_window_month
             description: >
               [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `views` column.
               The total view-through conversions attributed, for the given month-long window.
@@ -379,7 +379,7 @@ sources:
             description: '{{ doc("avg_value") }}'
           - name: clicks
             description: '{{ doc("clicks") }}'
-          - name: clicks
+          - name: click_through_conversion_attribution_window_month
             description: >
               [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `clicks` column.
               The total click-through conversions attributed, for the given month-long window.
@@ -389,7 +389,7 @@ sources:
             description: '{{ doc("total_value") }}'
           - name: views
             description: '{{ doc("views") }}'
-          - name: views
+          - name: view_through_conversion_attribution_window_month
             description: >
               [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `views` column.
               The total view-through conversions attributed, for the given month-long window.
@@ -420,7 +420,7 @@ sources:
             description: '{{ doc("avg_value") }}'
           - name: clicks
             description: '{{ doc("clicks") }}'
-          - name: clicks
+          - name: click_through_conversion_attribution_window_month
             description: >
               [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `clicks` column.
               The total click-through conversions attributed, for the given month-long window.
@@ -430,7 +430,7 @@ sources:
             description: '{{ doc("total_value") }}'
           - name: views
             description: '{{ doc("views") }}'
-          - name: views
+          - name: view_through_conversion_attribution_window_month
             description: >
               [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `views` column.
               The total view-through conversions attributed, for the given month-long window.
@@ -461,7 +461,7 @@ sources:
             description: '{{ doc("avg_value") }}'
           - name: clicks
             description: '{{ doc("clicks") }}'
-          - name: clicks
+          - name: click_through_conversion_attribution_window_month
             description: >
               [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `clicks` column.
               The total click-through conversions attributed, for the given month-long window.
@@ -471,7 +471,7 @@ sources:
             description: '{{ doc("total_value") }}'
           - name: views
             description: '{{ doc("views") }}'
-          - name: views
+          - name: view_through_conversion_attribution_window_month
             description: >
               [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `views` column.
               The total view-through conversions attributed, for the given month-long window.
@@ -529,7 +529,7 @@ sources:
             description: '{{ doc("_fivetran_synced") }}'
           - name: clicks
             description: '{{ doc("clicks") }}'
-          - name: clicks
+          - name: click_through_conversion_attribution_window_month
             description: >
               [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `clicks` column.
               The total click-through conversions attributed, for the given month-long window.
@@ -539,7 +539,7 @@ sources:
             description: '{{ doc("total_value") }}'
           - name: views
             description: '{{ doc("views") }}'
-          - name: views
+          - name: view_through_conversion_attribution_window_month
             description: >
               [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `views` column.
               The total view-through conversions attributed, for the given month-long window.
