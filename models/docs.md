@@ -97,18 +97,6 @@ The destination url, or the website address, that a visitor goes to when they cl
 The number of clicks detected for this report period
 {% enddocs %}
 
-{% docs comment_downvotes %}
-The number comment downvotes for this report period
-{% enddocs %}
-
-{% docs comment_upvotes %}
-The number comment upvotes for this report period
-{% enddocs %}
-
-{% docs comments_page_views %}
-The number of times the comments page was viewed for this report period
-{% enddocs %}
-
 {% docs configured_status %}
 The status configured by the account owner. "ACTIVE", "PAUSED", "ARCHIVED", "DELETED"
 {% enddocs %}
