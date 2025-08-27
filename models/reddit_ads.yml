@@ -31,11 +31,11 @@ models:
       - name: spend
         description: Spend converted out of microcurrency (so Spend/1,000,000)
       - name: conversions
-        description: '{{ doc("click") }}'
+        description: '{{ doc("click_through_conversion_attribution_window_month") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
-        description: '{{ doc("views") }}'
+        description: '{{ doc("view_through_conversion_attribution_window_month") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
 
@@ -71,11 +71,11 @@ models:
       - name: spend
         description:  Spend converted out of microcurrency (so Spend/1,000,000)
       - name: conversions
-        description: '{{ doc("click") }}'
+        description: '{{ doc("click_through_conversion_attribution_window_month") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
-        description: '{{ doc("views") }}'
+        description: '{{ doc("view_through_conversion_attribution_window_month") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
 
@@ -117,11 +117,11 @@ models:
       - name: spend
         description: Spend converted out of microcurrency (so Spend/1,000,000)
       - name: conversions
-        description: '{{ doc("click") }}'
+        description: '{{ doc("click_through_conversion_attribution_window_month") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
-        description: '{{ doc("views") }}'
+        description: '{{ doc("view_through_conversion_attribution_window_month") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
 
@@ -153,11 +153,11 @@ models:
       - name: spend
         description: Spend converted out of microcurrency (so Spend/1,000,000)
       - name: conversions
-        description: '{{ doc("click") }}'
+        description: '{{ doc("click_through_conversion_attribution_window_month") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
-        description: '{{ doc("views") }}'
+        description: '{{ doc("view_through_conversion_attribution_window_month") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
 
@@ -223,11 +223,11 @@ models:
       - name: utm_term
         description: Which keyword brought people to your website; extracted from the `click_url`.
       - name: conversions
-        description: '{{ doc("click") }}'
+        description: '{{ doc("click_through_conversion_attribution_window_month") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
-        description: '{{ doc("views") }}'
+        description: '{{ doc("view_through_conversion_attribution_window_month") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
 
@@ -254,11 +254,11 @@ models:
       - name: spend
         description: Spend converted out of microcurrency (so Spend/1,000,000)
       - name: conversions
-        description: '{{ doc("click") }}'
+        description: '{{ doc("click_through_conversion_attribution_window_month") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
-        description: '{{ doc("views") }}'
+        description: '{{ doc("view_through_conversion_attribution_window_month") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
       - name: campaign_id

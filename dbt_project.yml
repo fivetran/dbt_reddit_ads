@@ -6,6 +6,7 @@ require-dbt-version: [">=1.3.0", "<2.0.0"]
 vars:
   reddit_ads:
     account: "{{ source('reddit_ads', 'account') }}"
+    business_account: "{{ source('reddit_ads','business_account') }}"
     account_conversions_report: "{{ source('reddit_ads', 'account_conversions_report') }}"
     account_daily_report: "{{ source('reddit_ads', 'account_report') }}"
     ad: "{{ source('reddit_ads', 'ad') }}"
