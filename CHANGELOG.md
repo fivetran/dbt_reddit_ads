@@ -1,3 +1,9 @@
+# dbt_reddit_ads v1.1.0
+
+[PR #26](https://github.com/fivetran/dbt_reddit_ads/pull/26) includes the following updates:
+
+
+
 # dbt_reddit_ads v1.0.0
 
 [PR #26](https://github.com/fivetran/dbt_reddit_ads/pull/26) includes the following updates:
