@@ -77,10 +77,12 @@ Name of campaign.
 Determines how long after clicking on your ad you count that user’s actions as a conversion. "DAY", "WEEK", or "MONTH"
 {% enddocs %}
 
-{% docs click_through_conversion_attribution_window_month %} The total click-through conversions attributed, for the given month-long window. {% enddocs %}
-
 {% docs click_through_conversion_attribution_window_day %}
 The total click-through conversions attributed, for the given day-long window. Not included by the package by default.
+{% enddocs %}
+
+{% docs click_through_conversion_attribution_window_month %}
+The total click-through conversions attributed, for the given month-long window.
 {% enddocs %}
 
 {% docs click_through_conversion_attribution_window_week %}
@@ -289,7 +291,7 @@ The total view-through conversions attributed, for the given month-long window.
 
 {% docs view_through_conversion_attribution_window_week %}
 The total click-through conversions attributed, for the given week-long window. Not included by the package by default.
-{% enddocs %}ß
+{% enddocs %}
 
 {% docs viewer_comments %}
 The number of times a user saw the post, and also commented on it. We count per view + comment combination (similar to a conversion)
