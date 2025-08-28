@@ -81,7 +81,7 @@ Determines how long after clicking on your ad you count that user’s actions as
 The total click-through conversions attributed, for the given day-long window. Not included by the package by default.
 {% enddocs %}
 
-{% docs click_through_conversion_attribution_window_month %}
+{% docs click_through_conversion %}
 The total click-through conversions attributed, for the given month-long window.
 {% enddocs %}
 
@@ -273,7 +273,7 @@ Determines how long after viewing on your ad you count that user’s actions as 
 The total click-through conversions attributed, for the given day-long window. Not included by the package by default.
 {% enddocs %}
 
-{% docs view_through_conversion_attribution_window_month %}
+{% docs view_through_conversion %}
 The total view-through conversions attributed, for the given month-long window.
 {% enddocs %}
 
