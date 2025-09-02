@@ -1,5 +1,5 @@
 name: 'reddit_ads_integration_tests'
-version: '1.0.0'
+version: '1.0.1'
 profile: 'integration_tests'
 config-version: 2
 
@@ -53,10 +53,10 @@ vars:
       transform_sql: "cast(installs2 as bigint)" # @docs-ignore
 
   # For validation testing
-  reddit_ads__conversion_event_types:
-    - 'lead'
-    - 'purchase'
-    - 'custom'
+  reddit_ads__conversion_event_types: # @docs-ignore
+    - 'lead' # @docs-ignore
+    - 'purchase' # @docs-ignore
+    - 'custom' # @docs-ignore
 
 dispatch:
   - macro_namespace: dbt_utils
@@ -72,16 +72,19 @@ seeds:
     reddit_ads_account_conversions:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        total_items: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     reddit_ads_account_data:
       +column_types:
         id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
     reddit_ads_account_report_data:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        total_items: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     reddit_ads_ad_conversions:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
         ad_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        total_items: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     reddit_ads_ad_data:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
@@ -92,6 +95,7 @@ seeds:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
         ad_group_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        total_items: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     reddit_ads_ad_group_data:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
@@ -112,10 +116,12 @@ seeds:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
         campaign_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        total_items: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     reddit_ads_campaign_country_conversions_report_data:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
         campaign_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"
+        total_items: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     reddit_ads_campaign_country_report_data:
       +column_types:
         account_id: "{{ 'string' if target.type in ['bigquery','spark','databricks'] else 'varchar(255)' }}"

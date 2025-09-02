@@ -206,7 +206,7 @@ models:
         description: Spend converted out of microcurrency (so Spend/1,000,000)
   - name: stg_reddit_ads__account_conversions_report
     description: '{{ doc("stg_reddit_ads__account_conversions_report") }}'
-    columns:
+    columns: 
       - name: account_id
         description: '{{ doc("account_id") }}'
       - name: date_day
@@ -216,13 +216,13 @@ models:
       - name: _fivetran_synced
         description: '{{ doc("_fivetran_synced") }}'
       - name: conversions
-        description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+        description: '{{ doc("click_through_conversion") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
-        description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+        description: '{{ doc("view_through_conversion") }}'
       - name: source_relation
         description: "{{ doc('source_relation') }}"
 
@@ -240,13 +240,13 @@ models:
       - name: _fivetran_synced
         description: '{{ doc("_fivetran_synced") }}'
       - name: conversions
-        description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+        description: '{{ doc("click_through_conversion") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
-        description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+        description: '{{ doc("view_through_conversion") }}'
       - name: source_relation
         description: "{{ doc('source_relation') }}"
 
@@ -264,13 +264,13 @@ models:
       - name: _fivetran_synced
         description: '{{ doc("_fivetran_synced") }}'
       - name: conversions
-        description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+        description: '{{ doc("click_through_conversion") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
-        description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+        description: '{{ doc("view_through_conversion") }}'
       - name: source_relation
         description: "{{ doc('source_relation') }}"
 
@@ -288,13 +288,13 @@ models:
       - name: _fivetran_synced
         description: '{{ doc("_fivetran_synced") }}'
       - name: conversions
-        description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+        description: '{{ doc("click_through_conversion") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
-        description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+        description: '{{ doc("view_through_conversion") }}'
       - name: source_relation
         description: "{{ doc('source_relation') }}"
 
@@ -340,12 +340,12 @@ models:
       - name: _fivetran_synced
         description: '{{ doc("_fivetran_synced") }}'
       - name: conversions
-        description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+        description: '{{ doc("click_through_conversion") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
       - name: total_value
         description: '{{ doc("total_value") }}'
       - name: view_through_conversions
-        description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+        description: '{{ doc("view_through_conversion") }}'
       - name: source_relation
         description: "{{ doc('source_relation') }}"

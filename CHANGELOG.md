@@ -1,3 +1,23 @@
+# dbt_reddit_ads v1.0.1
+
+[PR #27](https://github.com/fivetran/dbt_reddit_ads/pull/27) includes the following updates:
+
+## Schema Updates
+
+**10 total changes • 0 possible breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| [stg_reddit_ads__account_conversions_report_tmp](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__account_conversions_report)<br>[stg_reddit_ads__ad_group_conversions_report_tmp](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__ad_group_conversions_report)<br>[stg_reddit_ads__ad_conversions_report_tmp](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__ad_conversions_report)<br>[stg_reddit_ads__campaign_conversions_report_tmp](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__campaign_conversions_report)<br>[stg_reddit_ads__campaign_country_conversions_report_tmp](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__campaign_country_conversions_report) | New Columns |  | `clicks`<br>`views` | Added to support API v3. |
+| [stg_reddit_ads__account_conversions_report_tmp](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__account_conversions_report)<br>[stg_reddit_ads__ad_group_conversions_report_tmp](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__ad_group_conversions_report)<br>[stg_reddit_ads__ad_conversions_report_tmp](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__ad_conversions_report)<br>[stg_reddit_ads__campaign_conversions_report_tmp](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__campaign_conversions_report)<br>[stg_reddit_ads__campaign_country_conversions_report_tmp](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__campaign_country_conversions_report) | Deprecated Columns | `click_through_conversion_attribution_window_month`<br>`view_through_conversion_attribution_window_month` |  | These were replaced by `clicks` and `views`. |
+| [stg_reddit_ads__account_conversions_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__account_conversions_report)<br>[stg_reddit_ads__ad_group_conversions_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__ad_group_conversions_report)<br>[stg_reddit_ads__ad_conversions_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__ad_conversions_report)<br>[stg_reddit_ads__campaign_conversions_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__campaign_conversions_report)<br>[stg_reddit_ads__campaign_country_conversions_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__campaign_country_conversions_report) | Column Modification | | `conversions`<br>`view_through_conversions` | `clicks` coalesced with `click_through_conversion_attribution_window_month`<br>`views` coalesced with `view_through_conversion_attribution_window_month` |
+
+## Documentation
+- Updated documentation with the added and deprecated columns.
+
+## Under the Hood
+- Updated integration test seeds and macro dispatch settings.
+
 # dbt_reddit_ads v1.0.0
 
 [PR #26](https://github.com/fivetran/dbt_reddit_ads/pull/26) includes the following updates:

@@ -71,12 +71,6 @@ sources:
             description: '{{ doc("account_id") }}'
           - name: clicks
             description: '{{ doc("clicks") }}'
-          - name: comment_downvotes
-            description: '{{ doc("comment_downvotes") }}'
-          - name: comment_upvotes
-            description: '{{ doc("comment_upvotes") }}'
-          - name: comments_page_views
-            description: '{{ doc("comments_page_views") }}'
           - name: conversion_roas
             description: '{{ doc("conversion_roas") }}'
           - name: cpc
@@ -151,12 +145,6 @@ sources:
             description: '{{ doc("ad_id") }}'
           - name: clicks
             description: '{{ doc("clicks") }}'
-          - name: comment_downvotes
-            description: '{{ doc("comment_downvotes") }}'
-          - name: comment_upvotes
-            description: '{{ doc("comment_upvotes") }}'
-          - name: comments_page_views
-            description: '{{ doc("comments_page_views") }}'
           - name: conversion_roas
             description: '{{ doc("conversion_roas") }}'
           - name: cpc
@@ -237,12 +225,6 @@ sources:
             description: '{{ doc("ad_group_id") }}'
           - name: clicks
             description: '{{ doc("clicks") }}'
-          - name: comment_downvotes
-            description: '{{ doc("comment_downvotes") }}'
-          - name: comment_upvotes
-            description: '{{ doc("comment_upvotes") }}'
-          - name: comments_page_views
-            description: '{{ doc("comments_page_views") }}'
           - name: conversion_roas
             description: '{{ doc("conversion_roas") }}'
           - name: cpc
@@ -309,12 +291,6 @@ sources:
             description: '{{ doc("campaign_id") }}'
           - name: clicks
             description: '{{ doc("clicks") }}'
-          - name: comment_downvotes
-            description: '{{ doc("comment_downvotes") }}'
-          - name: comment_upvotes
-            description: '{{ doc("comment_upvotes") }}'
-          - name: comments_page_views
-            description: '{{ doc("comments_page_views") }}'
           - name: conversion_roas
             description: '{{ doc("conversion_roas") }}'
           - name: cpc
@@ -360,14 +336,22 @@ sources:
             description: '{{ doc("_fivetran_synced") }}'
           - name: avg_value
             description: '{{ doc("avg_value") }}'
+          - name: clicks
+            description: '{{ doc("clicks") }}'
           - name: click_through_conversion_attribution_window_month
-            description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+            description: >
+              [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `clicks` column.
+              The total click-through conversions attributed, for the given month-long window.
           - name: total_items
             description: '{{ doc("total_items") }}'
           - name: total_value
             description: '{{ doc("total_value") }}'
+          - name: views
+            description: '{{ doc("views") }}'
           - name: view_through_conversion_attribution_window_month
-            description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+            description: >
+              [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `views` column.
+              The total view-through conversions attributed, for the given month-long window.
           - name: click_through_conversion_attribution_window_day
             description: '{{ doc("click_through_conversion_attribution_window_day") }}'
           - name: click_through_conversion_attribution_window_week
@@ -393,14 +377,22 @@ sources:
             description: '{{ doc("_fivetran_synced") }}'
           - name: avg_value
             description: '{{ doc("avg_value") }}'
+          - name: clicks
+            description: '{{ doc("clicks") }}'
           - name: click_through_conversion_attribution_window_month
-            description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+            description: >
+              [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `clicks` column.
+              The total click-through conversions attributed, for the given month-long window.
           - name: total_items
             description: '{{ doc("total_items") }}'
           - name: total_value
             description: '{{ doc("total_value") }}'
+          - name: views
+            description: '{{ doc("views") }}'
           - name: view_through_conversion_attribution_window_month
-            description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+            description: >
+              [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `views` column.
+              The total view-through conversions attributed, for the given month-long window.
           - name: click_through_conversion_attribution_window_day
             description: '{{ doc("click_through_conversion_attribution_window_day") }}'
           - name: click_through_conversion_attribution_window_week
@@ -426,14 +418,22 @@ sources:
             description: '{{ doc("_fivetran_synced") }}'
           - name: avg_value
             description: '{{ doc("avg_value") }}'
+          - name: clicks
+            description: '{{ doc("clicks") }}'
           - name: click_through_conversion_attribution_window_month
-            description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+            description: >
+              [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `clicks` column.
+              The total click-through conversions attributed, for the given month-long window.
           - name: total_items
             description: '{{ doc("total_items") }}'
           - name: total_value
             description: '{{ doc("total_value") }}'
+          - name: views
+            description: '{{ doc("views") }}'
           - name: view_through_conversion_attribution_window_month
-            description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+            description: >
+              [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `views` column.
+              The total view-through conversions attributed, for the given month-long window.
           - name: click_through_conversion_attribution_window_day
             description: '{{ doc("click_through_conversion_attribution_window_day") }}'
           - name: click_through_conversion_attribution_window_week
@@ -459,14 +459,22 @@ sources:
             description: '{{ doc("_fivetran_synced") }}'
           - name: avg_value
             description: '{{ doc("avg_value") }}'
+          - name: clicks
+            description: '{{ doc("clicks") }}'
           - name: click_through_conversion_attribution_window_month
-            description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+            description: >
+              [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `clicks` column.
+              The total click-through conversions attributed, for the given month-long window.
           - name: total_items
             description: '{{ doc("total_items") }}'
           - name: total_value
             description: '{{ doc("total_value") }}'
+          - name: views
+            description: '{{ doc("views") }}'
           - name: view_through_conversion_attribution_window_month
-            description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+            description: >
+              [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `views` column.
+              The total view-through conversions attributed, for the given month-long window.
           - name: click_through_conversion_attribution_window_day
             description: '{{ doc("click_through_conversion_attribution_window_day") }}'
           - name: click_through_conversion_attribution_window_week
@@ -519,11 +527,19 @@ sources:
             description: '{{ doc("event_name") }}'
           - name: _fivetran_synced
             description: '{{ doc("_fivetran_synced") }}'
+          - name: clicks
+            description: '{{ doc("clicks") }}'
           - name: click_through_conversion_attribution_window_month
-            description: '{{ doc("click_through_conversion_attribution_window_month") }}'
+            description: >
+              [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `clicks` column.
+              The total click-through conversions attributed, for the given month-long window.
           - name: total_items
             description: '{{ doc("total_items") }}'
           - name: total_value
             description: '{{ doc("total_value") }}'
+          - name: views
+            description: '{{ doc("views") }}'
           - name: view_through_conversion_attribution_window_month
-            description: '{{ doc("view_through_conversion_attribution_window_month") }}'
+            description: >
+              [DEPRECATED] This column has been deprecated as of August 2025 in favor of the `views` column.
+              The total view-through conversions attributed, for the given month-long window.
