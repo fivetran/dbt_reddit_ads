@@ -1,10 +1,10 @@
 account_id,ad_id,date,event_name,"click_through_conversion_attribution_window_week","click_through_conversion_attribution_window_month","click_through_conversion_attribution_window_day","view_through_conversion_attribution_window_week","view_through_conversion_attribution_window_day","view_through_conversion_attribution_window_month",avg_value,total_items,total_value,_fivetran_synced,clicks,views
 account_id_123,ad_id_123,2025-01-05,custom_event_20,,,,,,,,,,2025-06-19T10:19:24,,
 account_id_123,ad_id_456,2025-01-14,custom_event_12,,,,,,,,,,2025-06-19T10:19:24,,
-account_id_123,ad_id_123,2025-01-02,custom_event_1,,,,,,,0.0,0,0,2025-06-19T10:19:24,0,0
+account_id_123,ad_id_123,2025-01-02,custom_event_1,,,,,,,0,0,0,2025-06-19T10:19:24,0,0
 account_id_123,ad_id_789,2025-01-14,custom_event_6,,,,,,,,,,2025-06-19T10:19:24,,
 account_id_123,ad_id_012,2025-01-14,custom_event_6,,,,,,,,,,2025-06-19T10:19:24,,
 account_id_123,ad_id_234,2025-01-14,custom_event_16,,,,,,,,,,2025-06-19T10:19:24,,
-account_id_123,ad_id_345,2025-01-08,custom_event_1,,,,,,,0.0,0,0,2025-06-19T10:19:24,0,0
+account_id_123,ad_id_345,2025-01-08,custom_event_1,,,,,,,0,0,0,2025-06-19T10:19:24,0,0
 account_id_123,ad_id_567,2025-01-14,custom_event_17,,,,,,,,,,2025-06-19T10:19:24,,
 account_id_123,ad_id_678,2025-01-14,custom_event_9,,,,,,,,,,2025-06-19T10:19:24,,

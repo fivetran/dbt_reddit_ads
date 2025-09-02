@@ -1,10 +1,10 @@
 account_id,campaign_id,country,date,event_name,"click_through_conversion_attribution_window_week","click_through_conversion_attribution_window_month","click_through_conversion_attribution_window_day","view_through_conversion_attribution_window_week","view_through_conversion_attribution_window_day","view_through_conversion_attribution_window_month",avg_value,total_items,total_value,_fivetran_synced,clicks,views
-account_id_123,campaign_id_123,US,2025-01-01,purchase,,,,,,,2550.0,0,5100,2025-06-19T10:17:51,2,0
-account_id_123,campaign_id_123,US,2025-01-01,lead,,,,,,,0.0,,0,2025-06-19T10:17:51,1,0
+account_id_123,campaign_id_123,US,2025-01-01,purchase,,,,,,,2550,0,5100,2025-06-19T10:17:51,2,0
+account_id_123,campaign_id_123,US,2025-01-01,lead,,,,,,,0,,0,2025-06-19T10:17:51,1,0
 account_id_123,campaign_id_123,US,2025-01-07,custom_event_2,,,,,,,,,,2025-06-19T10:17:59,,
 account_id_123,campaign_id_456,US,2025-01-14,custom_event_6,,,,,,,,,,2025-06-19T10:18:08,,
 account_id_123,campaign_id_123,US,2025-01-02,custom_event_14,,,,,,,,,,2025-06-19T10:17:52,,
-account_id_123,campaign_id_123,US,2025-01-03,add_to_wishlist,,,,,,,0.0,0,0,2025-06-19T10:17:54,0,0
+account_id_123,campaign_id_123,US,2025-01-03,add_to_wishlist,,,,,,,0,0,0,2025-06-19T10:17:54,0,0
 account_id_123,campaign_id_123,US,2025-01-05,custom_event_9,,,,,,,,,,2025-06-19T10:17:57,,
 account_id_123,campaign_id_123,US,2025-01-01,custom_event_10,,,,,,,,,,2025-06-19T10:17:51,,
 account_id_123,campaign_id_456,US,2025-01-14,custom_event_13,,,,,,,,,,2025-06-19T10:18:08,,

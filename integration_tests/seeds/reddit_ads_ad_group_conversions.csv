@@ -1,5 +1,5 @@
 account_id,ad_group_id,date,event_name,"click_through_conversion_attribution_window_week","click_through_conversion_attribution_window_month","click_through_conversion_attribution_window_day","view_through_conversion_attribution_window_week","view_through_conversion_attribution_window_day","view_through_conversion_attribution_window_month",avg_value,total_items,total_value,_fivetran_synced,clicks,views
-account_id_123,ad_group_id_456,2025-01-05,custom,,,,,,,0.0,0,0,2025-06-19T10:17:27,0,0
+account_id_123,ad_group_id_456,2025-01-05,custom,,,,,,,0,0,0,2025-06-19T10:17:27,0,0
 account_id_123,ad_group_id_123,2025-01-14,custom_event_13,,,,,,,,,,2025-06-19T10:17:27,,
 account_id_123,ad_group_id_456,2025-01-02,custom_event_9,,,,,,,,,,2025-06-19T10:17:27,,
 account_id_123,ad_group_id_456,2025-01-03,custom_event_16,,,,,,,,,,2025-06-19T10:17:27,,
