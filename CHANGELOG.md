@@ -1,3 +1,10 @@
+# dbt_reddit_ads v1.1.0
+
+[PR #29](https://github.com/fivetran/dbt_reddit_ads/pull/29) includes the following updates:
+
+## Features
+  - Increases the required dbt version upper limit to v3.0.0
+
 # dbt_reddit_ads v1.0.1
 
 [PR #27](https://github.com/fivetran/dbt_reddit_ads/pull/27) includes the following updates:
