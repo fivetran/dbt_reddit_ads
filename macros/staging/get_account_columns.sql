@@ -7,7 +7,6 @@
     {"name": "created_at", "datatype": dbt.type_timestamp()},
     {"name": "currency", "datatype": dbt.type_string()},
     {"name": "id", "datatype": dbt.type_string()},
-    {"name": "status", "datatype": dbt.type_string()},
     {"name": "time_zone_id", "datatype": dbt.type_string()},
     {"name": "view_attribution_window", "datatype": dbt.type_string()}
 ] %}
