@@ -1,4 +1,5 @@
 # dbt_reddit_ads v1.2.0
+[PR #30](https://github.com/fivetran/dbt_reddit_ads/pull/30) includes the following updates:
 
 ## Schema/Data Change
 **3 total changes • 1 possible breaking change**
