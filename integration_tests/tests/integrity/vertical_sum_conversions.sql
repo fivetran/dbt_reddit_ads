@@ -8,9 +8,9 @@ with ad_source as (
     select 
         sum(coalesce(total_value, 0)) as total_value,
         sum(coalesce(total_items, 0)) as total_items,
-        sum(coalesce(clicks, 0)) as total_conversions,
-        sum(coalesce(views, 0)) as view_through_conversions
-    from {{ source('reddit_ads', 'ad_conversions_report') }}
+        sum(coalesce(conversions, 0)) as total_conversions,
+        sum(coalesce(view_through_conversions, 0)) as view_through_conversions
+    from {{ ref('stg_reddit_ads__ad_conversions_report') }}
 
     {% if var('reddit_ads__conversion_event_types') %}
     where 
@@ -56,9 +56,9 @@ ad_group_source as (
     select 
         sum(coalesce(total_value, 0)) as total_value,
         sum(coalesce(total_items, 0)) as total_items,
-        sum(coalesce(clicks, 0)) as total_conversions,
-        sum(coalesce(views, 0)) as view_through_conversions
-    from {{ source('reddit_ads', 'ad_group_conversions_report') }}
+        sum(coalesce(conversions, 0)) as total_conversions,
+        sum(coalesce(view_through_conversions, 0)) as view_through_conversions
+    from {{ ref('stg_reddit_ads__ad_group_conversions_report') }}
 
     {% if var('reddit_ads__conversion_event_types') %}
     where 
@@ -103,9 +103,9 @@ campaign_source as (
     select 
         sum(coalesce(total_value, 0)) as total_value,
         sum(coalesce(total_items, 0)) as total_items,
-        sum(coalesce(clicks, 0)) as total_conversions,
-        sum(coalesce(views, 0)) as view_through_conversions
-    from {{ source('reddit_ads', 'campaign_conversions_report') }}
+        sum(coalesce(conversions, 0)) as total_conversions,
+        sum(coalesce(view_through_conversions, 0)) as view_through_conversions
+    from {{ ref('stg_reddit_ads__campaign_conversions_report') }}
 
     {% if var('reddit_ads__conversion_event_types') %}
     where 
@@ -150,9 +150,9 @@ account_source as (
     select 
         sum(coalesce(total_value, 0)) as total_value,
         sum(coalesce(total_items, 0)) as total_items,
-        sum(coalesce(clicks, 0)) as total_conversions,
-        sum(coalesce(views, 0)) as view_through_conversions
-    from {{ source('reddit_ads', 'account_conversions_report') }}
+        sum(coalesce(conversions, 0)) as total_conversions,
+        sum(coalesce(view_through_conversions, 0)) as view_through_conversions
+    from {{ ref('stg_reddit_ads__account_conversions_report') }}
 
     {% if var('reddit_ads__conversion_event_types') %}
     where 
