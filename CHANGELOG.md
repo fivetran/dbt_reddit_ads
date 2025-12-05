@@ -6,16 +6,16 @@
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
-| [stg_reddit_ads__account](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__account) | Removed Column | `status` | | Removed the `status` field from the account staging model. |
-| [reddit_ads__account_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__account_report) | Removed Column | `status` | | Removed the `status` field from the account report model. This is a **breaking change** as `status` was previously part of the aggregation grain (included in the `GROUP BY`), so this change will alter the granularity of the reporting table. Users who previously relied on account-level reporting by status will need to adjust their downstream queries and models accordingly. |
+| [stg_reddit_ads__account](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__account) | Removed Column | `status` | | Removes the `status` field from the account staging model. |
+| [reddit_ads__account_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__account_report) | Removed Column | `status` | | Removes the `status` field from the account report model. This is a **breaking change** as `status` was previously part of the aggregation grain (included in the `GROUP BY`), so this change will alter the granularity of the reporting table. Users who previously relied on account-level reporting by status will need to adjust their downstream queries and models accordingly. |
 
 ## Documentation
-- Removed `status` column documentation from all relevant YAML files (src_reddit_ads.yml, stg_reddit_ads.yml, reddit_ads.yml).
-- Removed `status` documentation block from docs.md.
+- Removes `status` column documentation from all relevant YAML files (src_reddit_ads.yml, stg_reddit_ads.yml, reddit_ads.yml).
+- Removes `status` documentation block from docs.md.
 
 ## Under the Hood
-- Updated get_account_columns macro to exclude the `status` field.
-- Updated integration test seeds to remove the `status` column from account data CSVs.
+- Updates get_account_columns macro to exclude the `status` field.
+- Updates integration test seeds to remove the `status` column from account data CSVs.
 
 # dbt_reddit_ads v1.1.0
 
