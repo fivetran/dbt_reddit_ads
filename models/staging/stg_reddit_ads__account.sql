@@ -27,13 +27,12 @@ fields as (
 final as (
 
     select
-        source_relation, 
+        source_relation,
         attribution_type,
         click_attribution_window,
         cast(created_at as {{ dbt.type_timestamp() }}) as created_at,
         currency,
         id as account_id,
-        status,
         time_zone_id,
         view_attribution_window
     from fields

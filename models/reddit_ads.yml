@@ -20,8 +20,6 @@ models:
         description: '{{ doc("currency") }}'
       - name: attribution_type
         description: '{{ doc("attribution_type") }}'
-      - name: status
-        description: '{{ doc("status") }}'
       - name: time_zone_id
         description: '{{ doc("time_zone_id") }}'
       - name: clicks

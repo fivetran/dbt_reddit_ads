@@ -209,10 +209,6 @@ The amount (in microcurrency) spent for this report period in Ad Account's curre
 When the entity will begin to deliver.
 {% enddocs %}
 
-{% docs status %}
-The current state of the advertiser. "PENDING_BILLING", "VALID", "TRUSTED", "ADMIN", "FAILED_BILLING", "SUSPICIOUS", "SUSPENDED", or "BANNED"
-{% enddocs %}
-
 {% docs stg_reddit_ads__account_conversions_report %}
 Provides a summary of conversion events at the account level, aggregating key metrics by event and day such as view-through and click-through conversions.
 {% enddocs %}
