@@ -1,3 +1,12 @@
+# dbt_reddit_ads v1.3.0
+
+## Schema/Data Change
+**24 total changes • 0 possible breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| [reddit_ads__account_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__account_report)<br>[reddit_ads__ad_group_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__ad_group_report)<br>[reddit_ads__ad_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__ad_report)<br>[reddit_ads__campaign_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_report)<br>[reddit_ads__campaign_country_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_country_report)<br>[reddit_ads__url_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__url_report) | New Columns |  | `{event_type}_conversions`<br>`{event_type}_view_through_conversions`<br>`{event_type}_value`<br>`{event_type}_items` | Adds event-specific conversion metrics for each event type defined in the `reddit_ads__conversion_event_types` variable. These columns provide granular conversion tracking by event type (e.g., `lead_conversions`, `purchase_conversions`). By default, metrics are created for `lead`, `purchase`, `custom`, and `page_visit` event types. |
+
 # dbt_reddit_ads v1.2.0
 [PR #30](https://github.com/fivetran/dbt_reddit_ads/pull/30) includes the following updates:
 

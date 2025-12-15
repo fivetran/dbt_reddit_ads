@@ -1,11 +1,11 @@
 name: 'reddit_ads_integration_tests'
-version: '1.2.0'
+version: '1.3.0'
 profile: 'integration_tests'
 config-version: 2
 
 vars:
   reddit_ads:
-    reddit_ads_schema: reddit_ads_integration_tests_4
+    reddit_ads_schema: reddit_ads_integration_tests
     reddit_ads_account_identifier: "reddit_ads_account_data"
     reddit_ads_business_account_identifier: "reddit_ads_business_account_data"
     reddit_ads_account_report_identifier: "reddit_ads_account_report_data"
