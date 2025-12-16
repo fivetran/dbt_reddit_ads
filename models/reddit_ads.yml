@@ -36,6 +36,26 @@ models:
         description: '{{ doc("view_through_conversion") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
+      - name: "{event_type}_conversions"
+        description: >
+          The total click-through conversions for the specific event type. Replace {event_type} with the
+          event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_conversions`,
+          `purchase_conversions`).
+      - name: "{event_type}_view_through_conversions"
+        description: >
+          The total view-through conversions for the specific event type. Replace {event_type} with the
+          event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_view_through_conversions`,
+          `purchase_view_through_conversions`).
+      - name: "{event_type}_value"
+        description: >
+          The total monetary value associated with conversions for the specific event type. Replace {event_type}
+          with the event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_value`,
+          `purchase_value`).
+      - name: "{event_type}_items"
+        description: >
+          The total number of items involved in conversions for the specific event type. Replace {event_type}
+          with the event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_items`,
+          `purchase_items`).
 
 
   - name: reddit_ads__ad_group_report
@@ -76,6 +96,26 @@ models:
         description: '{{ doc("view_through_conversion") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
+      - name: "{event_type}_conversions"
+        description: >
+          The total click-through conversions for the specific event type. Replace {event_type} with the
+          event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_conversions`,
+          `purchase_conversions`).
+      - name: "{event_type}_view_through_conversions"
+        description: >
+          The total view-through conversions for the specific event type. Replace {event_type} with the
+          event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_view_through_conversions`,
+          `purchase_view_through_conversions`).
+      - name: "{event_type}_value"
+        description: >
+          The total monetary value associated with conversions for the specific event type. Replace {event_type}
+          with the event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_value`,
+          `purchase_value`).
+      - name: "{event_type}_items"
+        description: >
+          The total number of items involved in conversions for the specific event type. Replace {event_type}
+          with the event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_items`,
+          `purchase_items`).
 
 
   - name: reddit_ads__ad_report
@@ -122,6 +162,26 @@ models:
         description: '{{ doc("view_through_conversion") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
+      - name: "{event_type}_conversions"
+        description: >
+          The total click-through conversions for the specific event type. Replace {event_type} with the
+          event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_conversions`,
+          `purchase_conversions`).
+      - name: "{event_type}_view_through_conversions"
+        description: >
+          The total view-through conversions for the specific event type. Replace {event_type} with the
+          event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_view_through_conversions`,
+          `purchase_view_through_conversions`).
+      - name: "{event_type}_value"
+        description: >
+          The total monetary value associated with conversions for the specific event type. Replace {event_type}
+          with the event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_value`,
+          `purchase_value`).
+      - name: "{event_type}_items"
+        description: >
+          The total number of items involved in conversions for the specific event type. Replace {event_type}
+          with the event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_items`,
+          `purchase_items`).
 
 
   - name: reddit_ads__campaign_report
@@ -158,6 +218,26 @@ models:
         description: '{{ doc("view_through_conversion") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
+      - name: "{event_type}_conversions"
+        description: >
+          The total click-through conversions for the specific event type. Replace {event_type} with the
+          event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_conversions`,
+          `purchase_conversions`).
+      - name: "{event_type}_view_through_conversions"
+        description: >
+          The total view-through conversions for the specific event type. Replace {event_type} with the
+          event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_view_through_conversions`,
+          `purchase_view_through_conversions`).
+      - name: "{event_type}_value"
+        description: >
+          The total monetary value associated with conversions for the specific event type. Replace {event_type}
+          with the event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_value`,
+          `purchase_value`).
+      - name: "{event_type}_items"
+        description: >
+          The total number of items involved in conversions for the specific event type. Replace {event_type}
+          with the event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_items`,
+          `purchase_items`).
 
   - name: reddit_ads__url_report
     description: >
@@ -228,6 +308,26 @@ models:
         description: '{{ doc("view_through_conversion") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
+      - name: "{event_type}_conversions"
+        description: >
+          The total click-through conversions for the specific event type. Replace {event_type} with the
+          event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_conversions`,
+          `purchase_conversions`).
+      - name: "{event_type}_view_through_conversions"
+        description: >
+          The total view-through conversions for the specific event type. Replace {event_type} with the
+          event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_view_through_conversions`,
+          `purchase_view_through_conversions`).
+      - name: "{event_type}_value"
+        description: >
+          The total monetary value associated with conversions for the specific event type. Replace {event_type}
+          with the event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_value`,
+          `purchase_value`).
+      - name: "{event_type}_items"
+        description: >
+          The total number of items involved in conversions for the specific event type. Replace {event_type}
+          with the event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_items`,
+          `purchase_items`).
 
   - name: reddit_ads__campaign_country_report
     description: >
@@ -259,6 +359,26 @@ models:
         description: '{{ doc("view_through_conversion") }}'
       - name: total_items
         description: '{{ doc("total_items") }}'
+      - name: "{event_type}_conversions"
+        description: >
+          The total click-through conversions for the specific event type. Replace {event_type} with the
+          event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_conversions`,
+          `purchase_conversions`).
+      - name: "{event_type}_view_through_conversions"
+        description: >
+          The total view-through conversions for the specific event type. Replace {event_type} with the
+          event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_view_through_conversions`,
+          `purchase_view_through_conversions`).
+      - name: "{event_type}_value"
+        description: >
+          The total monetary value associated with conversions for the specific event type. Replace {event_type}
+          with the event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_value`,
+          `purchase_value`).
+      - name: "{event_type}_items"
+        description: >
+          The total number of items involved in conversions for the specific event type. Replace {event_type}
+          with the event name defined in the `reddit_ads__conversion_event_types` variable (e.g., `lead_items`,
+          `purchase_items`).
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
       - name: currency
