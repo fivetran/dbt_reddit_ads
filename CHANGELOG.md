@@ -19,7 +19,7 @@
 | All reddit_ads__*_report models | New Column |  | `custom_value` | Total monetary value associated with custom-defined conversion events. |
 | All reddit_ads__*_report models | New Column |  | `custom_items` | Total number of items involved in custom-defined conversion events. |
 
-By default, the package includes conversion metrics for three event types: `purchase`, `lead`, and `custom`. You can configure alternative conversion events to be tracked by adjusting the `reddit_ads__conversion_event_types` variable in your `dbt_project.yml`. Each event type configured will generate four corresponding columns (`{event_type}_conversions`, `{event_type}_view_through_conversions`, `{event_type}_value`, and `{event_type}_items`) across all report models.
+By default, the package includes conversion metrics for three event types: `purchase`, `lead`, and `custom`. You can configure alternative conversion events to be tracked by adjusting the `reddit_ads__conversion_event_types` variable in your `dbt_project.yml`. Each event type configured will generate four corresponding columns (`{event_type}_conversions`, `{event_type}_view_through_conversions`, `{event_type}_value`, and `{event_type}_items`) across all report models. See the [README](https://github.com/fivetran/dbt_reddit_ads?tab=readme-ov-file#configure-conversion-event-types) for how to configure conversion event types.
 
 # dbt_reddit_ads v1.2.0
 [PR #30](https://github.com/fivetran/dbt_reddit_ads/pull/30) includes the following updates:
