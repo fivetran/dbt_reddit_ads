@@ -110,14 +110,14 @@ joined as (
         rollup_conversions_report.conversions,
         rollup_conversions_report.view_through_conversions,
         rollup_conversions_report.total_value,
-        rollup_conversions_report.total_items,
+        rollup_conversions_report.total_items
 
         {% if var('reddit_ads__conversion_event_types') %} 
         {% for event_type in var('reddit_ads__conversion_event_types') %}
-        {{ event_type|lower }}_conversions,
-        {{ event_type|lower }}_view_through_conversions,
-        {{ event_type|lower }}_value,
-        {{ event_type|lower }}_items
+        , {{ event_type|lower }}_conversions
+        , {{ event_type|lower }}_view_through_conversions
+        , {{ event_type|lower }}_value
+        , {{ event_type|lower }}_items
         {% endfor %}
         {% endif %}
 

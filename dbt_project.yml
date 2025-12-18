@@ -35,7 +35,6 @@ vars:
     - 'lead'
     - 'purchase'
     - 'custom'
-    - 'page_visit'
 
 models:
   reddit_ads:

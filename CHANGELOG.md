@@ -2,7 +2,7 @@
 [PR#31](https://github.com/fivetran/dbt_reddit_ads/pull/31) includes the following updates:
 
 ## Schema/Data Change
-**72 total changes • 0 possible breaking changes**
+**12 total changes • 0 possible breaking changes**
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
@@ -19,7 +19,7 @@
 | [reddit_ads__account_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__account_report)<br>[reddit_ads__ad_group_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__ad_group_report)<br>[reddit_ads__ad_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__ad_report)<br>[reddit_ads__campaign_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_report)<br>[reddit_ads__campaign_country_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_country_report)<br>[reddit_ads__url_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__url_report) | New Columns |  | `custom_value` | Total monetary value associated with custom-defined conversion events. |
 | [reddit_ads__account_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__account_report)<br>[reddit_ads__ad_group_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__ad_group_report)<br>[reddit_ads__ad_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__ad_report)<br>[reddit_ads__campaign_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_report)<br>[reddit_ads__campaign_country_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_country_report)<br>[reddit_ads__url_report](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__url_report) | New Columns |  | `custom_items` | Total number of items involved in custom-defined conversion events. |
 
-By default, the package includes conversion metrics for three event types: `purchase`, `lead`, and `custom`. You can configure additional custom event types to be tracked by adjusting the `reddit_ads__conversion_event_types` variable in your `dbt_project.yml`. Each event type configured will generate four corresponding columns (`{event_type}_conversions`, `{event_type}_view_through_conversions`, `{event_type}_value`, and `{event_type}_items`) across all report models.
+By default, the package includes conversion metrics for three event types: `purchase`, `lead`, and `custom`. You can configure alternative conversion events to be tracked by adjusting the `reddit_ads__conversion_event_types` variable in your `dbt_project.yml`. Each event type configured will generate four corresponding columns (`{event_type}_conversions`, `{event_type}_view_through_conversions`, `{event_type}_value`, and `{event_type}_items`) across all report models.
 
 # dbt_reddit_ads v1.2.0
 [PR #30](https://github.com/fivetran/dbt_reddit_ads/pull/30) includes the following updates:
