@@ -30,6 +30,15 @@ rollup_conversions_report as (
         sum(total_value) as total_value,
         sum(total_items) as total_items
 
+        {% if var('reddit_ads__conversion_event_types') %}
+        {% for event_type in var('reddit_ads__conversion_event_types') %}
+            , sum(case when event_name = '{{ event_type|lower }}' then conversions else 0 end) as {{ event_type|lower }}_conversions
+            , sum(case when event_name = '{{ event_type|lower }}' then view_through_conversions else 0 end) as {{ event_type|lower }}_view_through_conversions
+            , sum(case when event_name = '{{ event_type|lower }}' then total_value else 0 end) as {{ event_type|lower }}_value
+            , sum(case when event_name = '{{ event_type|lower }}' then total_items else 0 end) as {{ event_type|lower }}_items
+        {% endfor %}
+        {% endif %}
+
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='reddit_ads__account_conversions_passthrough_metrics', transform = 'sum') }}
 
     from conversions_report
@@ -61,6 +70,15 @@ joined as (
         sum(rollup_conversions_report.view_through_conversions) as view_through_conversions,
         sum(rollup_conversions_report.total_value) as total_value,
         sum(rollup_conversions_report.total_items) as total_items
+
+        {% if var('reddit_ads__conversion_event_types') %} 
+        {% for event_type in var('reddit_ads__conversion_event_types') %}
+            , sum({{ event_type|lower }}_conversions) as {{ event_type|lower }}_conversions
+            , sum({{ event_type|lower }}_view_through_conversions) as {{ event_type|lower }}_view_through_conversions
+            , sum({{ event_type|lower }}_value) as {{ event_type|lower }}_value
+            , sum({{ event_type|lower }}_items) as {{ event_type|lower }}_items
+        {% endfor %}
+        {% endif %}
 
         {{ reddit_ads_persist_pass_through_columns(pass_through_variable='reddit_ads__account_passthrough_metrics', identifier = 'report', transform = 'sum', alias_fields=['conversions', 'view_through_conversions', 'total_value', 'total_items']) }}
 
