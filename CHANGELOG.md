@@ -1,3 +1,15 @@
+# dbt_reddit_ads v1.4.0
+
+[PR #33](https://github.com/fivetran/dbt_reddit_ads/pull/33) includes the following updates:
+
+## Documentation
+- Updates README with standardized Fivetran formatting
+
+## Under the Hood
+- In the `.quickstart.yml` file:
+  - Adds `table_variables` for relevant sources to prevent missing sources from blocking downstream Quickstart models.
+  - Adds `supported_vars` for Quickstart UI customization,
+
 # dbt_reddit_ads v1.3.0
 [PR#31](https://github.com/fivetran/dbt_reddit_ads/pull/31) includes the following updates:
 
