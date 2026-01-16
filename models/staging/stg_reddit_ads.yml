@@ -311,8 +311,6 @@ models:
         description: '{{ doc("_fivetran_synced") }}'
       - name: clicks
         description: '{{ doc("clicks") }}'
-      - name: date_day
-        description: '{{ doc("date") }}'
       - name: impressions
         description: '{{ doc("impressions") }}'
       - name: region
