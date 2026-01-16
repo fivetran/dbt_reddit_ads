@@ -403,8 +403,6 @@ models:
         description: Total monetary value associated with custom-defined conversion events.
       - name: custom_items
         description: Total number of items involved in custom-defined conversion events.
-      - name: campaign_id
-        description: '{{ doc("campaign_id") }}'
       - name: currency
         description: '{{ doc("currency") }}'
       - name: effective_status
