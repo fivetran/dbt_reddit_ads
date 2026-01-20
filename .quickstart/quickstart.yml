@@ -25,3 +25,14 @@ public_models: [
   "reddit_ads__ad_group_report",
   "reddit_ads__campaign_country_report"
 ]
+
+supported_vars:
+  reddit_ads__conversion_event_types:
+    type: list
+    value:
+      - "lead"
+      - "purchase"
+      - "custom"
+    description: "`event_name` values from `*_CONVERSIONS_REPORT` tables that will be tracked as conversions"
+    display_name: "Conversion Event Types"
+
