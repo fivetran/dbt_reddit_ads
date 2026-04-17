@@ -177,6 +177,15 @@ vars:
     reddit_ads__campaign_country_conversions_passthrough_metrics:
       - name: "another_field"
 ```
+
+#### Disable the URL null filter
+By default, the `reddit_ads_url_report` model will filter out records where the URL field is null. If you would like to include these records, add the following configuration to your root `dbt_project.yml` file:
+
+```yml
+vars:
+    ad_reporting__url_report__using_null_filter: false # Default is true
+```
+
 #### Change the build schema
 By default, this package builds the Reddit Ads staging models within a schema titled (`<target_schema>` + `_reddit_ads_source`) and your Reddit Ads modeling models within a schema titled (`<target_schema>` + `_reddit_ads`) in your destination. If this is not where you would like your Reddit Ads data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
