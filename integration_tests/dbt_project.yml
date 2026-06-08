@@ -1,5 +1,5 @@
 name: 'reddit_ads_integration_tests'
-version: '1.4.0'
+version: '1.5.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -72,6 +72,7 @@ models:
 seeds:
   +docs:
     show: false
+  +quote_columns: "{{ target.type == 'redshift' or var('fivetran_using_source_casing', false) }}"
   reddit_ads_integration_tests:
     reddit_ads_account_conversions:
       +column_types:
