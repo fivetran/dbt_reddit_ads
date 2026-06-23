@@ -4,6 +4,8 @@
     'reddit_ads__using_campaign_country_conversions_report'])
 ) }}
 
+{% if var('reddit_ads_union_schemas', []) | length > 0 or var('reddit_ads_union_databases', []) | length > 0 %}
+
 {{
     fivetran_utils.union_data(
         table_identifier='campaign_country_conversions_report', 
@@ -16,3 +18,15 @@
         union_database_variable='reddit_ads_union_databases'
     )
 }}
+
+{% else %}
+
+{{
+    fivetran_utils.union_connections(
+        connection_dictionary='reddit_ads_sources',
+        single_source_name='reddit_ads',
+        single_table_name='campaign_country_conversions_report'
+    )
+}}
+
+{% endif %}
