@@ -1,3 +1,11 @@
+# dbt_reddit_ads v1.5.1
+
+[PR #40](https://github.com/fivetran/dbt_reddit_ads/pull/40) includes the following updates:
+
+## Feature Updates
+- Adds DuckDB as a supported destination.
+
+
 # dbt_reddit_ads v1.5.0
 
 [PR #37](https://github.com/fivetran/dbt_reddit_ads/pull/37) includes the following updates:
