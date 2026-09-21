@@ -177,10 +177,6 @@ Whether or not effective status is processing
 The objective type of a campaign.
 {% enddocs %}
 
-{% docs optimization_strategy_type %}
-The strategy to use when optimizing the delivery of an ad.  "DOWNSTREAM_CONVERSIONS" or "APP_INSTALLS"
-{% enddocs %}
-
 {% docs post_id %}
 The ID of the post.
 {% enddocs %}

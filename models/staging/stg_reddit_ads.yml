@@ -130,8 +130,6 @@ models:
         description: '{{ doc("is_processing") }}'
       - name: ad_group_name
         description: '{{ doc("ad_group_name") }}'
-      - name: optimization_strategy_type
-        description: '{{ doc("optimization_strategy_type") }}'
       - name: start_time_at
         description: '{{ doc("start_time") }}'
 
