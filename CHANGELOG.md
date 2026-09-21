@@ -1,3 +1,21 @@
+# dbt_reddit_ads v1.6.0
+[PR #XX](https://github.com/fivetran/dbt_reddit_ads/pull/XX) includes the following updates:
+
+## Schema/Data Change
+**1 total change • 1 possible breaking change**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| [stg_reddit_ads__ad_group](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__ad_group) | Removed Column | `optimization_strategy_type` | | Removes the `optimization_strategy_type` field from the ad group staging model. This field has been deprecated by the Reddit Ads API (v3) and syncs as `NULL` for all records. It is not referenced in any downstream end models, so the impact is limited to users selecting the field directly from the staging model. |
+
+## Documentation
+- Removes `optimization_strategy_type` column documentation from all relevant YAML files (src_reddit_ads.yml, stg_reddit_ads.yml).
+- Removes `optimization_strategy_type` documentation block from docs.md.
+
+## Under the Hood
+- Updates get_ad_group_columns macro to exclude the `optimization_strategy_type` field.
+- Updates integration test seeds to remove the `optimization_strategy_type` column from ad group data CSVs.
+
 # dbt_reddit_ads v1.5.1
 
 [PR #40](https://github.com/fivetran/dbt_reddit_ads/pull/40) includes the following updates:
