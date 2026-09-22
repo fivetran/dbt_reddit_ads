@@ -64,8 +64,6 @@ models:
         description: '{{ doc("configured_status") }}'
       - name: effective_status
         description: '{{ doc("effective_status") }}'
-      - name: is_processing
-        description: '{{ doc("is_processing") }}'
       - name: ad_name
         description: '{{ doc("ad_name") }}'
       - name: post_id

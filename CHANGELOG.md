@@ -2,19 +2,23 @@
 [PR #41](https://github.com/fivetran/dbt_reddit_ads/pull/41) includes the following updates:
 
 ## Schema/Data Change
-**1 total change • 1 possible breaking change**
+**2 total changes • 2 possible breaking changes**
 
 | Data Model(s) | Change type | Old | New | Notes |
 | ---------- | ----------- | -------- | -------- | ----- |
 | [stg_reddit_ads__ad_group](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__ad_group) | Removed Column | `optimization_strategy_type` | | Removes the `optimization_strategy_type` field from the ad group staging model. This field has been deprecated by the Reddit Ads API (v3) and syncs as `NULL` for all records. It is not referenced in any downstream end models, so the impact is limited to users selecting the field directly from the staging model. |
+| [stg_reddit_ads__ad](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__ad) | Removed Column | `is_processing` | | Removes the `is_processing` field from the ad staging model. It is not referenced in any downstream end models, so the impact is limited to users selecting the field directly from the staging model. `is_processing` remains available on `stg_reddit_ads__ad_group` and `stg_reddit_ads__campaign`. |
 
 ## Documentation
 - Removes `optimization_strategy_type` column documentation from all relevant YAML files (src_reddit_ads.yml, stg_reddit_ads.yml).
 - Removes `optimization_strategy_type` documentation block from docs.md.
+- Removes `is_processing` column documentation for the `ad` table and `stg_reddit_ads__ad` model from src_reddit_ads.yml and stg_reddit_ads.yml. The shared `is_processing` docs.md block is retained, as it is still referenced by the ad group and campaign models.
 
 ## Under the Hood
 - Updates get_ad_group_columns macro to exclude the `optimization_strategy_type` field.
+- Updates get_ad_columns macro to exclude the `is_processing` field.
 - Updates integration test seeds to remove the `optimization_strategy_type` column from ad group data CSVs.
+- Updates integration test seeds to remove the `is_processing` column from ad data CSVs.
 
 # dbt_reddit_ads v1.5.1
 

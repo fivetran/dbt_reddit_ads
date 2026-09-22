@@ -118,8 +118,6 @@ sources:
             description: '{{ doc("effective_status") }}'
           - name: id
             description: '{{ doc("ad_id") }}'
-          - name: is_processing
-            description: '{{ doc("is_processing") }}'
           - name: name
             description: '{{ doc("ad_name") }}'
           - name: post_id
