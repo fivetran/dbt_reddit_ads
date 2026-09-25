@@ -15,7 +15,6 @@
     {"name": "id", "datatype": dbt.type_string()},
     {"name": "is_processing", "datatype": "boolean"},
     {"name": "name", "datatype": dbt.type_string()},
-    {"name": "optimization_strategy_type", "datatype": dbt.type_string()},
     {"name": "start_time", "datatype": dbt.type_timestamp()}
 ] %}
 
