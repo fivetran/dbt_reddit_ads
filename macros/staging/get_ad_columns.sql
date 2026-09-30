@@ -9,7 +9,6 @@
     {"name": "configured_status", "datatype": dbt.type_string()},
     {"name": "effective_status", "datatype": dbt.type_string()},
     {"name": "id", "datatype": dbt.type_string()},
-    {"name": "is_processing", "datatype": "boolean"},
     {"name": "name", "datatype": dbt.type_string()},
     {"name": "post_id", "datatype": dbt.type_string()},
     {"name": "post_url", "datatype": dbt.type_string()},

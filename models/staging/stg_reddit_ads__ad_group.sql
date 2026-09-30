@@ -38,7 +38,6 @@ final as (
         id as ad_group_id,
         is_processing,
         name as ad_group_name,
-        optimization_strategy_type,
         cast(start_time as {{ dbt.type_timestamp() }}) as start_time_at
     from fields
 )

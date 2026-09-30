@@ -1,3 +1,14 @@
+# dbt_reddit_ads v1.6.0
+[PR #41](https://github.com/fivetran/dbt_reddit_ads/pull/41) includes the following updates:
+
+## Schema/Data Change
+**2 total changes • 2 possible breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| [stg_reddit_ads__ad_group](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__ad_group) | Removed Column | `optimization_strategy_type` | | **Possible breaking change:** Reddit has deprecated `optimization_strategy_type` and the Fivetran connector no longer syncs it, so the field has been removed from the ad group staging model. |
+| [stg_reddit_ads__ad](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__ad) | Removed Column | `is_processing` | | **Possible breaking change:** Reddit has deprecated `is_processing` on the ad entity and the Fivetran connector no longer syncs it, so the field has been removed from the ad staging model. `is_processing` is unchanged on `stg_reddit_ads__ad_group` and `stg_reddit_ads__campaign` and is still surfaced in `reddit_ads__campaign_country_report`, so only the ad grain is affected. |
+
 # dbt_reddit_ads v1.5.1
 
 [PR #40](https://github.com/fivetran/dbt_reddit_ads/pull/40) includes the following updates:
