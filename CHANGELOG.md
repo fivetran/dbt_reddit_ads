@@ -1,4 +1,4 @@
-# dbt_reddit_ads v1.7.0
+# dbt_reddit_ads v1.6.1
 
 [PR #42](https://github.com/fivetran/dbt_reddit_ads/pull/42) includes the following updates:
 
