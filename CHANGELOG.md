@@ -1,6 +1,6 @@
 # dbt_reddit_ads v1.7.0
 
-[PR #XX](https://github.com/fivetran/dbt_reddit_ads/pull/XX) includes the following updates:
+[PR #42](https://github.com/fivetran/dbt_reddit_ads/pull/42) includes the following updates:
 
 ## Schema/Data Change
 **2 total changes • 0 possible breaking changes**
