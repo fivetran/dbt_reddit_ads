@@ -3,7 +3,7 @@
 [PR #42](https://github.com/fivetran/dbt_reddit_ads/pull/42) includes the following updates:
 
 ## Feature Update
-- - Updates Reddit Ads `account_name` value to no longer return null to `ad_reporting__account_report`, `ad_reporting__campaign_report`, `ad_reporting__ad_group_report`, `ad_reporting__ad_report`, `ad_reporting__url_report`, and `ad_reporting__monthly_campaign_country_report`.  The name comes from the `name` column in the `business_account` source table, so the [Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting) can return Reddit account names instead of `null`.
+- Adds `account_name` to `stg_reddit_ads__account` and the `reddit_ads__account_report`, `reddit_ads__campaign_report`, `reddit_ads__ad_group_report`, `reddit_ads__ad_report`, `reddit_ads__url_report`, and `reddit_ads__campaign_country_report` models. The name comes from the `name` column in the `business_account` source table, so the [Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting) can return Reddit account names instead of `null`.
 
 # dbt_reddit_ads v1.6.0
 [PR #41](https://github.com/fivetran/dbt_reddit_ads/pull/41) includes the following updates:
