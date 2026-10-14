@@ -66,6 +66,7 @@ joined as (
         report.source_relation,
         report.date_day,
         report.account_id,
+        accounts.account_name,
         campaigns.campaign_name,
         report.campaign_id,
         accounts.currency,
@@ -101,7 +102,7 @@ joined as (
         on report.campaign_id = rollup_conversions_report.campaign_id
         and report.source_relation = rollup_conversions_report.source_relation
         and report.date_day = rollup_conversions_report.date_day
-    {{ dbt_utils.group_by(6) }}
+    {{ dbt_utils.group_by(7) }}
 )
 
 select *

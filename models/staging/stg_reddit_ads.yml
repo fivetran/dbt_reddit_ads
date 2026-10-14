@@ -10,6 +10,8 @@ models:
         description: '{{ doc("account_id") }}'
         tests:
           - not_null
+      - name: account_name
+        description: '{{ doc("account_name") }}'
       - name: attribution_type
         description: '{{ doc("attribution_type") }}'
       - name: click_attribution_window

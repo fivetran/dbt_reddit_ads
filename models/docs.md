@@ -10,6 +10,10 @@ Provides a summary of conversion events at the account level, aggregating key me
 The ID of the account.
 {% enddocs %}
 
+{% docs account_name %}
+The name of the account.
+{% enddocs %}
+
 {% docs ad_conversions_report %}
 Provides a summary of conversion events at the individual ad level, aggregating key metrics by event and day.
 {% enddocs %}
