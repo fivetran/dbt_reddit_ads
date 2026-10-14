@@ -52,6 +52,8 @@ sources:
             description: '{{ doc("created_at") }}'
           - name: currency
             description: '{{ doc("currency") }}'
+          - name: name
+            description: '{{ doc("account_name") }}'
           - name: time_zone_id
             description: '{{ doc("time_zone_id") }}'
           - name: view_attribution_window

@@ -60,6 +60,7 @@ joined as (
         report.source_relation,
         report.date_day,
         report.account_id,
+        accounts.account_name,
         accounts.currency,
         accounts.attribution_type,
         accounts.time_zone_id,
@@ -92,7 +93,7 @@ joined as (
         on report.account_id = rollup_conversions_report.account_id
         and report.source_relation = rollup_conversions_report.source_relation
         and report.date_day = rollup_conversions_report.date_day
-    {{ dbt_utils.group_by(6) }}
+    {{ dbt_utils.group_by(7) }}
 )
 
 select *

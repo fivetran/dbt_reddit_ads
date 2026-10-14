@@ -16,6 +16,8 @@ models:
         description: '{{ doc("account_id") }}'
         tests:
           - not_null
+      - name: account_name
+        description: '{{ doc("account_name") }}'
       - name: currency
         description: '{{ doc("currency") }}'
       - name: attribution_type
@@ -74,6 +76,8 @@ models:
           - not_null
       - name: account_id
         description:  '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
       - name: ad_group_name
         description:  '{{ doc("ad_group_name") }}'
       - name: ad_group_id
@@ -144,6 +148,8 @@ models:
         description: '{{ doc("ad_name") }}'
       - name: account_id
         description: '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
       - name: campaign_name
         description: '{{ doc("campaign_name") }}'
       - name: campaign_id
@@ -208,6 +214,8 @@ models:
           - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
       - name: campaign_name
         description: '{{ doc("campaign_name") }}'
       - name: campaign_id
@@ -273,6 +281,8 @@ models:
           - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
       - name: campaign_name
         description: '{{ doc("campaign_name") }}'
       - name: campaign_id
@@ -359,6 +369,8 @@ models:
         description: '{{ doc("date_day") }}'
       - name: account_id
         description: '{{ doc("account_id") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
       - name: campaign_name

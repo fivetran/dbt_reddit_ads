@@ -1,3 +1,18 @@
+# dbt_reddit_ads v1.7.0
+
+[PR #XX](https://github.com/fivetran/dbt_reddit_ads/pull/XX) includes the following updates:
+
+## Schema/Data Change
+**2 total changes • 0 possible breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ---------- | ----------- | -------- | -------- | ----- |
+| [`stg_reddit_ads__account`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.stg_reddit_ads__account) | New field | | `account_name` | Pulls the account name from the `name` column in the `business_account` source table. |
+| [`reddit_ads__account_report`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__account_report)<br>[`reddit_ads__campaign_report`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_report)<br>[`reddit_ads__ad_group_report`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__ad_group_report)<br>[`reddit_ads__ad_report`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__ad_report)<br>[`reddit_ads__url_report`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__url_report)<br>[`reddit_ads__campaign_country_report`](https://fivetran.github.io/dbt_reddit_ads/#!/model/model.reddit_ads.reddit_ads__campaign_country_report) | New field | | `account_name` | Adds the account name next to `account_id`. The [Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting) previously returned `null` for Reddit `account_name` because the name was not available. |
+
+## Under the Hood
+- Adds the `name` column to the `reddit_ads_business_account_data` seed file and updates its `id` to match the account ID in the report seed files.
+
 # dbt_reddit_ads v1.6.0
 [PR #41](https://github.com/fivetran/dbt_reddit_ads/pull/41) includes the following updates:
 

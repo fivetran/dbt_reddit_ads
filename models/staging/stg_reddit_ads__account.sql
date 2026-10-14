@@ -30,6 +30,7 @@ final as (
         cast(created_at as {{ dbt.type_timestamp() }}) as created_at,
         currency,
         id as account_id,
+        name as account_name,
         time_zone_id,
         view_attribution_window
     from fields

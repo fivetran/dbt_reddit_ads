@@ -143,6 +143,7 @@ final as (
     select
         joined.*,
         campaigns.campaign_name,
+        accounts.account_name,
         accounts.currency,
         campaigns.effective_status,
         campaigns.configured_status,
