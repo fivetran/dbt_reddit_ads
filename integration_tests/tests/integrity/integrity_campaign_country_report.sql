@@ -2,7 +2,7 @@
     tags="fivetran_validations",
     enabled=(
         var('fivetran_validation_tests_enabled', false)
-        and fivetran_utils.enabled_vars(['ad_reporting__reddit_ads_enabled', 'reddit_ads_campaign_country_report_enabled'])
+        and (var('ad_reporting__reddit_ads_enabled', true) and var('reddit_ads_campaign_country_report_enabled', true))
 )) }}
 
 with source as (
