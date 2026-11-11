@@ -1,7 +1,4 @@
-{{ config(enabled=fivetran_utils.enabled_vars([
-    'ad_reporting__reddit_ads_enabled',
-    'reddit_ads__using_campaign_country_report',
-    'reddit_ads__using_campaign_country_conversions_report'])
+{{ config(enabled=(var('ad_reporting__reddit_ads_enabled', true) and var('reddit_ads__using_campaign_country_report', true) and var('reddit_ads__using_campaign_country_conversions_report', true))
 ) }}
 
 with base as (
