@@ -17,11 +17,11 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: date_day
         description: '{{ doc("date_day") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_name
         description: '{{ doc("account_name") }}'
@@ -86,7 +86,7 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: date_day
         description:  '{{ doc("date_day") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_id
         description:  '{{ doc("account_id") }}'
@@ -96,7 +96,7 @@ models:
         description:  '{{ doc("ad_group_name") }}'
       - name: ad_group_id
         description:  '{{ doc("ad_group_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: campaign_name
         description:  '{{ doc("campaign_name") }}'
@@ -159,11 +159,11 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: date_day
         description: '{{ doc("date_day") }}'
-        tests:
+        data_tests:
           - not_null
       - name: ad_id
         description: '{{ doc("ad_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: ad_name
         description: '{{ doc("ad_name") }}'
@@ -238,7 +238,7 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: date_day
         description: '{{ doc("date_day") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -248,7 +248,7 @@ models:
         description: '{{ doc("campaign_name") }}'
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: currency
         description: '{{ doc("currency") }}'
@@ -309,13 +309,13 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: date_day
         description: '{{ doc("date_day") }}'
-        tests:
+        data_tests:
           - not_null
       - name: ad_name
         description: '{{ doc("ad_name") }}'
       - name: ad_id
         description: '{{ doc("ad_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -345,7 +345,7 @@ models:
         description: Spend converted out of microcurrency (so Spend/1,000,000)
       - name: base_url
         description: The base URL of the ad, extracted from the `click_url`.
-        tests:
+        data_tests:
           - not_null:
               config:
                 # Below is so we don't run this test if the user has allowed urls to have null entries

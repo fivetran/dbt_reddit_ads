@@ -14,7 +14,7 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: account_id
         description: '{{ doc("account_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_name
         description: '{{ doc("account_name") }}'
@@ -45,7 +45,7 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: account_id
         description: '{{ doc("account_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: clicks
         description: '{{ doc("clicks") }}'
@@ -71,7 +71,7 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: ad_id
         description: '{{ doc("ad_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -110,7 +110,7 @@ models:
         description: '{{ doc("account_id") }}'
       - name: ad_id
         description: '{{ doc("ad_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: clicks
         description: '{{ doc("clicks") }}'
@@ -136,7 +136,7 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: ad_group_id
         description: '{{ doc("ad_group_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -181,7 +181,7 @@ models:
         description: '{{ doc("account_id") }}'
       - name: ad_group_id
         description: '{{ doc("ad_group_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: clicks
         description: '{{ doc("clicks") }}'
@@ -207,7 +207,7 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -240,7 +240,7 @@ models:
         description: '{{ doc("account_id") }}'
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: clicks
         description: '{{ doc("clicks") }}'
