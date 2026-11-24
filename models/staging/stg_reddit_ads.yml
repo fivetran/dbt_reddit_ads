@@ -3,12 +3,18 @@ version: 2
 models:
   - name: stg_reddit_ads__account
     description: Each record in this table represents information about an account.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - account_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
       - name: account_id
         description: '{{ doc("account_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_name
         description: '{{ doc("account_name") }}'
@@ -27,12 +33,19 @@ models:
 
   - name: stg_reddit_ads__account_report
     description: Each record represents a summary of events for each given date and account.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - account_id
+              - date_day
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
       - name: account_id
         description: '{{ doc("account_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: clicks
         description: '{{ doc("clicks") }}'
@@ -47,12 +60,18 @@ models:
 
   - name: stg_reddit_ads__ad
     description: Each record represents information about each ad.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - ad_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
       - name: ad_id
         description: '{{ doc("ad_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -77,6 +96,13 @@ models:
 
   - name: stg_reddit_ads__ad_report
     description: Each record represents a summary of events for each given date and ad.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - ad_id
+              - date_day
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -84,7 +110,7 @@ models:
         description: '{{ doc("account_id") }}'
       - name: ad_id
         description: '{{ doc("ad_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: clicks
         description: '{{ doc("clicks") }}'
@@ -99,12 +125,18 @@ models:
 
   - name: stg_reddit_ads__ad_group
     description: Each record represents information about each ad group.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - ad_group_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
       - name: ad_group_id
         description: '{{ doc("ad_group_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -135,6 +167,13 @@ models:
 
   - name: stg_reddit_ads__ad_group_report
     description: Each record represents a summary of events for each given date and ad group.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - ad_group_id
+              - date_day
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -142,7 +181,7 @@ models:
         description: '{{ doc("account_id") }}'
       - name: ad_group_id
         description: '{{ doc("ad_group_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: clicks
         description: '{{ doc("clicks") }}'
@@ -157,12 +196,18 @@ models:
 
   - name: stg_reddit_ads__campaign
     description: Each record represents information about each campaign.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - campaign_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -181,6 +226,13 @@ models:
 
   - name: stg_reddit_ads__campaign_report
     description: Each record represents a summary of events for each given date and campaign.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - campaign_id
+              - date_day
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -188,7 +240,7 @@ models:
         description: '{{ doc("account_id") }}'
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: clicks
         description: '{{ doc("clicks") }}'
@@ -202,6 +254,14 @@ models:
         description: Spend converted out of microcurrency (so Spend/1,000,000)
   - name: stg_reddit_ads__account_conversions_report
     description: '{{ doc("stg_reddit_ads__account_conversions_report") }}'
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - account_id
+              - date_day
+              - event_name
     columns: 
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -224,6 +284,14 @@ models:
 
   - name: stg_reddit_ads__ad_group_conversions_report
     description: '{{ doc("stg_reddit_ads__ad_group_conversions_report") }}'
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - ad_group_id
+              - date_day
+              - event_name
     columns:
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -248,6 +316,14 @@ models:
 
   - name: stg_reddit_ads__ad_conversions_report
     description: '{{ doc("stg_reddit_ads__ad_conversions_report") }}'
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - ad_id
+              - date_day
+              - event_name
     columns:
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -272,6 +348,14 @@ models:
 
   - name: stg_reddit_ads__campaign_conversions_report
     description: '{{ doc("stg_reddit_ads__campaign_conversions_report") }}'
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - campaign_id
+              - date_day
+              - event_name
     columns:
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -296,6 +380,15 @@ models:
 
   - name: stg_reddit_ads__campaign_country_report
     description: '{{ doc("campaign_country_report") }}'
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - account_id
+              - campaign_id
+              - country
+              - date_day
     columns:
       - name: account_id
         description: '{{ doc("account_id") }}'
@@ -320,6 +413,16 @@ models:
 
   - name: stg_reddit_ads__campaign_country_conversions_report
     description: '{{ doc("campaign_country_conversions_report") }}'
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - account_id
+              - campaign_id
+              - country
+              - date_day
+              - event_name
     columns:
       - name: account_id
         description: '{{ doc("account_id") }}'
