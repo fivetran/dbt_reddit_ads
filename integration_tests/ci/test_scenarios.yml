@@ -33,7 +33,6 @@ test_scenarios:
   - name: "country conversions disabled"
     vars:
       reddit_ads__using_campaign_country_conversions_report: false
-      ad_reporting__url_report__using_null_filter: false
     include_incremental: false
 
   - name: "MDLS"
